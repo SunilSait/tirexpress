@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en" id="root-html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="TireXpress Customer Dashboard — Manage bookings, browse tires, track your service vehicle, and view your service history.">
+    <title>Dashboard | TireXpress Mobile Tire Service</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' stroke='%23CC1F1F' stroke-width='8' fill='none'/><circle cx='50' cy='50' r='18' stroke='%23CC1F1F' stroke-width='8' fill='none'/></svg>">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script>tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#CC1F1F', secondary: '#111827' } } } }</script>
+    <style>
+        .dash-layout { display: grid; grid-template-columns: 280px 1fr; min-height: 100vh; }
+        @media (max-width: 1024px) { .dash-layout { grid-template-columns: 1fr; } }
+        .sidebar { height: 100vh; position: sticky; top: 0; overflow-y: auto; }
+        .sidebar::-webkit-scrollbar { width: 4px; }
+        .main-content { overflow-y: auto; }
+        .notif-panel { display: none; position: absolute; top: 56px; right: -52px; inset-inline-end: -52px; width: 280px; max-height: 440px; overflow-y: auto; z-index: 100; }
+        @media (min-width: 365px) { .notif-panel { width: 340px; } }
+        @media (min-width: 640px) { .notif-panel { right: 0; inset-inline-end: 0; } }
+        .notif-panel.open { display: block; }
+    </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-300">
+
+<!-- Mobile Drawer Overlay -->
+<div id="drawer-overlay" class="fixed inset-0 bg-black/50 z-40 hidden lg:hidden" onclick="closeMobileDrawer()"></div>
+
+<!-- Mobile Drawer Sidebar -->
+<div id="mobile-drawer-dash" class="fixed inset-y-0 right-0 w-72 bg-white dark:bg-slate-900 z-50 shadow-2xl overflow-y-auto lg:hidden" style="transform:translateX(100%);">
+    <div class="p-5">
+        <div class="flex items-center justify-between mb-6">
+            <a href="index.html" class="flex items-center gap-2 group">
+                <span class="font-black text-lg dark:text-white group-hover:text-[#CC1F1F] transition-colors" style="font-family:'Outfit',sans-serif;">Tire<span class="text-[#CC1F1F]">Xpress</span></span>
+            </a>
+            <button onclick="closeMobileDrawer()" class="w-8 h-8 flex items-center justify-center rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300"><i class="fas fa-times text-sm"></i></button>
+        </div>
+        <div id="mobile-sidebar-nav" class="space-y-1"></div>
+    </div>
+</div>
+
+<div class="dash-layout">
+
+    <!-- ===== SIDEBAR ===== -->
+    <aside class="sidebar bg-white dark:bg-slate-900 border-e border-slate-200 dark:border-slate-800 hidden lg:flex flex-col">
+        <!-- Brand -->
+        <a href="index.html" class="flex items-center gap-2.5 px-6 py-5 border-b border-slate-100 dark:border-slate-800 shrink-0 group">
+            <svg width="32" height="32" viewBox="0 0 34 34" fill="none"><circle cx="17" cy="17" r="16" stroke="#CC1F1F" stroke-width="2.5"/><circle cx="17" cy="17" r="7" stroke="#CC1F1F" stroke-width="2.5"/><line x1="17" y1="1" x2="17" y2="10" stroke="#CC1F1F" stroke-width="2" stroke-linecap="round"/><line x1="17" y1="24" x2="17" y2="33" stroke="#CC1F1F" stroke-width="2" stroke-linecap="round"/><line x1="1" y1="17" x2="10" y2="17" stroke="#CC1F1F" stroke-width="2" stroke-linecap="round"/><line x1="24" y1="17" x2="33" y2="17" stroke="#CC1F1F" stroke-width="2" stroke-linecap="round"/></svg>
+            <span class="font-black text-xl tracking-tight dark:text-white group-hover:text-[#CC1F1F] transition-colors" style="font-family:'Outfit',sans-serif;">Tire<span class="text-[#CC1F1F]">Xpress</span></span>
+        </a>
+
+        <!-- Nav -->
+        <nav class="flex-1 p-4 space-y-1 overflow-y-auto" id="sidebar-nav"></nav>
+
+        <!-- User at bottom -->
+        <div class="p-4 border-t border-slate-100 dark:border-slate-800 shrink-0 space-y-2">
+            <div class="flex items-center gap-3 px-3 py-2">
+                <div class="w-9 h-9 bg-[#CC1F1F]/10 rounded-full flex items-center justify-center text-[#CC1F1F] font-black shrink-0">J</div>
+                <div class="flex-1 min-w-0">
+                    <p class="font-black text-sm dark:text-white truncate">John Doe</p>
+                    <p class="text-[10px] text-slate-400 uppercase font-bold tracking-widest">Pro Member</p>
+                </div>
+            </div>
+            <button onclick="showTab('profile')" class="sidebar-link w-full"><i class="fas fa-gear w-5 shrink-0 text-sm"></i> Settings</button>
+            <a href="index.html" class="sidebar-link text-red-500 hover:bg-red-50 dark:hover:bg-red-900/10 hover:text-red-600 w-full flex items-center gap-3 px-4 py-3 rounded-xl font-bold text-sm">
+                <i class="fas fa-right-from-bracket w-5 shrink-0 text-sm"></i> Logout
+            </a>
+        </div>
+    </aside>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main class="main-content flex flex-col min-h-screen">
+        <!-- Top Bar -->
+        <header class="sticky top-0 z-30 bg-white/92 dark:bg-slate-900/92 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 px-4 sm:px-6 py-4 flex items-center gap-4">
+            <!-- Mobile menu -->
+            <button onclick="openMobileDrawer()" class="lg:hidden p-2 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg">
+                <i class="fas fa-bars text-lg"></i>
+            </button>
+
+            <!-- Welcome -->
+            <div class="flex-1 min-w-0">
+                <p class="text-xs text-slate-400 uppercase font-black tracking-widest">Dashboard</p>
+                <h2 class="font-black text-lg dark:text-white truncate" style="font-family:'Outfit',sans-serif;">Welcome back, <span class="text-[#CC1F1F]">John!</span></h2>
+            </div>
+
+            <!-- Actions -->
+            <div class="flex items-center gap-2">
+                <!-- RTL -->
+                <button id="dash-dir" onclick="toggleDashDir()" class="hidden sm:flex w-9 h-9 items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-[#CC1F1F]/50 text-[10px] font-black text-slate-600 dark:text-slate-400 transition-all">LTR</button>
+                <!-- Theme -->
+                <button id="dash-theme" onclick="toggleDashTheme()" class="hidden sm:flex w-9 h-9 items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-[#CC1F1F]/50 transition-all">
+                    <i class="fas fa-moon text-sm text-slate-600 dark:text-slate-400"></i>
+                </button>
+                <!-- Notifications -->
+                <div class="relative">
+                    <button onclick="toggleNotifPanel()" class="relative w-9 h-9 flex items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-[#CC1F1F]/50 transition-all">
+                        <i class="fas fa-bell text-sm text-slate-600 dark:text-slate-400"></i>
+                        <span class="notif-badge" id="notif-count">3</span>
+                    </button>
+                    <div id="notif-panel" class="notif-panel bg-white dark:bg-slate-800 rounded-2xl shadow-2xl border border-slate-100 dark:border-slate-700">
+                        <div class="p-4 border-b border-slate-100 dark:border-slate-700 flex items-center justify-between">
+                            <h4 class="font-black text-sm dark:text-white">Notifications</h4>
+                            <button onclick="clearNotifs()" class="text-xs text-[#CC1F1F] font-black hover:underline">Clear all</button>
+                        </div>
+                        <div id="notif-list" class="p-2"></div>
+                    </div>
+                </div>
+                <!-- Profile -->
+                <button onclick="showTab('profile')" class="w-9 h-9 flex items-center justify-center rounded-xl bg-[#CC1F1F]/10 border border-[#CC1F1F]/20 text-[#CC1F1F] font-black text-sm hover:bg-[#CC1F1F] hover:text-white transition-all">J</button>
+            </div>
+        </header>
+
+        <!-- Tab Content Area -->
+        <div class="flex-1 p-4 sm:p-6 lg:p-8">
+
+            <!-- ===== OVERVIEW TAB ===== -->
+            <div id="tab-overview" class="tab-content active">
+                <div class="mb-6">
+                    <h3 class="text-2xl font-black dark:text-white mb-1" style="font-family:'Outfit',sans-serif;">Overview</h3>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm">Your service summary and quick actions.</p>
+                </div>
+
+                <!-- Metrics -->
+                <div class="grid grid-cols-2 xl:grid-cols-4 gap-4 mb-8">
+                    <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-100 dark:border-slate-700 hover:border-[#CC1F1F]/30 transition-all hover:-translate-y-1">
+                        <div class="flex flex-col-reverse sm:flex-row sm:items-center justify-between gap-2 mb-3">
+                            <span class="text-[10px] sm:text-xs font-black uppercase tracking-wider sm:tracking-widest text-slate-400 leading-tight">Active Bookings</span>
+                            <div class="w-9 h-9 bg-[#CC1F1F]/10 rounded-xl flex items-center justify-center shrink-0"><i class="fas fa-calendar-check text-[#CC1F1F] text-sm"></i></div>
+                        </div>
+                        <p class="text-3xl font-black dark:text-white" style="font-family:'Outfit',sans-serif;">2</p>
+                        <p class="text-xs text-green-500 font-bold mt-1 flex items-center gap-1"><i class="fas fa-arrow-up text-xs"></i> 1 new this week</p>
+                    </div>
+                    <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-100 dark:border-slate-700 hover:border-[#CC1F1F]/30 transition-all hover:-translate-y-1">
+                        <div class="flex flex-col-reverse sm:flex-row sm:items-center justify-between gap-2 mb-3">
+                            <span class="text-[10px] sm:text-xs font-black uppercase tracking-wider sm:tracking-widest text-slate-400 leading-tight">Services Done</span>
+                            <div class="w-9 h-9 bg-green-500/10 rounded-xl flex items-center justify-center shrink-0"><i class="fas fa-circle-check text-green-500 text-sm"></i></div>
+                        </div>
+                        <p class="text-3xl font-black dark:text-white" style="font-family:'Outfit',sans-serif;">14</p>
+                        <p class="text-xs text-slate-400 font-bold mt-1">Since Jan 2024</p>
+                    </div>
+                    <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-100 dark:border-slate-700 hover:border-[#CC1F1F]/30 transition-all hover:-translate-y-1">
+                        <div class="flex flex-col-reverse sm:flex-row sm:items-center justify-between gap-2 mb-3">
+                            <span class="text-[10px] sm:text-xs font-black uppercase tracking-wider sm:tracking-widest text-slate-400 leading-tight">Tires Installed</span>
+                            <div class="w-9 h-9 bg-blue-500/10 rounded-xl flex items-center justify-center shrink-0"><i class="fas fa-circle-dot text-blue-500 text-sm"></i></div>
+                        </div>
+                        <p class="text-3xl font-black dark:text-white" style="font-family:'Outfit',sans-serif;">8</p>
+                        <p class="text-xs text-slate-400 font-bold mt-1">Across 2 vehicles</p>
+                    </div>
+                    <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-100 dark:border-slate-700 hover:border-[#CC1F1F]/30 transition-all hover:-translate-y-1">
+                        <div class="flex flex-col-reverse sm:flex-row sm:items-center justify-between gap-2 mb-3">
+                            <span class="text-[10px] sm:text-xs font-black uppercase tracking-wider sm:tracking-widest text-slate-400 leading-tight">Total Savings</span>
+                            <div class="w-9 h-9 bg-purple-500/10 rounded-xl flex items-center justify-center shrink-0"><i class="fas fa-piggy-bank text-purple-500 text-sm"></i></div>
+                        </div>
+                        <p class="text-3xl font-black dark:text-white" style="font-family:'Outfit',sans-serif;">$210</p>
+                        <p class="text-xs text-green-500 font-bold mt-1 flex items-center gap-1"><i class="fas fa-tag text-xs"></i> Pro Plan discounts</p>
+                    </div>
+                </div>
+
+                <!-- Visual Status Row -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                    <!-- Tire Health Gauge -->
+                    <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-100 dark:border-slate-700 hover:border-[#CC1F1F]/30 transition-all">
+                        <h4 class="text-xs font-black uppercase tracking-widest text-slate-400 mb-4">Tire Health Score</h4>
+                        <div class="flex flex-col items-center justify-center relative py-2">
+                            <svg class="w-32 h-32" viewBox="0 0 120 120">
+                                <circle cx="60" cy="60" r="50" fill="none" stroke="currentColor" class="text-slate-100 dark:text-slate-700" stroke-width="8" />
+                                <circle cx="60" cy="60" r="50" fill="none" stroke="#CC1F1F" stroke-width="8" stroke-dasharray="314" stroke-dashoffset="56.5" stroke-linecap="round" class="transform -rotate-90 origin-center" />
+                                <text x="60" y="65" text-anchor="middle" font-family="'Outfit', sans-serif" font-weight="900" font-size="22" fill="currentColor" class="dark:text-white">82%</text>
+                            </svg>
+                            <span class="mt-4 px-3 py-1 bg-green-100 dark:bg-green-950/30 text-green-600 dark:text-green-400 text-xs font-black uppercase tracking-wider rounded-full">Good Condition</span>
+                        </div>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 mt-2 text-center">Front: 5.5mm · Rear: 6.2mm tread depth. Recommended rotation in 1,200 miles.</p>
+                    </div>
+
+                    <!-- Upcoming Service Calendar -->
+                    <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-100 dark:border-slate-700 hover:border-[#CC1F1F]/30 transition-all flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <h4 class="text-xs font-black uppercase tracking-widest text-slate-400">Next Scheduled Service</h4>
+                                <span class="px-2 py-0.5 bg-[#CC1F1F]/10 text-[#CC1F1F] text-[10px] font-black uppercase rounded">Confirmed</span>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 bg-[#CC1F1F]/10 dark:bg-[#CC1F1F]/20 rounded-xl flex flex-col items-center justify-center text-[#CC1F1F] font-black shrink-0">
+                                    <span class="text-[10px] uppercase leading-none">May</span>
+                                    <span class="text-xl font-black leading-none mt-0.5">28</span>
+                                </div>
+                                <div>
+                                    <h5 class="font-bold text-sm dark:text-white">Tire Installation</h5>
+                                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Wednesday, 9:00 AM - 10:30 AM</p>
+                                    <p class="text-[11px] text-slate-400 mt-1 flex items-center gap-1"><i class="fas fa-truck-moving text-xs"></i> Van #04 · Tech Marcus A.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-slate-100 dark:border-slate-700 flex items-center justify-between">
+                            <span class="text-xs text-slate-500 dark:text-slate-400">Arriving in 5 days</span>
+                            <button onclick="showTab('track')" class="text-xs font-black text-[#CC1F1F] hover:underline flex items-center gap-1">Track Live <i class="fas fa-arrow-right text-[10px]"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Loyalty Rewards Tracker -->
+                    <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-100 dark:border-slate-700 hover:border-[#CC1F1F]/30 transition-all flex flex-col justify-between">
+                        <div>
+                            <h4 class="text-xs font-black uppercase tracking-widest text-slate-400 mb-4">Loyalty Rewards Points</h4>
+                            <div class="flex items-center gap-4 mb-3">
+                                <div class="w-12 h-12 bg-amber-500/10 rounded-xl flex items-center justify-center text-amber-500 text-xl shrink-0"><i class="fas fa-trophy"></i></div>
+                                <div>
+                                    <p class="text-2xl font-black dark:text-white" style="font-family:'Outfit',sans-serif;">450 <span class="text-xs text-slate-400 font-normal">pts</span></p>
+                                    <p class="text-[11px] text-slate-500">Tier: Gold Club Member</p>
+                                </div>
+                            </div>
+                            <!-- Progress Bar -->
+                            <div class="relative pt-1">
+                                <div class="flex mb-2 items-center justify-between">
+                                    <div>
+                                        <span class="text-[10px] font-bold inline-block py-0.5 px-2 uppercase rounded-full text-amber-600 bg-amber-200/30">
+                                            Progress to Reward
+                                        </span>
+                                    </div>
+                                    <div class="text-right">
+                                        <span class="text-xs font-bold inline-block text-amber-600">
+                                            90%
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="overflow-hidden h-2 text-xs flex rounded bg-slate-100 dark:bg-slate-700">
+                                    <div style="width:90%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-gradient-to-r from-amber-400 to-amber-600"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-[11px] text-slate-400 mt-3">Only 50 more points until your next free tire rotation service!</p>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
+                    <button onclick="showTab('schedule')" class="p-4 bg-[#CC1F1F] text-white rounded-2xl font-black text-xs uppercase tracking-wider flex flex-col items-center gap-2 hover:bg-[#a81818] transition-all hover:-translate-y-1">
+                        <i class="fas fa-calendar-plus text-xl"></i> Book Service
+                    </button>
+                    <button onclick="showTab('tires')" class="p-4 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 rounded-2xl font-black text-xs uppercase tracking-wider flex flex-col items-center gap-2 hover:border-[#CC1F1F] hover:text-[#CC1F1F] transition-all hover:-translate-y-1">
+                        <i class="fas fa-circle-dot text-xl"></i> Browse Tires
+                    </button>
+                    <button onclick="showTab('track')" class="p-4 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 rounded-2xl font-black text-xs uppercase tracking-wider flex flex-col items-center gap-2 hover:border-[#CC1F1F] hover:text-[#CC1F1F] transition-all hover:-translate-y-1">
+                        <i class="fas fa-location-dot text-xl"></i> Track Van
+                    </button>
+                    <button onclick="showTab('quotes')" class="p-4 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 rounded-2xl font-black text-xs uppercase tracking-wider flex flex-col items-center gap-2 hover:border-[#CC1F1F] hover:text-[#CC1F1F] transition-all hover:-translate-y-1">
+                        <i class="fas fa-tags text-xl"></i> Get Quote
+                    </button>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 overflow-hidden">
+                    <div class="flex items-center justify-between p-5 border-b border-slate-100 dark:border-slate-700">
+                        <h4 class="font-black dark:text-white" style="font-family:'Outfit',sans-serif;">Recent Activity</h4>
+                        <button onclick="showTab('history')" class="text-[#CC1F1F] text-xs font-black hover:underline">View All</button>
+                    </div>
+                    <div class="divide-y divide-slate-100 dark:divide-slate-700">
+                        <div class="flex items-center gap-4 p-4 hover:bg-slate-50 dark:hover:bg-slate-700/30 transition-colors">
+                            <div class="w-10 h-10 bg-green-100 dark:bg-green-900/30 rounded-xl flex items-center justify-center text-green-500 shrink-0"><i class="fas fa-circle-check text-sm"></i></div>
+                            <div class="flex-1 min-w-0">
+                                <p class="font-bold text-sm dark:text-white truncate">Tire Rotation Completed</p>
+                                <p class="text-xs text-slate-500">2024 Toyota Camry · May 18, 2025</p>
+                            </div>
+                            <span class="badge badge-success shrink-0">Done</span>
+                        </div>
+                        <div class="flex items-center gap-4 p-4 hover:bg-slate-50 dark:hover:bg-slate-700/30 transition-colors">
+                            <div class="w-10 h-10 bg-[#CC1F1F]/10 rounded-xl flex items-center justify-center text-[#CC1F1F] shrink-0"><i class="fas fa-clock text-sm"></i></div>
+                            <div class="flex-1 min-w-0">
+                                <p class="font-bold text-sm dark:text-white truncate">Tire Installation — Scheduled</p>
+                                <p class="text-xs text-slate-500">4× Michelin Pilot Sport · May 28, 2025</p>
+                            </div>
+                            <span class="badge badge-warning shrink-0">Upcoming</span>
+                        </div>
+                        <div class="flex items-center gap-4 p-4 hover:bg-slate-50 dark:hover:bg-slate-700/30 transition-colors">
+                            <div class="w-10 h-10 bg-blue-100 dark:bg-blue-900/30 rounded-xl flex items-center justify-center text-blue-500 shrink-0"><i class="fas fa-file-invoice text-sm"></i></div>
+                            <div class="flex-1 min-w-0">
+                                <p class="font-bold text-sm dark:text-white truncate">Invoice #TX-2240 — $189</p>
+                                <p class="text-xs text-slate-500">Flat Repair · May 12, 2025</p>
+                            </div>
+                            <span class="badge badge-primary shrink-0">Paid</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== BROWSE TIRES TAB ===== -->
+            <div id="tab-tires" class="tab-content">
+                <div class="mb-6">
+                    <h3 class="text-2xl font-black dark:text-white mb-1" style="font-family:'Outfit',sans-serif;">Browse Tires</h3>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm">Find tires for your vehicle and book mobile installation.</p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5">
+                    <div class="bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 overflow-hidden hover:border-[#CC1F1F]/30 hover:shadow-lg transition-all hover:-translate-y-1">
+                        <div class="h-32 bg-gradient-to-br from-red-50 to-slate-50 dark:from-slate-700 dark:to-slate-800 flex items-center justify-center"><i class="fas fa-circle-dot text-6xl text-[#CC1F1F]/20"></i></div>
+                        <div class="p-5">
+                            <div class="text-[10px] font-black uppercase tracking-widest text-[#CC1F1F] mb-1">Michelin</div>
+                            <h4 class="font-black dark:text-white mb-1">Pilot Sport 4S</h4>
+                            <div class="flex text-[#f59e0b] gap-0.5 mb-3"><i class="fas fa-star text-xs"></i><i class="fas fa-star text-xs"></i><i class="fas fa-star text-xs"></i><i class="fas fa-star text-xs"></i><i class="fas fa-star text-xs"></i></div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-xl font-black text-[#CC1F1F]">$189<span class="text-sm text-slate-400 font-normal">/ea</span></span>
+                                <button onclick="showTab('schedule')" class="btn-primary px-4 py-2 rounded-xl text-xs">Install</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 overflow-hidden hover:border-[#CC1F1F]/30 hover:shadow-lg transition-all hover:-translate-y-1">
+                        <div class="h-32 bg-gradient-to-br from-blue-50 to-slate-50 dark:from-slate-700 dark:to-slate-800 flex items-center justify-center"><i class="fas fa-circle-dot text-6xl text-blue-400/20"></i></div>
+                        <div class="p-5">
+                            <div class="text-[10px] font-black uppercase tracking-widest text-[#CC1F1F] mb-1">Bridgestone</div>
+                            <h4 class="font-black dark:text-white mb-1">Potenza S007</h4>
+                            <div class="flex text-[#f59e0b] gap-0.5 mb-3"><i class="fas fa-star text-xs"></i><i class="fas fa-star text-xs"></i><i class="fas fa-star text-xs"></i><i class="fas fa-star text-xs"></i><i class="fas fa-star-half-alt text-xs"></i></div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-xl font-black text-[#CC1F1F]">$175<span class="text-sm text-slate-400 font-normal">/ea</span></span>
+                                <button onclick="showTab('schedule')" class="btn-primary px-4 py-2 rounded-xl text-xs">Install</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 overflow-hidden hover:border-[#CC1F1F]/30 hover:shadow-lg transition-all hover:-translate-y-1">
+                        <div class="h-32 bg-gradient-to-br from-green-50 to-slate-50 dark:from-slate-700 dark:to-slate-800 flex items-center justify-center"><i class="fas fa-circle-dot text-6xl text-green-400/20"></i></div>
+                        <div class="p-5">
+                            <div class="text-[10px] font-black uppercase tracking-widest text-[#CC1F1F] mb-1">Continental</div>
+                            <h4 class="font-black dark:text-white mb-1">ExtremeContact Sport</h4>
+                            <div class="flex text-[#f59e0b] gap-0.5 mb-3"><i class="fas fa-star text-xs"></i><i class="fas fa-star text-xs"></i><i class="fas fa-star text-xs"></i><i class="fas fa-star text-xs"></i><i class="fas fa-star text-xs text-slate-300"></i></div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-xl font-black text-[#CC1F1F]">$155<span class="text-sm text-slate-400 font-normal">/ea</span></span>
+                                <button onclick="showTab('schedule')" class="btn-primary px-4 py-2 rounded-xl text-xs">Install</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt-6">
+                    <a href="tires.html" class="btn-primary inline-flex items-center gap-2 px-8 py-3 rounded-xl text-sm">View Full Inventory <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <!-- ===== QUOTES TAB ===== -->
+            <div id="tab-quotes" class="tab-content">
+                <div class="mb-6"><h3 class="text-2xl font-black dark:text-white mb-1" style="font-family:'Outfit',sans-serif;">Price Quotes</h3><p class="text-slate-500 text-sm">Request and track your service quotes.</p></div>
+                <div class="grid lg:grid-cols-2 gap-6">
+                    <div class="bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 p-6">
+                        <h4 class="font-black dark:text-white mb-5" style="font-family:'Outfit',sans-serif;">Request New Quote</h4>
+                        <form class="space-y-4" onsubmit="return false;">
+                            <div><label class="block text-xs font-black uppercase tracking-widest text-slate-400 mb-1.5">Service Type</label>
+                            <div class="relative"><select class="form-input appearance-none cursor-pointer dark:bg-slate-900 dark:border-slate-700 dark:text-white font-bold pr-10"><option>Flat Tire Repair</option><option>Tire Installation (×1)</option><option>Tire Installation (×4)</option><option>Tire Rotation</option><option>Tire Balancing</option></select><div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-[#CC1F1F]"><i class="fas fa-chevron-down text-xs"></i></div></div></div>
+                            <div><label class="block text-xs font-black uppercase tracking-widest text-slate-400 mb-1.5">Vehicle</label>
+                            <input type="text" placeholder="e.g. 2022 Toyota Camry" class="form-input dark:bg-slate-900 dark:border-slate-700 dark:text-white"></div>
+                            <div><label class="block text-xs font-black uppercase tracking-widest text-slate-400 mb-1.5">Tire Size</label>
+                            <input type="text" placeholder="e.g. 225/45 R18" class="form-input dark:bg-slate-900 dark:border-slate-700 dark:text-white"></div>
+                            <button class="btn-primary w-full py-3 rounded-xl text-sm">Submit Quote Request</button>
+                        </form>
+                    </div>
+                    <div class="bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 p-6">
+                        <h4 class="font-black dark:text-white mb-5" style="font-family:'Outfit',sans-serif;">Quote History</h4>
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between p-4 bg-slate-50 dark:bg-slate-900 rounded-xl">
+                                <div><p class="font-bold text-sm dark:text-white">Tire Installation ×4</p><p class="text-xs text-slate-500">Michelin 225/45 R18 · May 10</p></div>
+                                <div class="text-end"><p class="font-black text-[#CC1F1F]">$756</p><span class="badge badge-success">Accepted</span></div>
+                            </div>
+                            <div class="flex items-center justify-between p-4 bg-slate-50 dark:bg-slate-900 rounded-xl">
+                                <div><p class="font-bold text-sm dark:text-white">Flat Tire Repair</p><p class="text-xs text-slate-500">Toyota Camry · Apr 28</p></div>
+                                <div class="text-end"><p class="font-black text-[#CC1F1F]">$49</p><span class="badge badge-success">Accepted</span></div>
+                            </div>
+                            <div class="flex items-center justify-between p-4 bg-slate-50 dark:bg-slate-900 rounded-xl">
+                                <div><p class="font-bold text-sm dark:text-white">Tire Balancing</p><p class="text-xs text-slate-500">2023 Honda CR-V · Apr 15</p></div>
+                                <div class="text-end"><p class="font-black text-slate-500">$69</p><span class="badge badge-warning">Pending</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== SCHEDULE TAB ===== -->
+            <div id="tab-schedule" class="tab-content">
+                <div class="mb-6"><h3 class="text-2xl font-black dark:text-white mb-1" style="font-family:'Outfit',sans-serif;">Schedule Service</h3><p class="text-slate-500 text-sm">Book a mobile tire service at your location.</p></div>
+                <div class="max-w-2xl">
+                    <div class="bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 p-6">
+                        <form class="space-y-5" onsubmit="return false;">
+                            <div><label class="block text-xs font-black uppercase tracking-widest text-slate-400 mb-1.5">Service Type</label>
+                            <div class="relative"><select class="form-input appearance-none cursor-pointer dark:bg-slate-900 dark:border-slate-700 dark:text-white font-bold pr-10"><option>Flat Tire Repair — $49</option><option>Tire Installation (×1) — $89</option><option>Tire Installation (×4) — $159</option><option>Tire Rotation — $39</option><option>Tire Balancing — $69/axle</option><option>TPMS Reset — $25</option></select><div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-[#CC1F1F]"><i class="fas fa-chevron-down text-xs"></i></div></div></div>
+                            <div><label class="block text-xs font-black uppercase tracking-widest text-slate-400 mb-1.5">Date</label><input type="date" class="form-input dark:bg-slate-900 dark:border-slate-700 dark:text-white"></div>
+                            <div><label class="block text-xs font-black uppercase tracking-widest text-slate-400 mb-1.5">Preferred Time</label>
+                            <div class="relative"><select class="form-input appearance-none cursor-pointer dark:bg-slate-900 dark:border-slate-700 dark:text-white font-bold pr-10"><option>Morning (8 AM – 12 PM)</option><option>Afternoon (12 PM – 4 PM)</option><option>Evening (4 PM – 8 PM)</option><option>As soon as possible</option></select><div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-[#CC1F1F]"><i class="fas fa-chevron-down text-xs"></i></div></div></div>
+                            <div><label class="block text-xs font-black uppercase tracking-widest text-slate-400 mb-1.5">Service Location</label><input type="text" placeholder="Enter your full address" class="form-input dark:bg-slate-900 dark:border-slate-700 dark:text-white"></div>
+                            <div><label class="block text-xs font-black uppercase tracking-widest text-slate-400 mb-1.5">Tire Size (if applicable)</label><input type="text" placeholder="e.g. 225/45 R18" class="form-input dark:bg-slate-900 dark:border-slate-700 dark:text-white"></div>
+                            <div><label class="block text-xs font-black uppercase tracking-widest text-slate-400 mb-1.5">Vehicle</label><input type="text" placeholder="e.g. 2022 Toyota Camry" class="form-input dark:bg-slate-900 dark:border-slate-700 dark:text-white"></div>
+                            <div class="flex items-center gap-4 p-4 bg-red-50 dark:bg-red-900/20 rounded-xl border border-red-100 dark:border-red-800">
+                                <i class="fas fa-circle-info text-[#CC1F1F]"></i>
+                                <p class="text-xs text-red-700 dark:text-red-300 font-medium">Our technician will call you 30 minutes before arrival. You'll also receive a live tracking link.</p>
+                            </div>
+                            <button class="btn-primary w-full py-4 rounded-xl text-sm flex items-center justify-center gap-2">Confirm Booking <i class="fas fa-calendar-check text-xs"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== TRACK TAB ===== -->
+            <div id="tab-track" class="tab-content">
+                <div class="mb-6"><h3 class="text-2xl font-black dark:text-white mb-1" style="font-family:'Outfit',sans-serif;">Track Service Vehicle</h3><p class="text-slate-500 text-sm">Real-time location of your assigned technician.</p></div>
+                <div class="grid lg:grid-cols-3 gap-6">
+                    <div class="lg:col-span-2 bg-slate-150 dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden h-72 relative">
+                        <img src="assets/map.png" alt="Live Map Track" class="w-full h-full object-cover opacity-70">
+                        <div class="absolute inset-0 bg-slate-950/20"></div>
+                        <!-- Mock ETA badge -->
+                        <div class="absolute top-4 left-4 bg-white dark:bg-slate-900 shadow-lg rounded-xl px-4 py-2 border border-slate-100 dark:border-slate-700 flex items-center gap-2">
+                            <span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#CC1F1F] opacity-75"></span><span class="relative inline-flex h-2 w-2 rounded-full bg-[#CC1F1F]"></span></span>
+                            <span class="text-xs font-black dark:text-white">ETA: 14 min</span>
+                        </div>
+                    </div>
+                    <div class="bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 p-5">
+                        <h4 class="font-black dark:text-white mb-5" style="font-family:'Outfit',sans-serif;">Service Status</h4>
+                        <div class="space-y-5">
+                            <div class="flex items-start gap-3">
+                                <div class="w-8 h-8 rounded-full bg-green-500 flex items-center justify-center shrink-0"><i class="fas fa-check text-white text-xs"></i></div>
+                                <div>
+                                    <p class="font-bold text-sm dark:text-white">Booking Confirmed</p>
+                                    <p class="text-xs text-slate-500">10:05 AM</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <div class="w-8 h-8 rounded-full bg-green-500 flex items-center justify-center shrink-0"><i class="fas fa-check text-white text-xs"></i></div>
+                                <div>
+                                    <p class="font-bold text-sm dark:text-white">Technician Assigned</p>
+                                    <p class="text-xs text-slate-500">10:08 AM · Mike R.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <div class="w-8 h-8 rounded-full bg-[#CC1F1F] flex items-center justify-center shrink-0 animate-pulse-glow"><i class="fas fa-van-shuttle text-white text-xs"></i></div>
+                                <div>
+                                    <p class="font-bold text-sm text-[#CC1F1F]">En Route</p>
+                                    <p class="text-xs text-slate-500">ETA 14 minutes</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3 opacity-40">
+                                <div class="w-8 h-8 rounded-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center shrink-0"><i class="fas fa-screwdriver-wrench text-slate-400 text-xs"></i></div>
+                                <div>
+                                    <p class="font-bold text-sm dark:text-white">Service In Progress</p>
+                                    <p class="text-xs text-slate-500">Waiting...</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3 opacity-40">
+                                <div class="w-8 h-8 rounded-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center shrink-0"><i class="fas fa-circle-check text-slate-400 text-xs"></i></div>
+                                <div>
+                                    <p class="font-bold text-sm dark:text-white">Completed</p>
+                                    <p class="text-xs text-slate-500">Waiting...</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== HISTORY TAB ===== -->
+            <div id="tab-history" class="tab-content">
+                <div class="mb-6"><h3 class="text-2xl font-black dark:text-white mb-1" style="font-family:'Outfit',sans-serif;">Service History</h3><p class="text-slate-500 text-sm">All past services, invoices, and receipts.</p></div>
+                <div class="bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 overflow-hidden">
+                    <table class="w-full text-sm">
+                        <thead class="bg-slate-50 dark:bg-slate-900/50 border-b border-slate-100 dark:border-slate-700">
+                            <tr>
+                                <th class="py-3 px-5 text-start text-xs font-black uppercase tracking-widest text-slate-400">Service</th>
+                                <th class="py-3 px-5 text-start text-xs font-black uppercase tracking-widest text-slate-400 hidden sm:table-cell">Vehicle</th>
+                                <th class="py-3 px-5 text-start text-xs font-black uppercase tracking-widest text-slate-400">Date</th>
+                                <th class="py-3 px-5 text-start text-xs font-black uppercase tracking-widest text-slate-400">Amount</th>
+                                <th class="py-3 px-5 text-start text-xs font-black uppercase tracking-widest text-slate-400 hidden md:table-cell">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100 dark:divide-slate-700">
+                            <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/20 transition-colors"><td class="py-4 px-5 font-bold dark:text-white">Tire Rotation</td><td class="py-4 px-5 text-slate-500 hidden sm:table-cell">2024 Toyota Camry</td><td class="py-4 px-5 text-slate-500">May 18, 2025</td><td class="py-4 px-5 font-bold text-[#CC1F1F]">$39</td><td class="py-4 px-5 hidden md:table-cell"><span class="badge badge-success">Completed</span></td></tr>
+                            <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/20 transition-colors"><td class="py-4 px-5 font-bold dark:text-white">Flat Repair</td><td class="py-4 px-5 text-slate-500 hidden sm:table-cell">2024 Toyota Camry</td><td class="py-4 px-5 text-slate-500">May 12, 2025</td><td class="py-4 px-5 font-bold text-[#CC1F1F]">$49</td><td class="py-4 px-5 hidden md:table-cell"><span class="badge badge-success">Completed</span></td></tr>
+                            <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/20 transition-colors"><td class="py-4 px-5 font-bold dark:text-white">Tire Installation ×4</td><td class="py-4 px-5 text-slate-500 hidden sm:table-cell">2023 Honda CR-V</td><td class="py-4 px-5 text-slate-500">Apr 5, 2025</td><td class="py-4 px-5 font-bold text-[#CC1F1F]">$756</td><td class="py-4 px-5 hidden md:table-cell"><span class="badge badge-success">Completed</span></td></tr>
+                            <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/20 transition-colors"><td class="py-4 px-5 font-bold dark:text-white">Tire Balancing</td><td class="py-4 px-5 text-slate-500 hidden sm:table-cell">2023 Honda CR-V</td><td class="py-4 px-5 text-slate-500">Mar 20, 2025</td><td class="py-4 px-5 font-bold text-[#CC1F1F]">$69</td><td class="py-4 px-5 hidden md:table-cell"><span class="badge badge-success">Completed</span></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- ===== ROTATIONS TAB ===== -->
+            <div id="tab-rotations" class="tab-content">
+                <div class="mb-6"><h3 class="text-2xl font-black dark:text-white mb-1" style="font-family:'Outfit',sans-serif;">Tire Rotations</h3><p class="text-slate-500 text-sm">Track your rotation schedule and extend tire life.</p></div>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 p-6">
+                        <h4 class="font-black dark:text-white mb-5" style="font-family:'Outfit',sans-serif;">2024 Toyota Camry</h4>
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between"><span class="text-sm text-slate-500">Last Rotation</span><span class="font-bold text-sm dark:text-white">May 18, 2025</span></div>
+                            <div class="flex items-center justify-between"><span class="text-sm text-slate-500">Miles Since</span><span class="font-bold text-sm dark:text-white">3,200 mi</span></div>
+                            <div class="flex items-center justify-between"><span class="text-sm text-slate-500">Next Rotation At</span><span class="font-bold text-sm text-[#CC1F1F]">5,000 mi</span></div>
+                            <div class="progress-bar"><div class="progress-fill" style="width:64%"></div></div>
+                            <p class="text-xs text-slate-400">64% to next rotation — 1,800 miles away</p>
+                            <button onclick="showTab('schedule')" class="btn-primary w-full py-3 rounded-xl text-sm transition-all">
+                                <span class="flex items-center justify-center gap-2">
+                                    <i class="fas fa-rotate"></i>
+                                    <span>Schedule Rotation</span>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 p-6">
+                        <h4 class="font-black dark:text-white mb-5" style="font-family:'Outfit',sans-serif;">2023 Honda CR-V</h4>
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between"><span class="text-sm text-slate-500">Last Rotation</span><span class="font-bold text-sm dark:text-white">Feb 10, 2025</span></div>
+                            <div class="flex items-center justify-between"><span class="text-sm text-slate-500">Miles Since</span><span class="font-bold text-sm dark:text-white">4,800 mi</span></div>
+                            <div class="flex items-center justify-between"><span class="text-sm text-slate-500">Next Rotation At</span><span class="font-bold text-sm text-red-500">5,000 mi ⚠️</span></div>
+                            <div class="progress-bar"><div class="progress-fill" style="width:96%; background:linear-gradient(90deg,#ef4444,#f97316)"></div></div>
+                            <p class="text-xs text-red-500 font-bold">Due soon! Only 200 miles to next rotation.</p>
+                            <button onclick="showTab('schedule')" class="w-full py-3 rounded-xl text-sm font-black uppercase tracking-widest border-2 border-red-500 text-red-500 hover:bg-red-500 hover:text-white transition-all">
+                                <span class="flex items-center justify-center gap-2">
+                                    <i class="fas fa-triangle-exclamation"></i>
+                                    <span>Schedule Now — Overdue Soon</span>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== NOTIFICATIONS TAB ===== -->
+            <div id="tab-notifications" class="tab-content">
+                <div class="mb-6"><h3 class="text-2xl font-black dark:text-white mb-1" style="font-family:'Outfit',sans-serif;">Notifications</h3></div>
+                <div class="space-y-3 max-w-2xl" id="notif-tab-list"></div>
+            </div>
+
+            <!-- ===== PROFILE TAB ===== -->
+            <div id="tab-profile" class="tab-content">
+                <div class="mb-6"><h3 class="text-2xl font-black dark:text-white mb-1" style="font-family:'Outfit',sans-serif;">Profile & Settings</h3></div>
+                <div class="grid md:grid-cols-2 gap-6 max-w-3xl">
+                    <div class="bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 p-6">
+                        <h4 class="font-black dark:text-white mb-5" style="font-family:'Outfit',sans-serif;">Personal Info</h4>
+                        <form class="space-y-4" onsubmit="return false;">
+                            <div><label class="block text-xs font-black uppercase tracking-widest text-slate-400 mb-1.5">First Name</label><input type="text" value="John" class="form-input dark:bg-slate-900 dark:border-slate-700 dark:text-white"></div>
+                            <div><label class="block text-xs font-black uppercase tracking-widest text-slate-400 mb-1.5">Last Name</label><input type="text" value="Doe" class="form-input dark:bg-slate-900 dark:border-slate-700 dark:text-white"></div>
+                            <div><label class="block text-xs font-black uppercase tracking-widest text-slate-400 mb-1.5">Email</label><input type="email" value="john@example.com" class="form-input dark:bg-slate-900 dark:border-slate-700 dark:text-white"></div>
+                            <div><label class="block text-xs font-black uppercase tracking-widest text-slate-400 mb-1.5">Phone</label><input type="tel" value="+1 (555) 012-3456" class="form-input dark:bg-slate-900 dark:border-slate-700 dark:text-white"></div>
+                            <button class="btn-primary w-full py-3 rounded-xl text-sm">Save Changes</button>
+                        </form>
+                    </div>
+                    <div class="space-y-5">
+                        <div class="bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 p-6">
+                            <h4 class="font-black dark:text-white mb-4" style="font-family:'Outfit',sans-serif;">Password</h4>
+                            <form class="space-y-4" onsubmit="return false;">
+                                <div><label class="block text-xs font-black uppercase tracking-widest text-slate-400 mb-1.5">Current Password</label><input type="password" placeholder="••••••••" class="form-input dark:bg-slate-900 dark:border-slate-700 dark:text-white"></div>
+                                <div><label class="block text-xs font-black uppercase tracking-widest text-slate-400 mb-1.5">New Password</label><input type="password" placeholder="••••••••" class="form-input dark:bg-slate-900 dark:border-slate-700 dark:text-white"></div>
+                                <button class="btn-secondary w-full py-3 rounded-xl text-sm">Update Password</button>
+                            </form>
+                        </div>
+                        <div class="bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 p-6">
+                            <h4 class="font-black dark:text-white mb-4" style="font-family:'Outfit',sans-serif;">Notifications</h4>
+                            <div class="space-y-3">
+                                <label class="flex items-center justify-between cursor-pointer"><span class="text-sm dark:text-slate-300">Service reminders</span><input type="checkbox" checked class="accent-[#CC1F1F] w-4 h-4"></label>
+                                <label class="flex items-center justify-between cursor-pointer"><span class="text-sm dark:text-slate-300">Technician en route</span><input type="checkbox" checked class="accent-[#CC1F1F] w-4 h-4"></label>
+                                <label class="flex items-center justify-between cursor-pointer"><span class="text-sm dark:text-slate-300">Promotion & offers</span><input type="checkbox" class="accent-[#CC1F1F] w-4 h-4"></label>
+                                <label class="flex items-center justify-between cursor-pointer"><span class="text-sm dark:text-slate-300">Rotation reminders</span><input type="checkbox" checked class="accent-[#CC1F1F] w-4 h-4"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+</div>
+
+<script>
+const SIDEBAR_ITEMS = [
+    { id: 'overview',       icon: 'fa-gauge',               label: 'Overview' },
+    { id: 'tires',          icon: 'fa-circle-dot',          label: 'Browse Tires' },
+    { id: 'quotes',         icon: 'fa-tags',                label: 'Price Quotes' },
+    { id: 'schedule',       icon: 'fa-calendar-plus',       label: 'Schedule Service' },
+    { id: 'track',          icon: 'fa-location-dot',        label: 'Track Vehicle' },
+    { id: 'history',        icon: 'fa-clock-rotate-left',   label: 'Service History' },
+    { id: 'rotations',      icon: 'fa-rotate',              label: 'Tire Rotations' },
+    { id: 'notifications',  icon: 'fa-bell',                label: 'Notifications' },
+    { id: 'profile',        icon: 'fa-user-gear',           label: 'Profile / Settings' },
+];
+
+const NOTIFICATIONS = [
+    { icon: 'fa-van-shuttle', color: 'text-[#CC1F1F]', bg: 'bg-[#CC1F1F]/10', title: 'Technician En Route', body: 'Mike R. is 14 min away. Tire installation · Toyota Camry.', time: '2 min ago' },
+    { icon: 'fa-rotate', color: 'text-blue-500', bg: 'bg-blue-100 dark:bg-blue-900/30', title: 'Rotation Reminder', body: 'Your 2023 Honda CR-V is due for a tire rotation in ~200 miles.', time: '1 hr ago' },
+    { icon: 'fa-tags', color: 'text-green-500', bg: 'bg-green-100 dark:bg-green-900/30', title: 'Quote Ready', body: 'Your quote for Tire Balancing is ready. Amount: $69.', time: 'Yesterday' },
+];
+
+function renderSidebar() {
+    const nav = document.getElementById('sidebar-nav');
+    const mobileNav = document.getElementById('mobile-sidebar-nav');
+    const html = SIDEBAR_ITEMS.map(item => `
+        <button onclick="showTab('${item.id}')" id="nav-${item.id}" class="sidebar-link ${item.id === 'overview' ? 'active' : ''}">
+            <i class="fas ${item.icon} w-5 shrink-0 text-sm"></i>
+            ${item.label}
+            ${item.id === 'notifications' ? '<span class="ms-auto bg-red-500 text-white text-[9px] font-black w-5 h-5 rounded-full flex items-center justify-center">3</span>' : ''}
+        </button>
+    `).join('');
+    if (nav) nav.innerHTML = html;
+    if (mobileNav) mobileNav.innerHTML = html;
+}
+
+function showTab(id) {
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.sidebar-link').forEach(el => el.classList.remove('active'));
+    const tab = document.getElementById('tab-' + id);
+    if (tab) tab.classList.add('active');
+    const navBtn = document.getElementById('nav-' + id);
+    if (navBtn) navBtn.classList.add('active');
+    closeMobileDrawer();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function openMobileDrawer() {
+    document.getElementById('mobile-drawer-dash').style.transform = 'translateX(0)';
+    document.getElementById('drawer-overlay').classList.remove('hidden');
+}
+function closeMobileDrawer() {
+    document.getElementById('mobile-drawer-dash').style.transform = 'translateX(100%)';
+    document.getElementById('drawer-overlay').classList.add('hidden');
+}
+
+function renderNotifPanel() {
+    document.getElementById('notif-list').innerHTML = NOTIFICATIONS.map((n, i) => `
+        <div class="flex items-start gap-3 p-3 hover:bg-slate-50 dark:hover:bg-slate-700/30 rounded-xl transition-colors">
+            <div class="w-8 h-8 ${n.bg} rounded-xl flex items-center justify-center shrink-0"><i class="fas ${n.icon} ${n.color} text-xs"></i></div>
+            <div class="flex-1 min-w-0">
+                <p class="font-bold text-xs dark:text-white">${n.title}</p>
+                <p class="text-[11px] text-slate-500 leading-relaxed">${n.body}</p>
+                <p class="text-[10px] text-slate-400 mt-0.5">${n.time}</p>
+            </div>
+        </div>
+    `).join('');
+    document.getElementById('notif-tab-list').innerHTML = NOTIFICATIONS.map(n => `
+        <div class="bg-white dark:bg-slate-800 flex items-start gap-4 p-5 rounded-2xl border border-slate-100 dark:border-slate-700 hover:border-[#CC1F1F]/30 transition-all">
+            <div class="w-10 h-10 ${n.bg} rounded-xl flex items-center justify-center shrink-0"><i class="fas ${n.icon} ${n.color} text-sm"></i></div>
+            <div>
+                <p class="font-bold dark:text-white">${n.title}</p>
+                <p class="text-sm text-slate-500 mt-1 leading-relaxed">${n.body}</p>
+                <p class="text-xs text-slate-400 mt-1">${n.time}</p>
+            </div>
+        </div>
+    `).join('');
+}
+
+function toggleNotifPanel() {
+    document.getElementById('notif-panel').classList.toggle('open');
+}
+function clearNotifs() {
+    document.getElementById('notif-count').style.display = 'none';
+    document.getElementById('notif-list').innerHTML = '<p class="text-xs text-slate-400 text-center p-4">No new notifications</p>';
+    document.getElementById('notif-panel').classList.remove('open');
+}
+
+function toggleDashTheme() {
+    const html = document.documentElement;
+    const btn = document.getElementById('dash-theme');
+    html.classList.toggle('dark');
+    const icon = btn.querySelector('i');
+    icon.className = html.classList.contains('dark') ? 'fas fa-sun text-sm text-yellow-400' : 'fas fa-moon text-sm text-slate-600';
+    localStorage.theme = html.classList.contains('dark') ? 'dark' : 'light';
+}
+function toggleDashDir() {
+    const html = document.documentElement;
+    const btn = document.getElementById('dash-dir');
+    const isRTL = html.getAttribute('dir') === 'rtl';
+    html.setAttribute('dir', isRTL ? 'ltr' : 'rtl');
+    btn.textContent = isRTL ? 'LTR' : 'RTL';
+    localStorage.dir = isRTL ? 'ltr' : 'rtl';
+    // Flip mobile drawer direction
+    const drawer = document.getElementById('mobile-drawer-dash');
+    drawer.style.transform = 'translateX(100%)';
+}
+
+// Close notif panel on outside click
+document.addEventListener('click', (e) => {
+    const panel = document.getElementById('notif-panel');
+    if (!panel.contains(e.target) && !e.target.closest('[onclick="toggleNotifPanel()"]')) {
+        panel.classList.remove('open');
+    }
+});
+
+// Init
+(function() {
+    const html = document.documentElement;
+    if (localStorage.theme === 'dark' || (!localStorage.theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        html.classList.add('dark');
+        const icon = document.getElementById('dash-theme')?.querySelector('i');
+        if (icon) icon.className = 'fas fa-sun text-sm text-yellow-400';
+    }
+    if (localStorage.dir === 'rtl') {
+        html.setAttribute('dir', 'rtl');
+        const btn = document.getElementById('dash-dir');
+        if (btn) btn.textContent = 'RTL';
+    }
+    renderSidebar();
+    renderNotifPanel();
+})();
+</script>
+</body>
+</html>
+
+

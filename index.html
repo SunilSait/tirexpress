@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en" id="root-html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="TireXpress — Professional mobile tire installation, flat repair & rotation services. 60-minute response, anywhere in the city.">
+    <title>TireXpress | Mobile Tire Installation & Flat Repair Service</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' stroke='%23CC1F1F' stroke-width='8' fill='none'/><circle cx='50' cy='50' r='18' stroke='%23CC1F1F' stroke-width='8' fill='none'/></svg>">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: { extend: { colors: { primary: '#CC1F1F', secondary: '#111827' } } }
+        }
+    </script>
+</head>
+<body class="bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 transition-colors duration-300">
+
+
+
+<!-- Page Loader -->
+<div id="page-loader">
+    <div class="flex flex-col items-center gap-4">
+        <div class="loader-spinner"></div>
+        <span class="text-xs font-black uppercase tracking-widest text-[#CC1F1F]">Loading...</span>
+    </div>
+</div>
+
+<!-- Navbar -->
+<div id="navbar-container"></div>
+
+<!-- ===== HERO SECTION ===== -->
+<header class="hero-lock relative min-h-screen flex items-center justify-center bg-slate-950 overflow-hidden py-20 md:py-0">
+    <!-- Background -->
+    <div class="absolute inset-0 z-0 pointer-events-none">
+        <div class="w-full h-full animate-slow-zoom">
+            <img src="assets/hero-bg.jpg" alt="Mobile tire service at night" class="w-full h-full object-cover opacity-40">
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-b from-slate-950/80 via-slate-950/30 to-slate-950/90"></div>
+        <!-- Background Orbs -->
+        <div class="bg-orb bg-[#CC1F1F] w-[350px] h-[350px] top-1/4 left-1/4 animate-pulse opacity-15"></div>
+        <div class="bg-orb bg-slate-800 w-[300px] h-[300px] bottom-1/4 right-1/4" style="animation-delay:-4s;"></div>
+    </div>
+
+    <!-- Decorative Tire Icons -->
+    <div class="absolute top-24 left-8 opacity-10 animate-spin-wheel hidden md:block">
+        <svg width="80" height="80" viewBox="0 0 80 80" fill="none"><circle cx="40" cy="40" r="38" stroke="#CC1F1F" stroke-width="3"/><circle cx="40" cy="40" r="16" stroke="#CC1F1F" stroke-width="3"/><line x1="40" y1="2" x2="40" y2="24" stroke="#CC1F1F" stroke-width="2" stroke-linecap="round"/><line x1="40" y1="56" x2="40" y2="78" stroke="#CC1F1F" stroke-width="2" stroke-linecap="round"/><line x1="2" y1="40" x2="24" y2="40" stroke="#CC1F1F" stroke-width="2" stroke-linecap="round"/><line x1="56" y1="40" x2="78" y2="40" stroke="#CC1F1F" stroke-width="2" stroke-linecap="round"/></svg>
+    </div>
+    <div class="absolute bottom-32 right-12 opacity-8 animate-float hidden lg:block">
+        <svg width="60" height="60" viewBox="0 0 60 60" fill="none"><circle cx="30" cy="30" r="28" stroke="#CC1F1F" stroke-width="2.5"/><circle cx="30" cy="30" r="11" stroke="#CC1F1F" stroke-width="2.5"/></svg>
+    </div>
+
+    <!-- Hero Content -->
+    <div class="relative z-10 text-center px-4 sm:px-6 w-full max-w-6xl mx-auto flex flex-col items-center">
+        
+        <!-- Badge -->
+        <div class="mb-6 opacity-0 animate-fade-in-down inline-flex items-center gap-2 bg-[#CC1F1F]/15 border border-[#CC1F1F]/30 px-4 py-2 rounded-full backdrop-blur-md">
+            <span class="relative flex h-2 w-2 shrink-0">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#CC1F1F] opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-[#CC1F1F]"></span>
+            </span>
+            <span class="text-[#e84040] text-[10px] sm:text-xs font-black uppercase tracking-[0.2em]">⚡ 60-Minute Response Guaranteed</span>
+        </div>
+
+        <!-- Heading -->
+        <h1 class="hero-title text-[40px] leading-none sm:text-6xl md:text-7xl lg:text-8xl font-black text-white tracking-tighter mb-6 uppercase" style="font-family:'Outfit',sans-serif;">
+            Mobile Tire Service<br>
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#CC1F1F] to-[#e84040]">Anywhere & Anytime</span>
+        </h1>
+
+        <!-- Stat line -->
+        <div class="opacity-0 animate-fade-in-up animation-delay-400 flex flex-wrap justify-center items-center gap-4 md:gap-8 text-white/50 font-mono text-[9px] uppercase tracking-widest mb-6">
+            <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-[#CC1F1F] rounded-full animate-pulse"></span>Licensed & Insured</div>
+            <div>10,000+ Tires Installed</div>
+            <div class="hidden sm:block">Available 24 / 7</div>
+        </div>
+
+        <!-- Description -->
+        <p class="opacity-0 animate-fade-in-up animation-delay-400 text-sm md:text-lg text-slate-300 max-w-2xl mb-10 leading-relaxed font-medium mx-auto">
+            Flat tire? Need new tires installed? Our certified mobile technicians come to you — at home, work, or on the road. Fast, safe, and professional.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="opacity-0 animate-fade-in-up animation-delay-600 flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto px-4 sm:px-0">
+            <a href="services.html" class="w-full sm:w-auto">
+                <button class="btn-primary group w-full sm:w-auto px-8 py-4 md:py-5 rounded-xl text-sm flex items-center justify-center gap-2">
+                    <i class="fas fa-calendar-check"></i>
+                    Book a Service
+                    <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform text-xs"></i>
+                </button>
+            </a>
+            <a href="pricing.html" class="w-full sm:w-auto">
+                <button class="w-full sm:w-auto glass border-white/15 text-white px-8 py-4 md:py-5 rounded-xl font-black text-xs uppercase tracking-widest transition-all hover:bg-white/10">
+                    Get a Quote
+                </button>
+            </a>
+        </div>
+
+        <!-- Trust badges -->
+        <div class="opacity-0 animate-fade-in animation-delay-800 mt-14 flex flex-wrap justify-center items-center gap-6 md:gap-10">
+            <div class="flex items-center gap-2 text-white/60 text-xs font-bold">
+                <i class="fas fa-shield-halved text-[#CC1F1F]"></i> Licensed & Insured
+            </div>
+            <div class="flex items-center gap-2 text-white/60 text-xs font-bold">
+                <i class="fas fa-star text-[#CC1F1F]"></i> 4.9/5 Rated
+            </div>
+            <div class="flex items-center gap-2 text-white/60 text-xs font-bold">
+                <i class="fas fa-clock text-[#CC1F1F]"></i> 24/7 Available
+            </div>
+            <div class="flex items-center gap-2 text-white/60 text-xs font-bold">
+                <i class="fas fa-location-dot text-[#CC1F1F]"></i> We Come to You
+            </div>
+        </div>
+
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+            <div class="w-[2px] h-10 bg-gradient-to-b from-[#CC1F1F] to-transparent opacity-60"></div>
+        </div>
+    </div>
+</header>
+
+<!-- ===== TRUST MARQUEE ===== -->
+<div class="py-4 bg-[#CC1F1F] overflow-hidden">
+    <div class="marquee-container">
+        <div class="marquee-content">
+            <div class="flex items-center gap-12 px-6 text-white text-xs font-black uppercase tracking-[0.15em]" style="white-space:nowrap;">
+                <span><i class="fas fa-shield-halved mr-2"></i>Licensed & Insured</span>
+                <span class="text-white/50">✦</span>
+                <span><i class="fas fa-circle-dot mr-2"></i>All Tire Brands</span>
+                <span class="text-white/50">✦</span>
+                <span><i class="fas fa-bolt mr-2"></i>60-Min Response</span>
+                <span class="text-white/50">✦</span>
+                <span><i class="fas fa-star mr-2"></i>4.9★ Rated</span>
+                <span class="text-white/50">✦</span>
+                <span><i class="fas fa-clock mr-2"></i>24/7 Service</span>
+                <span class="text-white/50">✦</span>
+                <span><i class="fas fa-location-dot mr-2"></i>We Come to You</span>
+                <span class="text-white/50">✦</span>
+                <span><i class="fas fa-screwdriver-wrench mr-2"></i>10,000+ Tires Installed</span>
+                <span class="text-white/50">✦</span>
+
+                <!-- duplicate for seamless loop -->
+                <span><i class="fas fa-shield-halved mr-2"></i>Licensed & Insured</span>
+                <span class="text-white/50">✦</span>
+                <span><i class="fas fa-circle-dot mr-2"></i>All Tire Brands</span>
+                <span class="text-white/50">✦</span>
+                <span><i class="fas fa-bolt mr-2"></i>60-Min Response</span>
+                <span class="text-white/50">✦</span>
+                <span><i class="fas fa-star mr-2"></i>4.9★ Rated</span>
+                <span class="text-white/50">✦</span>
+                <span><i class="fas fa-clock mr-2"></i>24/7 Service</span>
+                <span class="text-white/50">✦</span>
+                <span><i class="fas fa-location-dot mr-2"></i>We Come to You</span>
+                <span class="text-white/50">✦</span>
+                <span><i class="fas fa-screwdriver-wrench mr-2"></i>10,000+ Tires Installed</span>
+                <span class="text-white/50">✦</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===== SERVICES PREVIEW ===== -->
+<section class="py-24 bg-white dark:bg-slate-900 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="text-center mb-16 reveal">
+            <div class="section-label mb-4 mx-auto" style="width:fit-content;">Our Services</div>
+            <h2 class="text-3xl md:text-5xl font-black tracking-tighter dark:text-white uppercase mb-4" style="font-family:'Outfit',sans-serif;">
+                What We <span class="text-[#CC1F1F]">Do</span>
+            </h2>
+            <p class="text-slate-500 dark:text-slate-400 max-w-xl mx-auto">Full-range mobile tire services — no shop visit needed. We bring our garage to you.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 reveal">
+            <!-- Card 1 -->
+            <div class="group bg-white dark:bg-slate-800 rounded-3xl border border-slate-100 dark:border-slate-700 p-8 hover:border-[#CC1F1F]/40 hover:shadow-2xl hover:shadow-[#CC1F1F]/5 transition-all duration-500 spotlight-card tilt-card shadow-sm">
+                <div class="w-14 h-14 bg-red-50 dark:bg-red-900/20 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-[#CC1F1F] transition-colors duration-300">
+                    <i class="fas fa-circle-dot text-2xl text-[#CC1F1F] group-hover:text-white transition-colors"></i>
+                </div>
+                <h3 class="text-xl font-black dark:text-white mb-3" style="font-family:'Outfit',sans-serif;">Flat Tire Repair</h3>
+                <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-5">Fast on-site puncture repair. We assess, patch, or replace — getting you back on the road within 30 minutes.</p>
+                <a href="services.html" class="inline-flex items-center gap-2 text-[#CC1F1F] font-black text-xs uppercase tracking-wider hover:gap-4 transition-all group-hover:underline">
+                    Learn More <i class="fas fa-arrow-right text-xs"></i>
+                </a>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="group bg-white dark:bg-slate-800 rounded-3xl border border-slate-100 dark:border-slate-700 p-8 hover:border-[#CC1F1F]/40 hover:shadow-2xl hover:shadow-[#CC1F1F]/5 transition-all duration-500 spotlight-card tilt-card shadow-sm">
+                <div class="w-14 h-14 bg-red-50 dark:bg-red-900/20 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-[#CC1F1F] transition-colors duration-300">
+                    <i class="fas fa-screwdriver-wrench text-2xl text-[#CC1F1F] group-hover:text-white transition-colors"></i>
+                </div>
+                <h3 class="text-xl font-black dark:text-white mb-3" style="font-family:'Outfit',sans-serif;">Tire Installation</h3>
+                <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-5">New tire mounting, balancing, and TPMS reset. We handle all brands and sizes at your location.</p>
+                <a href="services.html" class="inline-flex items-center gap-2 text-[#CC1F1F] font-black text-xs uppercase tracking-wider hover:gap-4 transition-all">
+                    Learn More <i class="fas fa-arrow-right text-xs"></i>
+                </a>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="group bg-white dark:bg-slate-800 rounded-3xl border border-slate-100 dark:border-slate-700 p-8 hover:border-[#CC1F1F]/40 hover:shadow-2xl hover:shadow-[#CC1F1F]/5 transition-all duration-500 spotlight-card tilt-card shadow-sm md:col-span-2 lg:col-span-1 md:max-w-sm md:mx-auto lg:max-w-none lg:mx-0 md:w-full">
+                <div class="w-14 h-14 bg-red-50 dark:bg-red-900/20 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-[#CC1F1F] transition-colors duration-300">
+                    <i class="fas fa-rotate text-2xl text-[#CC1F1F] group-hover:text-white transition-colors"></i>
+                </div>
+                <h3 class="text-xl font-black dark:text-white mb-3" style="font-family:'Outfit',sans-serif;">Tire Rotation</h3>
+                <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-5">Extend tire life with our expert rotation service. We track your rotation schedule and send reminders.</p>
+                <a href="services.html" class="inline-flex items-center gap-2 text-[#CC1F1F] font-black text-xs uppercase tracking-wider hover:gap-4 transition-all">
+                    Learn More <i class="fas fa-arrow-right text-xs"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="text-center mt-12 reveal">
+            <a href="services.html" class="btn-primary inline-flex items-center gap-2 px-10 py-4 rounded-xl text-sm">
+                View All Services <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ===== ABOUT PREVIEW ===== -->
+<section class="py-24 bg-slate-50 dark:bg-slate-950 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <!-- Image -->
+            <div class="relative group reveal-left">
+                <div class="absolute -inset-4 bg-[#CC1F1F]/5 rounded-[3rem] rotate-2 group-hover:rotate-0 transition-transform duration-500"></div>
+                <div class="relative rounded-3xl overflow-hidden shadow-2xl img-zoom">
+                    <img src="assets/technician.jpg" alt="TireXpress technician at work" class="w-full h-[480px] object-cover">
+                    <div class="absolute bottom-6 right-6 bg-white dark:bg-slate-800 p-5 rounded-2xl shadow-xl border border-slate-100 dark:border-slate-700">
+                        <span class="block text-3xl font-black text-[#CC1F1F]" style="font-family:'Outfit',sans-serif;">10K+</span>
+                        <span class="text-[10px] font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400">Tires Installed</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Text -->
+            <div class="space-y-7 reveal-right">
+                <div>
+                    <div class="section-label mb-4">About Us</div>
+                    <h2 class="text-4xl md:text-5xl font-black text-slate-900 dark:text-white leading-tight tracking-tighter uppercase" style="font-family:'Outfit',sans-serif;">
+                        The Mobile Tire<br><span class="text-[#CC1F1F]">Experts</span>
+                    </h2>
+                </div>
+                <p class="text-slate-600 dark:text-slate-300 text-lg leading-relaxed">
+                    TireXpress was founded with one mission: eliminate the inconvenience of traditional tire shops. Our certified technicians bring state-of-the-art equipment directly to you — 24/7, 365 days a year.
+                </p>
+                <div class="grid grid-cols-2 gap-6 pt-2">
+                    <div class="border-s-4 border-[#CC1F1F] ps-5">
+                        <h4 class="text-2xl font-black text-slate-900 dark:text-white" style="font-family:'Outfit',sans-serif;">4.9 ★</h4>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 uppercase font-bold tracking-widest">Average Rating</p>
+                    </div>
+                    <div class="border-s-4 border-slate-800 dark:border-slate-500 ps-5">
+                        <h4 class="text-2xl font-black text-slate-900 dark:text-white" style="font-family:'Outfit',sans-serif;">60 Min</h4>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 uppercase font-bold tracking-widest">Avg Response Time</p>
+                    </div>
+                </div>
+                <a href="about.html" class="inline-flex items-center text-[#CC1F1F] font-black text-xs uppercase tracking-[0.2em] hover:text-[#a81818] transition-colors group">
+                    Learn More About Us <i class="fas fa-arrow-right ms-3 group-hover:translate-x-2 transition-transform"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== HOW IT WORKS ===== -->
+<section class="py-24 bg-white dark:bg-slate-900 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="text-center mb-16 reveal">
+            <div class="section-label mb-4 mx-auto" style="width:fit-content;">Simple Process</div>
+            <h2 class="text-3xl md:text-5xl font-black tracking-tighter dark:text-white uppercase mb-4" style="font-family:'Outfit',sans-serif;">
+                How It <span class="text-[#CC1F1F]">Works</span>
+            </h2>
+            <p class="text-slate-500 dark:text-slate-400 max-w-xl mx-auto">Get your tire issue resolved in three simple steps. No tow truck, no waiting rooms.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 reveal">
+            <!-- Step 1 -->
+            <div class="group flex flex-col items-center text-center space-y-5">
+                <div class="relative">
+                    <span class="absolute -top-2 -right-2 w-9 h-9 bg-[#CC1F1F] text-white rounded-full flex items-center justify-center font-black text-sm shadow-lg border-2 border-white dark:border-slate-900 z-10 group-hover:scale-110 transition-transform">1</span>
+                    <div class="w-28 h-28 bg-red-50 dark:bg-red-900/15 rounded-[2rem] flex items-center justify-center border-2 border-transparent group-hover:border-[#CC1F1F] group-hover:bg-[#CC1F1F] transition-all duration-500 shadow-lg rotate-3 group-hover:rotate-0">
+                        <i class="fas fa-mobile-screen-button text-4xl text-[#CC1F1F] group-hover:text-white transition-colors"></i>
+                    </div>
+                </div>
+                <h3 class="text-xl font-black dark:text-white" style="font-family:'Outfit',sans-serif;">Book Online</h3>
+                <p class="text-slate-500 dark:text-slate-400 leading-relaxed text-sm max-w-xs">Select your service, enter your location, and pick a time. Instant confirmation, no calls needed.</p>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="group flex flex-col items-center text-center space-y-5">
+                <div class="relative">
+                    <span class="absolute -top-2 -right-2 w-9 h-9 bg-[#CC1F1F] text-white rounded-full flex items-center justify-center font-black text-sm shadow-lg border-2 border-white dark:border-slate-900 z-10 group-hover:scale-110 transition-transform">2</span>
+                    <div class="w-28 h-28 bg-red-50 dark:bg-red-900/15 rounded-[2rem] flex items-center justify-center border-2 border-transparent group-hover:border-[#CC1F1F] group-hover:bg-[#CC1F1F] transition-all duration-500 shadow-lg -rotate-3 group-hover:rotate-0">
+                        <i class="fas fa-van-shuttle text-4xl text-[#CC1F1F] group-hover:text-white transition-colors"></i>
+                    </div>
+                </div>
+                <h3 class="text-xl font-black dark:text-white" style="font-family:'Outfit',sans-serif;">We Arrive</h3>
+                <p class="text-slate-500 dark:text-slate-400 leading-relaxed text-sm max-w-xs">Our fully equipped service van arrives at your location. Track your technician in real time via the dashboard.</p>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="group flex flex-col items-center text-center space-y-5">
+                <div class="relative">
+                    <span class="absolute -top-2 -right-2 w-9 h-9 bg-[#CC1F1F] text-white rounded-full flex items-center justify-center font-black text-sm shadow-lg border-2 border-white dark:border-slate-900 z-10 group-hover:scale-110 transition-transform">3</span>
+                    <div class="w-28 h-28 bg-red-50 dark:bg-red-900/15 rounded-[2rem] flex items-center justify-center border-2 border-transparent group-hover:border-[#CC1F1F] group-hover:bg-[#CC1F1F] transition-all duration-500 shadow-lg rotate-3 group-hover:rotate-0">
+                        <i class="fas fa-circle-check text-4xl text-[#CC1F1F] group-hover:text-white transition-colors"></i>
+                    </div>
+                </div>
+                <h3 class="text-xl font-black dark:text-white" style="font-family:'Outfit',sans-serif;">Job Done</h3>
+                <p class="text-slate-500 dark:text-slate-400 leading-relaxed text-sm max-w-xs">Service completed with a safety check. Digital invoice sent instantly. Rate your experience in the app.</p>
+            </div>
+        </div>
+
+        <div class="text-center mt-14 reveal">
+            <a href="services.html" class="btn-primary inline-flex items-center gap-2 px-10 py-4 rounded-xl text-sm">
+                Book Now <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ===== LIVE QUOTE CALCULATOR ===== -->
+<section class="py-24 bg-slate-50 dark:bg-slate-950 transition-colors duration-300">
+    <div class="max-w-4xl mx-auto px-4">
+        <div class="bg-white dark:bg-slate-900 rounded-[2.5rem] shadow-2xl border border-slate-100 dark:border-slate-800 p-8 md:p-12 relative overflow-hidden reveal">
+            <div class="absolute top-0 right-0 -mt-8 -mr-8 w-32 h-32 bg-[#CC1F1F]/10 rounded-full blur-2xl"></div>
+            <div class="text-center mb-10">
+                <div class="section-label mb-4 mx-auto" style="width:fit-content;">Instant Pricing</div>
+                <h2 class="text-3xl md:text-4xl font-black dark:text-white" style="font-family:'Outfit',sans-serif;">Get an Instant Quote</h2>
+                <p class="text-slate-500 dark:text-slate-400 mt-2">Select your service for a transparent, no-obligation estimate.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-10 items-center">
+                <div class="space-y-5">
+                    <div>
+                        <label class="block text-xs font-black uppercase tracking-widest text-slate-400 mb-2">Service Type</label>
+                        <div class="relative">
+                            <select id="serviceSelect" onchange="updateQuote()" class="form-input appearance-none cursor-pointer font-bold dark:bg-slate-800 dark:border-slate-700 dark:text-white pr-10">
+                                <option value="0" disabled selected>Choose a service...</option>
+                                <option value="49">Flat Tire Repair</option>
+                                <option value="89">Single Tire Installation</option>
+                                <option value="159">Full Set Tire Installation (×4)</option>
+                                <option value="39">Tire Rotation</option>
+                                <option value="69">Tire Balancing (per axle)</option>
+                                <option value="25">TPMS Reset</option>
+                            </select>
+                            <div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-[#CC1F1F]">
+                                <i class="fas fa-chevron-down text-xs"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-xl border border-blue-100 dark:border-blue-800">
+                        <i class="fas fa-circle-info text-blue-500"></i>
+                        <p class="text-xs text-blue-700 dark:text-blue-300">Final price may vary based on tire brand and site conditions.</p>
+                    </div>
+                </div>
+
+                <div class="bg-red-50 dark:bg-slate-800 p-8 rounded-3xl border-2 border-dashed border-[#CC1F1F]/30 text-center flex flex-col items-center justify-center min-h-[180px]">
+                    <span class="text-xs font-black uppercase tracking-widest text-[#CC1F1F] mb-1">Estimated Cost</span>
+                    <div class="flex items-start justify-center">
+                        <span class="text-2xl font-black text-slate-400 mt-1">$</span>
+                        <span id="priceDisplay" class="text-7xl font-black text-slate-900 dark:text-white transition-all duration-400">0</span>
+                    </div>
+                    <a href="pricing.html">
+                        <button class="mt-6 btn-primary px-8 py-3 rounded-xl text-sm w-full">Book This Service</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== MOBILE APP DOWNLOAD CTA ===== -->
+<section class="py-24 bg-gradient-to-r from-slate-900 via-slate-950 to-slate-900 text-white relative overflow-hidden transition-colors duration-300">
+    <div class="noise-overlay"></div>
+    <div class="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-[#CC1F1F]/10 rounded-full blur-[120px] pointer-events-none"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div class="space-y-6 reveal-left">
+                <div class="section-label bg-white/10 border-white/20 text-white" style="width:fit-content;">TireXpress On The Go</div>
+                <h2 class="text-4xl md:text-5xl font-black tracking-tighter leading-tight uppercase text-white" style="font-family:'Outfit',sans-serif;">
+                    Download the <span class="text-[#CC1F1F]">TireXpress App</span>
+                </h2>
+                <p class="text-slate-400 text-lg leading-relaxed">
+                    Track your service vehicle in real time, browse tire inventories from your phone, get instant flat repair dispatch, and manage tire rotation schedules easily.
+                </p>
+                <div class="space-y-4 pt-2">
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center shrink-0">
+                            <i class="fas fa-map-location-dot text-[#CC1F1F] text-lg"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-black text-sm text-white">Real-time GPS Van Tracking</h4>
+                            <p class="text-xs text-slate-400">See exactly when your mobile tire mechanic will arrive.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center shrink-0">
+                            <i class="fas fa-qrcode text-[#CC1F1F] text-lg"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-black text-sm text-white">One-Tap Dispatch for Flats</h4>
+                            <p class="text-xs text-slate-400">Instantly request roadside help with your precise location.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-wrap gap-4 pt-4">
+                    <a href="#" class="inline-flex items-center gap-3 bg-white text-slate-900 px-6 py-3 rounded-2xl font-black uppercase tracking-wider text-xs hover:bg-slate-100 transition-all shadow-xl">
+                        <i class="fab fa-apple text-lg"></i>
+                        <div class="text-left leading-none">
+                            <span class="text-[8px] text-slate-500 block font-normal lowercase">Download on</span> App Store
+                        </div>
+                    </a>
+                    <a href="#" class="inline-flex items-center gap-3 bg-slate-800 text-white border border-slate-700 px-6 py-3 rounded-2xl font-black uppercase tracking-wider text-xs hover:bg-slate-700 transition-all shadow-xl">
+                        <i class="fab fa-google-play text-lg text-[#CC1F1F]"></i>
+                        <div class="text-left leading-none">
+                            <span class="text-[8px] text-slate-400 block font-normal lowercase">Get it on</span> Google Play
+                        </div>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Mockup container -->
+            <div class="relative flex justify-center reveal-right">
+                <div class="absolute -inset-10 bg-[#CC1F1F]/10 rounded-full blur-[100px] pointer-events-none"></div>
+                <div class="relative w-72 h-[550px] bg-slate-950 rounded-[3rem] border-[8px] border-slate-800 shadow-2xl p-4 flex flex-col justify-between overflow-hidden">
+                    <!-- Dynamic Island / Speaker -->
+                    <div class="absolute top-2 left-1/2 -translate-x-1/2 w-28 h-5 bg-slate-850 rounded-full z-20 flex items-center justify-center">
+                        <div class="w-12 h-1 bg-slate-750 rounded-full"></div>
+                    </div>
+                    
+                    <!-- App Interface mock -->
+                    <div class="relative z-10 mt-6 flex-1 flex flex-col justify-between pt-2">
+                        <!-- Top status bar mock -->
+                        <div class="flex justify-between items-center text-[10px] text-slate-400 px-2 font-mono">
+                            <span>9:41</span>
+                            <div class="flex items-center gap-1.5">
+                                <i class="fas fa-signal"></i>
+                                <i class="fas fa-wifi"></i>
+                                <i class="fas fa-battery-three-quarters"></i>
+                            </div>
+                        </div>
+                        
+                        <!-- Main mock interface -->
+                        <div class="mt-4 flex-1 flex flex-col justify-between bg-slate-900 rounded-2xl p-3 border border-slate-800">
+                            <div class="flex justify-between items-center pb-2 border-b border-slate-800">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-8 h-8 rounded-full bg-[#CC1F1F]/20 flex items-center justify-center text-xs text-[#CC1F1F] font-bold">TX</div>
+                                    <div class="text-left">
+                                        <span class="block text-[10px] font-black uppercase text-white">TireXpress Pro</span>
+                                        <span class="block text-[8px] text-green-500">Connected to Dispatch</span>
+                                    </div>
+                                </div>
+                                <i class="fas fa-bell text-slate-400 text-xs"></i>
+                            </div>
+                            
+                            <!-- GPS Map Mock -->
+                            <div class="my-3 flex-1 bg-slate-950 rounded-xl relative overflow-hidden border border-slate-800 flex items-center justify-center">
+                                <div class="absolute inset-0 opacity-40 bg-[radial-gradient(#CC1F1F_1px,transparent_1px)] [background-size:16px_16px]"></div>
+                                <!-- Routing line -->
+                                <svg class="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M 20 180 Q 80 100 140 120 T 220 50" fill="none" stroke="#CC1F1F" stroke-width="3" class="draw-path" />
+                                </svg>
+                                <!-- Pins -->
+                                <div class="absolute bottom-6 left-6 w-3 h-3 bg-blue-500 rounded-full border-2 border-white shadow animate-pulse"></div>
+                                <div class="absolute top-12 right-8 w-4 h-4 bg-[#CC1F1F] rounded-full border-2 border-white shadow flex items-center justify-center">
+                                    <i class="fas fa-van-shuttle text-[7px] text-white"></i>
+                                </div>
+                                <div class="absolute bottom-3 left-3 bg-slate-900/90 backdrop-blur border border-slate-800 px-2 py-1 rounded text-[8px] text-white">
+                                    Eta: <span class="text-[#CC1F1F] font-bold">14 Mins</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Active Request Box -->
+                            <div class="bg-slate-950 border border-slate-800 rounded-xl p-2.5">
+                                <div class="flex justify-between items-center text-[9px] mb-1">
+                                    <span class="text-slate-400 uppercase tracking-wider font-bold">Active Dispatch</span>
+                                    <span class="text-[#CC1F1F] font-bold">In Route</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <div class="w-7 h-7 rounded bg-slate-800 flex items-center justify-center text-slate-300">
+                                        <i class="fas fa-circle-dot text-xs text-[#CC1F1F]"></i>
+                                    </div>
+                                    <div class="text-left">
+                                        <span class="block text-[9px] font-black text-white">Flat Tire Repair</span>
+                                        <span class="block text-[8px] text-slate-500">Vanguard Roadside Unit 4</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== WHY CHOOSE US ===== -->
+<section class="py-24 bg-white dark:bg-slate-900 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="text-center mb-16 reveal">
+            <div class="section-label mb-4 mx-auto" style="width:fit-content;">Why TireXpress</div>
+            <h2 class="text-3xl md:text-5xl font-black tracking-tighter dark:text-white uppercase mb-4" style="font-family:'Outfit',sans-serif;">
+                Built Around <span class="text-[#CC1F1F]">You</span>
+            </h2>
+            <p class="text-slate-500 dark:text-slate-400 max-w-xl mx-auto">Every service we deliver is a commitment to safety, speed, and total convenience.</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 reveal">
+            <div class="flip-card h-60">
+                <div class="flip-card-inner rounded-2xl shadow">
+                    <div class="flip-card-front rounded-2xl bg-slate-50 dark:bg-slate-800 flex flex-col items-center justify-center p-6">
+                        <i class="fas fa-clock text-3xl text-[#CC1F1F] mb-4"></i>
+                        <h4 class="font-black dark:text-white text-center" style="font-family:'Outfit',sans-serif;">60-Min Response</h4>
+                        <p class="text-[10px] text-slate-400 mt-2 uppercase tracking-widest">Tap for Details</p>
+                    </div>
+                    <div class="flip-card-back rounded-2xl bg-[#CC1F1F] p-6 text-white flex flex-col items-center justify-center text-center">
+                        <p class="text-sm font-bold leading-relaxed">We guarantee a technician at your location within 60 minutes for all in-city service calls — any time of day or night.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card h-60">
+                <div class="flip-card-inner rounded-2xl shadow">
+                    <div class="flip-card-front rounded-2xl bg-slate-50 dark:bg-slate-800 flex flex-col items-center justify-center p-6">
+                        <i class="fas fa-shield-halved text-3xl text-[#CC1F1F] mb-4"></i>
+                        <h4 class="font-black dark:text-white text-center" style="font-family:'Outfit',sans-serif;">Certified Techs</h4>
+                        <p class="text-[10px] text-slate-400 mt-2 uppercase tracking-widest">Tap for Details</p>
+                    </div>
+                    <div class="flip-card-back rounded-2xl bg-[#CC1F1F] p-6 text-white flex flex-col items-center justify-center text-center">
+                        <p class="text-sm font-bold leading-relaxed">All technicians are ASE-certified, background-checked, and fully insured. Your safety is our top priority on every call.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card h-60">
+                <div class="flip-card-inner rounded-2xl shadow">
+                    <div class="flip-card-front rounded-2xl bg-slate-50 dark:bg-slate-800 flex flex-col items-center justify-center p-6">
+                        <i class="fas fa-tags text-3xl text-[#CC1F1F] mb-4"></i>
+                        <h4 class="font-black dark:text-white text-center" style="font-family:'Outfit',sans-serif;">Transparent Pricing</h4>
+                        <p class="text-[10px] text-slate-400 mt-2 uppercase tracking-widest">Tap for Details</p>
+                    </div>
+                    <div class="flip-card-back rounded-2xl bg-[#CC1F1F] p-6 text-white flex flex-col items-center justify-center text-center">
+                        <p class="text-sm font-bold leading-relaxed">No hidden fees. Get a full quote before we start. You approve the price, then we do the work. Simple and honest.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card h-60">
+                <div class="flip-card-inner rounded-2xl shadow">
+                    <div class="flip-card-front rounded-2xl bg-slate-50 dark:bg-slate-800 flex flex-col items-center justify-center p-6">
+                        <i class="fas fa-rotate text-3xl text-[#CC1F1F] mb-4"></i>
+                        <h4 class="font-black dark:text-white text-center" style="font-family:'Outfit',sans-serif;">All Brands & Sizes</h4>
+                        <p class="text-[10px] text-slate-400 mt-2 uppercase tracking-widest">Tap for Details</p>
+                    </div>
+                    <div class="flip-card-back rounded-2xl bg-[#CC1F1F] p-6 text-white flex flex-col items-center justify-center text-center">
+                        <p class="text-sm font-bold leading-relaxed">From compact cars to SUVs and trucks, we service all vehicles with tires from every major brand — Michelin, Bridgestone, Continental & more.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section class="py-24 bg-slate-50 dark:bg-slate-950 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="text-center mb-16 reveal">
+            <div class="section-label mb-4 mx-auto" style="width:fit-content;">Reviews</div>
+            <h2 class="text-3xl md:text-5xl font-black tracking-tighter dark:text-white uppercase mb-4" style="font-family:'Outfit',sans-serif;">
+                What Customers <span class="text-[#CC1F1F]">Say</span>
+            </h2>
+            <p class="text-slate-500 dark:text-slate-400">Thousands of happy drivers across the city trust TireXpress.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pt-8 reveal">
+            <!-- T1 -->
+            <div class="relative bg-white dark:bg-slate-800 p-8 rounded-3xl border border-transparent hover:border-[#CC1F1F]/20 transition-all duration-500 hover:shadow-2xl hover:-translate-y-2">
+                <div class="absolute -top-5 left-8 flex items-center gap-3">
+                    <div class="w-12 h-12 rounded-full border-4 border-white dark:border-slate-950 bg-red-100 dark:bg-red-900/30 flex items-center justify-center shadow-md overflow-hidden">
+                        <svg class="w-5 h-5 text-[#CC1F1F]" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="17" cy="17" r="16"/><circle cx="17" cy="17" r="7"/><line x1="17" y1="1" x2="17" y2="10"/><line x1="17" y1="24" x2="17" y2="33"/><line x1="1" y1="17" x2="10" y2="17"/><line x1="24" y1="17" x2="33" y2="17"/></svg>
+                    </div>
+                    <div class="bg-[#CC1F1F] text-white text-[10px] font-black px-2.5 py-1 rounded-lg uppercase tracking-widest shadow">Verified</div>
+                </div>
+                <div class="mt-6">
+                    <div class="flex text-[#f59e0b] mb-3 gap-0.5">
+                        <i class="fas fa-star text-xs"></i><i class="fas fa-star text-xs"></i><i class="fas fa-star text-xs"></i><i class="fas fa-star text-xs"></i><i class="fas fa-star text-xs"></i>
+                    </div>
+                    <p class="text-slate-600 dark:text-slate-300 italic leading-relaxed mb-5">"Got a flat on the highway at 11pm. TireXpress arrived in under 45 minutes and had me back on the road fast. Incredible fast service!"</p>
+                    <div>
+                        <h4 class="font-black dark:text-white">Marcus Williams</h4>
+                        <p class="text-xs text-slate-400 uppercase tracking-widest font-bold">Highway Rescue Customer</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- T2 -->
+            <div class="relative bg-white dark:bg-slate-800 p-8 rounded-3xl border border-transparent hover:border-[#CC1F1F]/20 transition-all duration-500 hover:shadow-2xl hover:-translate-y-2">
+                <div class="absolute -top-5 left-8 flex items-center gap-3">
+                    <div class="w-12 h-12 rounded-full border-4 border-white dark:border-slate-950 bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center shadow-md overflow-hidden">
+                        <svg class="w-5 h-5 text-blue-600" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="17" cy="17" r="16"/><circle cx="17" cy="17" r="7"/><line x1="17" y1="1" x2="17" y2="10"/><line x1="17" y1="24" x2="17" y2="33"/><line x1="1" y1="17" x2="10" y2="17"/><line x1="24" y1="17" x2="33" y2="17"/></svg>
+                    </div>
+                    <div class="bg-[#CC1F1F] text-white text-[10px] font-black px-2.5 py-1 rounded-lg uppercase tracking-widest shadow">Verified</div>
+                </div>
+                <div class="mt-6">
+                    <div class="flex text-[#f59e0b] mb-3 gap-0.5">
+                        <i class="fas fa-star text-xs"></i><i class="fas fa-star text-xs"></i><i class="fas fa-star text-xs"></i><i class="fas fa-star text-xs"></i><i class="fas fa-star text-xs"></i>
+                    </div>
+                    <p class="text-slate-600 dark:text-slate-300 italic leading-relaxed mb-5">"Had all four tires installed at my office parking lot. The technician was professional, fast, and explained everything. Highly recommend!"</p>
+                    <div>
+                        <h4 class="font-black dark:text-white">Priya Sharma</h4>
+                        <p class="text-xs text-slate-400 uppercase tracking-widest font-bold">Fleet Manager</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- T3 -->
+            <div class="relative bg-white dark:bg-slate-800 p-8 rounded-3xl border border-transparent hover:border-[#CC1F1F]/20 transition-all duration-500 hover:shadow-2xl hover:-translate-y-2">
+                <div class="absolute -top-5 left-8 flex items-center gap-3">
+                    <div class="w-12 h-12 rounded-full border-4 border-white dark:border-slate-950 bg-green-100 dark:bg-green-900/30 flex items-center justify-center shadow-md overflow-hidden">
+                        <svg class="w-5 h-5 text-green-600" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="17" cy="17" r="16"/><circle cx="17" cy="17" r="7"/><line x1="17" y1="1" x2="17" y2="10"/><line x1="17" y1="24" x2="17" y2="33"/><line x1="1" y1="17" x2="10" y2="17"/><line x1="24" y1="17" x2="33" y2="17"/></svg>
+                    </div>
+                    <div class="bg-[#CC1F1F] text-white text-[10px] font-black px-2.5 py-1 rounded-lg uppercase tracking-widest shadow">Verified</div>
+                </div>
+                <div class="mt-6">
+                    <div class="flex text-[#f59e0b] mb-3 gap-0.5">
+                        <i class="fas fa-star text-xs"></i><i class="fas fa-star text-xs"></i><i class="fas fa-star text-xs"></i><i class="fas fa-star text-xs"></i><i class="fas fa-star-half-alt text-xs"></i>
+                    </div>
+                    <p class="text-slate-600 dark:text-slate-300 italic leading-relaxed mb-5">"The tire rotation reminder system is genius. They tracked my schedule and notified me. Service was quick and the price was fair."</p>
+                    <div>
+                        <h4 class="font-black dark:text-white">James O'Connor</h4>
+                        <p class="text-xs text-slate-400 uppercase tracking-widest font-bold">Loyal Customer since 2023</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== NEWS & ARTICLES (BLOG) ===== -->
+<section class="py-24 bg-white dark:bg-slate-900 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="text-center mb-16 reveal">
+            <div class="section-label mb-4 mx-auto" style="width:fit-content;">Tire Education</div>
+            <h2 class="text-3xl md:text-5xl font-black tracking-tighter dark:text-white uppercase mb-4" style="font-family:'Outfit',sans-serif;">
+                News & <span class="text-[#CC1F1F]">Guides</span>
+            </h2>
+            <p class="text-slate-500 dark:text-slate-400 max-w-xl mx-auto">Stay informed with tire maintenance tips, safety advice, and news from our roadside experts.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 reveal stagger-container">
+            <!-- Article 1 -->
+            <article class="group bg-slate-50 dark:bg-slate-800 rounded-3xl overflow-hidden border border-slate-100 dark:border-slate-700 hover:shadow-2xl transition-all duration-300 flex flex-col justify-between stagger-item">
+                <div class="img-zoom relative">
+                    <img src="assets/fleet.jpg" alt="Tire maintenance tips" class="w-full h-56 object-cover">
+                    <span class="absolute top-4 left-4 bg-[#CC1F1F] text-white text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded-lg">Safety</span>
+                </div>
+                <div class="p-6 flex-1 flex flex-col justify-between">
+                    <div>
+                        <span class="block text-[10px] text-slate-400 font-bold uppercase tracking-wider mb-2">May 21, 2026</span>
+                        <h3 class="text-lg font-black dark:text-white mb-3 group-hover:text-[#CC1F1F] transition-colors leading-snug uppercase" style="font-family:'Outfit',sans-serif;">5 Warning Signs You Need to Replace Your Tires Immediately</h3>
+                        <p class="text-slate-500 dark:text-slate-400 text-xs leading-relaxed mb-6">Learn how to spot tread wear, bubble bulges, cracking sidewalls, and other critical warning signs before you suffer a highway blowout.</p>
+                    </div>
+                    <a href="comingsoon.html" class="inline-flex items-center gap-2 text-[#CC1F1F] font-black text-xs uppercase tracking-wider hover:gap-4 transition-all">
+                        Read Full Article <i class="fas fa-arrow-right text-xs"></i>
+                    </a>
+                </div>
+            </article>
+
+            <!-- Article 2 -->
+            <article class="group bg-slate-50 dark:bg-slate-800 rounded-3xl overflow-hidden border border-slate-100 dark:border-slate-700 hover:shadow-2xl transition-all duration-300 flex flex-col justify-between stagger-item">
+                <div class="img-zoom relative">
+                    <img src="assets/technician.jpg" alt="TPMS systems explained" class="w-full h-56 object-cover">
+                    <span class="absolute top-4 left-4 bg-slate-900 text-white text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded-lg">Guides</span>
+                </div>
+                <div class="p-6 flex-1 flex flex-col justify-between">
+                    <div>
+                        <span class="block text-[10px] text-slate-400 font-bold uppercase tracking-wider mb-2">May 15, 2026</span>
+                        <h3 class="text-lg font-black dark:text-white mb-3 group-hover:text-[#CC1F1F] transition-colors leading-snug uppercase" style="font-family:'Outfit',sans-serif;">Understanding Your TPMS: What the Light Actually Means</h3>
+                        <p class="text-slate-500 dark:text-slate-400 text-xs leading-relaxed mb-6">TPMS sensors can be tricky. We break down the differences between low pressure alerts and malfunctioning sensors affect them.</p>
+                    </div>
+                    <a href="comingsoon.html" class="inline-flex items-center gap-2 text-[#CC1F1F] font-black text-xs uppercase tracking-wider hover:gap-4 transition-all">
+                        Read Full Article <i class="fas fa-arrow-right text-xs"></i>
+                    </a>
+                </div>
+            </article>
+
+            <!-- Article 3 -->
+            <div class="md:col-span-2 lg:col-span-1 flex justify-center lg:block stagger-item">
+                <article class="group bg-slate-50 dark:bg-slate-800 rounded-3xl overflow-hidden border border-slate-100 dark:border-slate-700 hover:shadow-2xl transition-all duration-300 flex flex-col justify-between w-full md:max-w-[calc(50%-16px)] lg:max-w-none">
+                    <div class="img-zoom relative">
+                        <img src="assets/hero-bg.jpg" alt="Winter tires transition guide" class="w-full h-56 object-cover">
+                        <span class="absolute top-4 left-4 bg-[#CC1F1F] text-white text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded-lg">Maintenance</span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <span class="block text-[10px] text-slate-400 font-bold uppercase tracking-wider mb-2">May 08, 2026</span>
+                            <h3 class="text-lg font-black dark:text-white mb-3 group-hover:text-[#CC1F1F] transition-colors leading-snug uppercase" style="font-family:'Outfit',sans-serif;">How Tire Rotation Extends the Lifespan of Your Fleet</h3>
+                            <p class="text-slate-500 dark:text-slate-400 text-xs leading-relaxed mb-6">Regular rotation ensures even wear across front and rear tires, saving you money, improving gas mileage, and optimizing traction control.</p>
+                        </div>
+                        <a href="comingsoon.html" class="inline-flex items-center gap-2 text-[#CC1F1F] font-black text-xs uppercase tracking-wider hover:gap-4 transition-all">
+                            Read Full Article <i class="fas fa-arrow-right text-xs"></i>
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== PROMO BANNER ===== -->
+<section class="py-16 bg-white dark:bg-slate-900 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 reveal">
+        <div class="relative overflow-hidden rounded-3xl bg-[#CC1F1F] p-8 md:p-12 shadow-2xl shadow-[#CC1F1F]/20">
+            <div class="absolute top-0 right-0 -mt-16 -mr-16 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-0 left-0 -mb-8 -ml-8 w-40 h-40 bg-black/10 rounded-full blur-2xl"></div>
+            <div class="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-8 text-center lg:text-start">
+                <div class="max-w-xl">
+                    <div class="inline-flex items-center gap-2 bg-black/20 px-3 py-1.5 rounded-full text-white text-[10px] font-black uppercase tracking-widest mb-4">
+                        <span class="flex h-2 w-2 rounded-full bg-white animate-pulse"></span>
+                        <span>Emergency Flat? Call Now</span>
+                    </div>
+                    <h2 class="text-3xl md:text-5xl font-black text-white leading-tight" style="font-family:'Outfit',sans-serif;">
+                        Stranded? We'll be there in <span class="italic underline decoration-white/30">60 Minutes</span>
+                    </h2>
+                    <p class="text-red-100 mt-4 text-lg">Available 24/7, 365 days a year. No extra charge for nights or weekends.</p>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-4 w-full lg:w-auto shrink-0">
+                    <a href="tel:+15550123456" class="w-full sm:w-auto">
+                        <button class="w-full bg-white text-[#CC1F1F] px-8 py-4 rounded-xl font-black uppercase tracking-widest text-sm hover:bg-red-50 transition-all shadow-lg flex items-center justify-center gap-2">
+                            <i class="fas fa-phone-volume"></i> Call Now
+                        </button>
+                    </a>
+                    <a href="services.html" class="w-full sm:w-auto">
+                        <button class="w-full bg-black/20 hover:bg-black/30 border border-white/30 text-white px-8 py-4 rounded-xl font-black uppercase tracking-widest text-sm transition-all flex items-center justify-center gap-2">
+                            <i class="fas fa-calendar-check"></i> Book Online
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== FINAL CTA ===== -->
+<section class="py-20 bg-slate-50 dark:bg-slate-950 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 reveal">
+        <div class="relative overflow-hidden rounded-[2.5rem] bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 p-10 md:p-20 shadow-xl text-center">
+            <div class="absolute top-0 right-0 -mt-20 -mr-20 w-80 h-80 bg-[#CC1F1F]/5 rounded-full blur-[100px] animate-pulse"></div>
+            <div class="absolute bottom-0 left-0 -mb-16 -ml-16 w-64 h-64 bg-red-100/60 dark:bg-orange-800/10 rounded-full blur-[80px]"></div>
+            <div class="relative z-10 flex flex-col items-center">
+                <div class="section-label mb-6">Ready to Get Started?</div>
+                <h2 class="text-3xl md:text-6xl font-black text-slate-900 dark:text-white leading-none mb-6 max-w-3xl tracking-tighter uppercase" style="font-family:'Outfit',sans-serif;">
+                    Your Tires, <span class="text-[#CC1F1F]">Our Priority</span>
+                </h2>
+                <p class="text-slate-600 dark:text-slate-400 text-sm md:text-lg max-w-2xl mb-10 leading-relaxed font-medium">
+                    Join 10,000+ satisfied drivers. Book a service in under 2 minutes and experience the TireXpress difference.
+                </p>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
+                    <a href="services.html" class="w-full sm:w-72">
+                        <button class="btn-primary w-full py-5 rounded-2xl text-sm flex items-center justify-center gap-2">
+                            Book a Service <i class="fas fa-calendar-check"></i>
+                        </button>
+                    </a>
+                    <a href="tires.html" class="w-full sm:w-72">
+                        <button class="w-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 py-5 rounded-2xl font-black uppercase tracking-widest text-sm transition-all shadow-xl border border-transparent dark:border-slate-200 hover:opacity-90 flex items-center justify-center gap-2">
+                            Browse Tires <i class="fas fa-circle-dot"></i>
+                        </button>
+                    </a>
+                </div>
+                <div class="mt-12 flex flex-wrap justify-center items-center gap-6 md:gap-10 opacity-60">
+                    <span class="text-slate-400 text-[9px] md:text-[10px] font-black uppercase tracking-widest">🏆 ASE Certified</span>
+                    <span class="text-slate-400 text-[9px] md:text-[10px] font-black uppercase tracking-widest">⚡ 60-Min Response</span>
+                    <span class="text-slate-400 text-[9px] md:text-[10px] font-black uppercase tracking-widest">🔒 Fully Insured</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<div id="footer-container"></div>
+
+<script>
+    function updateQuote() {
+        const select = document.getElementById('serviceSelect');
+        const display = document.getElementById('priceDisplay');
+        const value = select.value;
+        display.classList.add('opacity-0', 'scale-90');
+        setTimeout(() => {
+            display.innerText = value === '0' ? '?' : value;
+            display.classList.remove('opacity-0', 'scale-90');
+        }, 200);
+    }
+</script>
+<script src="components.js"></script>
+</body>
+</html>
+
+

@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en" id="root-html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Create your free TireXpress account and get access to instant booking, service tracking, and tire management.">
+    <title>Sign Up | TireXpress Mobile Tire Service</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' stroke='%23CC1F1F' stroke-width='8' fill='none'/><circle cx='50' cy='50' r='18' stroke='%23CC1F1F' stroke-width='8' fill='none'/></svg>">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script>tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#CC1F1F', secondary: '#111827' } } } }</script>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 flex flex-col">
+
+<!-- Auth Top Bar -->
+<div class="flex items-center justify-between p-4 sm:p-6 max-w-7xl mx-auto w-full">
+    <a href="index.html" class="flex items-center gap-2 group">
+        <svg width="30" height="30" viewBox="0 0 34 34" fill="none"><circle cx="17" cy="17" r="16" stroke="#CC1F1F" stroke-width="2.5"/><circle cx="17" cy="17" r="7" stroke="#CC1F1F" stroke-width="2.5"/><line x1="17" y1="1" x2="17" y2="10" stroke="#CC1F1F" stroke-width="2" stroke-linecap="round"/><line x1="17" y1="24" x2="17" y2="33" stroke="#CC1F1F" stroke-width="2" stroke-linecap="round"/><line x1="1" y1="17" x2="10" y2="17" stroke="#CC1F1F" stroke-width="2" stroke-linecap="round"/><line x1="24" y1="17" x2="33" y2="17" stroke="#CC1F1F" stroke-width="2" stroke-linecap="round"/></svg>
+        <span class="font-black text-lg text-white group-hover:text-[#CC1F1F] transition-colors" style="font-family:'Outfit',sans-serif;">Tire<span class="text-[#CC1F1F]">Xpress</span></span>
+    </a>
+    <div class="flex items-center gap-2">
+        <button id="su-dir-btn" onclick="toggleSuDir()" class="w-9 h-9 flex items-center justify-center rounded-lg bg-white/10 border border-white/15 text-white/60 hover:text-white transition-all text-[10px] font-black">LTR</button>
+        <button id="su-theme-btn" onclick="toggleSuTheme()" class="w-9 h-9 flex items-center justify-center rounded-lg bg-white/10 border border-white/15 text-white/60 hover:text-white transition-all">
+            <i class="fas fa-moon text-sm"></i>
+        </button>
+    </div>
+</div>
+
+<!-- Card and Stats Split Container -->
+<main class="flex-grow flex items-center justify-center px-4 sm:px-6 lg:px-8 py-12 w-full">
+    <div class="w-full max-w-md mx-auto">
+        <div class="bg-white dark:bg-slate-800 rounded-3xl shadow-2xl border border-slate-100 dark:border-slate-700 p-8 sm:p-10 animate-fade-in-up relative overflow-hidden">
+            <!-- Floating background shape inside card -->
+            <div class="absolute -top-16 -right-16 w-32 h-32 bg-[#CC1F1F]/5 rounded-full blur-2xl"></div>
+
+            <!-- Logo inside card -->
+            <div class="text-center mb-8 relative">
+                <a href="index.html" class="inline-block hover:opacity-80 transition-opacity">
+                    <div class="w-16 h-16 bg-[#CC1F1F]/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <svg width="34" height="34" viewBox="0 0 34 34" fill="none"><circle cx="17" cy="17" r="16" stroke="#CC1F1F" stroke-width="2.5"/><circle cx="17" cy="17" r="7" stroke="#CC1F1F" stroke-width="2.5"/><line x1="17" y1="1" x2="17" y2="10" stroke="#CC1F1F" stroke-width="2" stroke-linecap="round"/><line x1="17" y1="24" x2="17" y2="33" stroke="#CC1F1F" stroke-width="2" stroke-linecap="round"/><line x1="1" y1="17" x2="10" y2="17" stroke="#CC1F1F" stroke-width="2" stroke-linecap="round"/><line x1="24" y1="17" x2="33" y2="17" stroke="#CC1F1F" stroke-width="2" stroke-linecap="round"/></svg>
+                    </div>
+                </a>
+                <h1 class="text-2xl font-black dark:text-white" style="font-family:'Outfit',sans-serif;">Create Account</h1>
+                <p class="text-slate-500 dark:text-slate-400 text-sm mt-1">Get started in 3 easy steps</p>
+            </div>
+
+                <!-- Step Progress Indicator -->
+                <div class="flex items-center justify-between mb-8 relative">
+                    <div class="absolute left-0 right-0 top-1/2 h-0.5 bg-slate-200 dark:bg-slate-700 -translate-y-1/2 z-0"></div>
+                    <div id="step-progress-line" class="absolute left-0 top-1/2 h-0.5 bg-[#CC1F1F] -translate-y-1/2 z-0 transition-all duration-300" style="width: 0%;"></div>
+                    
+                    <div class="relative z-10 flex flex-col items-center">
+                        <div id="step-dot-1" class="w-8 h-8 rounded-full bg-[#CC1F1F] text-white flex items-center justify-center text-xs font-black transition-all">1</div>
+                        <span class="text-[10px] font-bold text-slate-500 mt-1 uppercase tracking-wider">Info</span>
+                    </div>
+                    <div class="relative z-10 flex flex-col items-center">
+                        <div id="step-dot-2" class="w-8 h-8 rounded-full bg-slate-200 dark:bg-slate-700 text-slate-500 flex items-center justify-center text-xs font-black transition-all">2</div>
+                        <span class="text-[10px] font-bold text-slate-500 mt-1 uppercase tracking-wider">Plan</span>
+                    </div>
+                    <div class="relative z-10 flex flex-col items-center">
+                        <div id="step-dot-3" class="w-8 h-8 rounded-full bg-slate-200 dark:bg-slate-700 text-slate-500 flex items-center justify-center text-xs font-black transition-all">3</div>
+                        <span class="text-[10px] font-bold text-slate-500 mt-1 uppercase tracking-wider">Secure</span>
+                    </div>
+                </div>
+
+                <!-- Form -->
+                <form class="space-y-4" id="signup-form" onsubmit="submitSignup(event)">
+                    <!-- Form Step 1: Info -->
+                    <div id="step-1" class="space-y-4">
+                        <!-- Social Login -->
+                        <div class="space-y-2 mb-6">
+                            <button type="button" class="w-full flex items-center justify-center gap-3 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all text-sm font-bold dark:text-white">
+                                <svg class="w-5 h-5" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+                                Sign up with Google
+                            </button>
+                            <div class="grid grid-cols-2 gap-2">
+                                <button type="button" class="flex items-center justify-center gap-2 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all text-sm font-bold dark:text-white">
+                                    <i class="fab fa-apple text-lg"></i> Apple
+                                </button>
+                                <button type="button" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-[#1877F2] hover:bg-[#0d66d0] transition-all text-sm font-bold text-white">
+                                    <i class="fab fa-facebook-f"></i> Facebook
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Divider -->
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="flex-1 h-px bg-slate-200 dark:bg-slate-700"></div>
+                            <span class="text-xs text-slate-400 font-bold uppercase tracking-widest">or email</span>
+                            <div class="flex-1 h-px bg-slate-200 dark:bg-slate-700"></div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-black uppercase tracking-widest text-slate-400 mb-1.5">First Name</label>
+                            <div class="relative">
+                                <input id="first-name" type="text" placeholder="John" class="form-input dark:bg-slate-900 dark:border-slate-700 dark:text-white ps-11" required>
+                                <i class="fas fa-user absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-black uppercase tracking-widest text-slate-400 mb-1.5">Last Name</label>
+                            <div class="relative">
+                                <input id="last-name" type="text" placeholder="Doe" class="form-input dark:bg-slate-900 dark:border-slate-700 dark:text-white ps-11" required>
+                                <i class="fas fa-user absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-black uppercase tracking-widest text-slate-400 mb-1.5">Email Address</label>
+                            <div class="relative">
+                                <input id="email" type="email" placeholder="john@example.com" class="form-input dark:bg-slate-900 dark:border-slate-700 dark:text-white ps-11" required>
+                                <i class="fas fa-envelope absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-black uppercase tracking-widest text-slate-400 mb-1.5">Phone Number</label>
+                            <div class="relative">
+                                <input id="phone" type="tel" placeholder="+1 (555) 000-0000" class="form-input dark:bg-slate-900 dark:border-slate-700 dark:text-white ps-11" required>
+                                <i class="fas fa-phone absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+                            </div>
+                        </div>
+                        <button type="button" onclick="goToStep(2)" class="btn-primary w-full py-4 rounded-xl text-sm flex items-center justify-center gap-2 mt-2">
+                            Continue to Plans <i class="fas fa-arrow-right text-xs"></i>
+                        </button>
+                    </div>
+
+                    <!-- Form Step 2: Plan Selector -->
+                    <div id="step-2" class="hidden space-y-4 animate-fade-in">
+                        <label class="block text-xs font-black uppercase tracking-widest text-slate-400 mb-2">Select Your Membership Plan</label>
+                        <div class="space-y-3">
+                            <!-- Basic Plan Card -->
+                            <label class="block cursor-pointer">
+                                <input type="radio" name="plan" value="basic" checked class="sr-only peer">
+                                <div class="p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 peer-checked:border-[#CC1F1F] peer-checked:bg-[#CC1F1F]/5 transition-all flex items-center justify-between">
+                                    <div>
+                                        <h4 class="font-bold text-sm dark:text-white">Basic Plan</h4>
+                                        <p class="text-xs text-slate-500">Pay per service. Best for occasional drivers.</p>
+                                    </div>
+                                    <span class="text-lg font-black text-[#CC1F1F]" style="font-family:'Outfit',sans-serif;">$49<span class="text-xs font-normal text-slate-400">/srv</span></span>
+                                </div>
+                            </label>
+
+                            <!-- Pro Plan Card -->
+                            <label class="block cursor-pointer">
+                                <input type="radio" name="plan" value="pro" class="sr-only peer">
+                                <div class="p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 peer-checked:border-[#CC1F1F] peer-checked:bg-[#CC1F1F]/5 transition-all flex items-center justify-between relative overflow-hidden">
+                                    <div class="absolute top-0 right-0 bg-[#CC1F1F] text-white text-[8px] font-black uppercase tracking-widest px-2 py-0.5 rounded-bl">Popular</div>
+                                    <div>
+                                        <h4 class="font-bold text-sm dark:text-white">Pro Plan</h4>
+                                        <p class="text-xs text-slate-500">Free rotations & punctures. Roadside priority.</p>
+                                    </div>
+                                    <span class="text-lg font-black text-[#CC1F1F]" style="font-family:'Outfit',sans-serif;">$129<span class="text-xs font-normal text-slate-400">/mo</span></span>
+                                </div>
+                            </label>
+
+                            <!-- Elite Plan Card -->
+                            <label class="block cursor-pointer">
+                                <input type="radio" name="plan" value="elite" class="sr-only peer">
+                                <div class="p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 peer-checked:border-[#CC1F1F] peer-checked:bg-[#CC1F1F]/5 transition-all flex items-center justify-between">
+                                    <div>
+                                        <h4 class="font-bold text-sm dark:text-white">Elite Plan</h4>
+                                        <p class="text-xs text-slate-500">Full vehicle tire insurance, zero copay, multi-car.</p>
+                                    </div>
+                                    <span class="text-lg font-black text-[#CC1F1F]" style="font-family:'Outfit',sans-serif;">$299<span class="text-xs font-normal text-slate-400">/mo</span></span>
+                                </div>
+                            </label>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-3 pt-2">
+                            <button type="button" onclick="goToStep(1)" class="w-full py-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-700 dark:text-white text-sm font-bold transition-all">Back</button>
+                            <button type="button" onclick="goToStep(3)" class="btn-primary w-full py-4 rounded-xl text-sm flex items-center justify-center gap-2">Next <i class="fas fa-arrow-right text-xs"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Form Step 3: Security -->
+                    <div id="step-3" class="hidden space-y-4 animate-fade-in">
+                        <div>
+                            <label class="block text-xs font-black uppercase tracking-widest text-slate-400 mb-1.5">Password</label>
+                            <div class="relative">
+                                <input id="su-pwd" type="password" placeholder="Min. 8 characters" class="form-input dark:bg-slate-900 dark:border-slate-700 dark:text-white ps-11 pe-11" required minlength="8">
+                                <i class="fas fa-lock absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+                                <button type="button" onclick="togglePwd('su-pwd','su-eye')" class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-[#CC1F1F] transition-colors">
+                                    <i class="fas fa-eye text-sm" id="su-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-black uppercase tracking-widest text-slate-400 mb-1.5">Confirm Password</label>
+                            <div class="relative">
+                                <input id="su-pwd2" type="password" placeholder="Repeat password" class="form-input dark:bg-slate-900 dark:border-slate-700 dark:text-white ps-11 pe-11" required>
+                                <i class="fas fa-lock absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+                                <button type="button" onclick="togglePwd('su-pwd2','su-eye2')" class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-[#CC1F1F] transition-colors">
+                                    <i class="fas fa-eye text-sm" id="su-eye2"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <label class="flex items-start gap-3 cursor-pointer mt-2">
+                            <input type="checkbox" required class="w-4 h-4 accent-[#CC1F1F] mt-0.5 rounded shrink-0">
+                            <span class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">I agree to the <a href="#" class="text-[#CC1F1F] font-black hover:underline">Terms of Service</a> and <a href="#" class="text-[#CC1F1F] font-black hover:underline">Privacy Policy</a></span>
+                        </label>
+
+                        <div class="grid grid-cols-2 gap-3 pt-2">
+                            <button type="button" onclick="goToStep(2)" class="w-full py-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-700 dark:text-white text-sm font-bold transition-all">Back</button>
+                            <button type="submit" id="signup-btn" class="btn-primary w-full py-4 rounded-xl text-sm flex items-center justify-center gap-2">Create Account <i class="fas fa-arrow-right text-xs"></i></button>
+                        </div>
+                    </div>
+                </form>
+
+                <p class="text-center text-sm text-slate-500 dark:text-slate-400 mt-7">
+                    Already have an account? <a href="login.html" class="text-[#CC1F1F] font-black hover:underline">Sign In</a>
+                </p>
+            </div>
+            <p class="text-center text-xs text-white/30 mt-6">
+                &copy; 2025 TireXpress · <a href="#" class="hover:text-white/50">Privacy</a> · <a href="#" class="hover:text-white/50">Terms</a>
+            </p>
+        </div>
+    </div>
+</main>
+
+<script>
+function goToStep(stepNum) {
+    // Validate current step fields before going to next step
+    if (stepNum > 1) {
+        const currentStep = stepNum === 2 ? 1 : 2;
+        const currentDiv = document.getElementById(`step-${currentStep}`);
+        const inputs = currentDiv.querySelectorAll('input[required]');
+        let isValid = true;
+        inputs.forEach(input => {
+            if (!input.checkValidity()) {
+                input.reportValidity();
+                isValid = false;
+            }
+        });
+        if (!isValid) return;
+    }
+
+    // Hide all steps
+    document.getElementById('step-1').classList.add('hidden');
+    document.getElementById('step-2').classList.add('hidden');
+    document.getElementById('step-3').classList.add('hidden');
+
+    // Show target step
+    document.getElementById(`step-${stepNum}`).classList.remove('hidden');
+
+    // Update progress dots and line
+    const progressLine = document.getElementById('step-progress-line');
+    if (stepNum === 1) {
+        progressLine.style.width = '0%';
+        updateDot(1, true);
+        updateDot(2, false);
+        updateDot(3, false);
+    } else if (stepNum === 2) {
+        progressLine.style.width = '50%';
+        updateDot(1, true);
+        updateDot(2, true);
+        updateDot(3, false);
+    } else if (stepNum === 3) {
+        progressLine.style.width = '100%';
+        updateDot(1, true);
+        updateDot(2, true);
+        updateDot(3, true);
+    }
+}
+
+function updateDot(num, active) {
+    const dot = document.getElementById(`step-dot-${num}`);
+    if (active) {
+        dot.className = 'w-8 h-8 rounded-full bg-[#CC1F1F] text-white flex items-center justify-center text-xs font-black transition-all';
+    } else {
+        dot.className = 'w-8 h-8 rounded-full bg-slate-200 dark:bg-slate-700 text-slate-500 flex items-center justify-center text-xs font-black transition-all';
+    }
+}
+
+function togglePwd(id, iconId) {
+    const inp = document.getElementById(id);
+    const icon = document.getElementById(iconId);
+    inp.type = inp.type === 'password' ? 'text' : 'password';
+    icon.className = inp.type === 'password' ? 'fas fa-eye text-sm' : 'fas fa-eye-slash text-sm';
+}
+function submitSignup(e) {
+    e.preventDefault();
+    const btn = document.getElementById('signup-btn');
+    btn.innerHTML = '<i class="fas fa-circle-notch animate-spin-slow"></i> Creating account...';
+    btn.disabled = true;
+    setTimeout(() => { window.location.href = 'dashboard.html'; }, 1800);
+}
+function toggleSuTheme() {
+    const html = document.documentElement;
+    const btn = document.getElementById('su-theme-btn');
+    html.classList.toggle('dark');
+    const icon = btn.querySelector('i');
+    icon.className = html.classList.contains('dark') ? 'fas fa-sun text-sm text-yellow-400' : 'fas fa-moon text-sm';
+    localStorage.theme = html.classList.contains('dark') ? 'dark' : 'light';
+}
+function toggleSuDir() {
+    const html = document.documentElement;
+    const btn = document.getElementById('su-dir-btn');
+    const isRTL = html.getAttribute('dir') === 'rtl';
+    html.setAttribute('dir', isRTL ? 'ltr' : 'rtl');
+    btn.textContent = isRTL ? 'LTR' : 'RTL';
+    localStorage.dir = isRTL ? 'ltr' : 'rtl';
+}
+(function() {
+    const html = document.documentElement;
+    if (localStorage.theme === 'dark' || (!localStorage.theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        html.classList.add('dark');
+        const icon = document.getElementById('su-theme-btn').querySelector('i');
+        if (icon) icon.className = 'fas fa-sun text-sm text-yellow-400';
+    }
+    if (localStorage.dir === 'rtl') {
+        html.setAttribute('dir', 'rtl');
+        document.getElementById('su-dir-btn').textContent = 'RTL';
+    }
+})();
+</script>
+</body>
+</html>
+
+

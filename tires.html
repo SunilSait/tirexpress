@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en" id="root-html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="TireXpress Tire Inventory — Browse performance tires from Michelin, Bridgestone, Continental, Pirelli and more. Filter by brand, size, and type. Compare safety ratings.">
+    <title>Tire Inventory | TireXpress Mobile Tire Service</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' stroke='%23CC1F1F' stroke-width='8' fill='none'/><circle cx='50' cy='50' r='18' stroke='%23CC1F1F' stroke-width='8' fill='none'/></svg>">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script>tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#CC1F1F', secondary: '#111827' } } } }</script>
+</head>
+<body class="bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 transition-colors duration-300">
+<div id="page-loader"><div class="flex flex-col items-center gap-4"><div class="loader-spinner"></div><span class="text-xs font-black uppercase tracking-widest text-[#CC1F1F]">Loading...</span></div></div>
+<div id="navbar-container"></div>
+
+<!-- HERO -->
+<section class="relative py-24 bg-slate-950 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-[#CC1F1F]/15 via-transparent to-transparent"></div>
+    <div class="relative z-10 max-w-4xl mx-auto px-4 text-center">
+        <div class="section-label mb-6 mx-auto" style="width:fit-content; background:rgba(204, 31, 31, 0.15);">Tire Inventory</div>
+        <h1 class="text-4xl md:text-6xl font-black text-white tracking-tighter uppercase mb-6" style="font-family:'Outfit',sans-serif;">
+            Browse & <span class="text-[#CC1F1F]">Compare</span> Tires
+        </h1>
+        <p class="text-slate-300 text-lg max-w-xl mx-auto">Find the perfect tire for your vehicle. Filter by brand, type, or size — then book mobile installation.</p>
+    </div>
+</section>
+
+<!-- ===== TIRE FINDER WIZARD ===== -->
+<section class="py-16 bg-slate-50 dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800 transition-colors duration-300">
+    <div class="max-w-4xl mx-auto px-4">
+        <div class="bg-white dark:bg-slate-900 rounded-[2.5rem] border border-slate-100 dark:border-slate-800 p-8 shadow-xl relative z-10">
+            <div class="flex justify-between items-center mb-8 border-b border-slate-100 dark:border-slate-800 pb-4">
+                <div>
+                    <h3 class="text-xl font-black dark:text-white uppercase" style="font-family:'Outfit',sans-serif;">🎯 Tire Finder Wizard</h3>
+                    <p class="text-xs text-slate-400 mt-1">Answer 3 quick questions to find the ideal tire model.</p>
+                </div>
+                <span class="text-xs font-black text-[#CC1F1F] bg-[#CC1F1F]/10 px-3 py-1 rounded-full uppercase tracking-wider animate-pulse" id="wizard-step-label">Step 1 of 3</span>
+            </div>
+            
+            <div class="min-h-[160px] flex items-center justify-center">
+                <!-- Step 1 Content -->
+                <div id="wizard-step-1" class="w-full text-center space-y-5">
+                    <p class="font-black text-sm text-slate-500 dark:text-slate-400 uppercase tracking-widest">Select Your Vehicle Type</p>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                        <button onclick="nextStep(1, 'Performance')" class="p-4 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-[#CC1F1F] rounded-2xl flex flex-col items-center gap-2 font-bold text-xs uppercase transition-all">
+                            <i class="fas fa-car text-xl text-[#CC1F1F]"></i> Sedan / Coupe
+                        </button>
+                        <button onclick="nextStep(1, 'SUV')" class="p-4 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-[#CC1F1F] rounded-2xl flex flex-col items-center gap-2 font-bold text-xs uppercase transition-all">
+                            <i class="fas fa-truck-monster text-xl text-[#CC1F1F]"></i> SUV / Truck
+                        </button>
+                        <button onclick="nextStep(1, 'Performance')" class="p-4 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-[#CC1F1F] rounded-2xl flex flex-col items-center gap-2 font-bold text-xs uppercase transition-all">
+                            <i class="fas fa-gauge-high text-xl text-[#CC1F1F]"></i> Sports Car
+                        </button>
+                        <button onclick="nextStep(1, 'SUV')" class="p-4 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-[#CC1F1F] rounded-2xl flex flex-col items-center gap-2 font-bold text-xs uppercase transition-all">
+                            <i class="fas fa-van-shuttle text-xl text-[#CC1F1F]"></i> Commercial
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 2 Content -->
+                <div id="wizard-step-2" class="w-full text-center space-y-5 hidden">
+                    <p class="font-black text-sm text-slate-500 dark:text-slate-400 uppercase tracking-widest">Select Driving Conditions</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <button onclick="nextStep(2, 'All-Season')" class="p-4 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-[#CC1F1F] rounded-2xl flex flex-col items-center gap-2 font-bold text-xs uppercase transition-all">
+                            <i class="fas fa-cloud-sun text-xl text-[#CC1F1F]"></i> Year-Round (All-Season)
+                        </button>
+                        <button onclick="nextStep(2, 'Performance')" class="p-4 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-[#CC1F1F] rounded-2xl flex flex-col items-center gap-2 font-bold text-xs uppercase transition-all">
+                            <i class="fas fa-sun text-xl text-[#CC1F1F]"></i> Summer Sport
+                        </button>
+                        <button onclick="nextStep(2, 'Winter')" class="p-4 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-[#CC1F1F] rounded-2xl flex flex-col items-center gap-2 font-bold text-xs uppercase transition-all">
+                            <i class="fas fa-snowflake text-xl text-[#CC1F1F]"></i> Winter Ice/Snow
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 3 Content -->
+                <div id="wizard-step-3" class="w-full text-center space-y-5 hidden">
+                    <p class="font-black text-sm text-slate-500 dark:text-slate-400 uppercase tracking-widest">Select Your Top Priority</p>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                        <button onclick="finishWizard('grip')" class="p-4 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-[#CC1F1F] rounded-2xl flex flex-col items-center gap-2 font-bold text-[10px] uppercase transition-all">
+                            <i class="fas fa-droplet text-xl text-[#CC1F1F]"></i> Max Grip
+                        </button>
+                        <button onclick="finishWizard('fuel')" class="p-4 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-[#CC1F1F] rounded-2xl flex flex-col items-center gap-2 font-bold text-[10px] uppercase transition-all">
+                            <i class="fas fa-leaf text-xl text-[#CC1F1F]"></i> Fuel Saving
+                        </button>
+                        <button onclick="finishWizard('noise')" class="p-4 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-[#CC1F1F] rounded-2xl flex flex-col items-center gap-2 font-bold text-[10px] uppercase transition-all">
+                            <i class="fas fa-volume-xmark text-xl text-[#CC1F1F]"></i> Low Noise
+                        </button>
+                        <button onclick="finishWizard('price')" class="p-4 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-[#CC1F1F] rounded-2xl flex flex-col items-center gap-2 font-bold text-[10px] uppercase transition-all">
+                            <i class="fas fa-tags text-xl text-[#CC1F1F]"></i> Low Price
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Result screen -->
+                <div id="wizard-result" class="w-full text-center space-y-4 hidden">
+                    <i class="fas fa-circle-check text-4xl text-green-500 animate-bounce"></i>
+                    <h4 class="font-black text-lg dark:text-white uppercase" style="font-family:'Outfit',sans-serif;">Tire Match Found!</h4>
+                    <p class="text-sm text-slate-500 dark:text-slate-400">We updated the inventory filters below to show your matched tires.</p>
+                    <button onclick="resetWizard()" class="btn-secondary px-6 py-2 rounded-xl text-xs">Reset Wizard</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FILTER BAR -->
+<section class="py-8 bg-slate-50 dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800 sticky top-20 z-30">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="flex flex-wrap gap-3 items-center">
+            <span class="text-xs font-black uppercase tracking-widest text-slate-400">Filter:</span>
+            <div class="flex flex-wrap gap-2" id="filter-buttons">
+                <button onclick="filterTires('all')" class="filter-btn active-filter px-4 py-2 rounded-xl text-xs font-black uppercase tracking-wider transition-all bg-[#CC1F1F] text-white" data-filter="all">All Brands</button>
+                <button onclick="filterTires('michelin')" class="filter-btn px-4 py-2 rounded-xl text-xs font-black uppercase tracking-wider transition-all bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:border-[#CC1F1F]" data-filter="michelin">Michelin</button>
+                <button onclick="filterTires('bridgestone')" class="filter-btn px-4 py-2 rounded-xl text-xs font-black uppercase tracking-wider transition-all bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:border-[#CC1F1F]" data-filter="bridgestone">Bridgestone</button>
+                <button onclick="filterTires('continental')" class="filter-btn px-4 py-2 rounded-xl text-xs font-black uppercase tracking-wider transition-all bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:border-[#CC1F1F]" data-filter="continental">Continental</button>
+                <button onclick="filterTires('pirelli')" class="filter-btn px-4 py-2 rounded-xl text-xs font-black uppercase tracking-wider transition-all bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:border-[#CC1F1F]" data-filter="pirelli">Pirelli</button>
+                <button onclick="filterTires('goodyear')" class="filter-btn px-4 py-2 rounded-xl text-xs font-black uppercase tracking-wider transition-all bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:border-[#CC1F1F]" data-filter="goodyear">Goodyear</button>
+            </div>
+            <div class="ms-auto flex gap-2">
+                <div class="relative">
+                    <select class="form-input py-2 text-xs font-bold appearance-none cursor-pointer dark:bg-slate-800 dark:border-slate-700 dark:text-white pe-8" id="type-filter" onchange="applyTypeFilter()">
+                        <option value="all">All Types</option>
+                        <option value="Performance">Performance</option>
+                        <option value="All-Season">All-Season</option>
+                        <option value="SUV">SUV / Truck</option>
+                        <option value="Winter">Winter</option>
+                    </select>
+                    <div class="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-[#CC1F1F]"><i class="fas fa-chevron-down text-xs"></i></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TIRE GRID -->
+<section class="py-16 bg-white dark:bg-slate-900">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="tire-grid">
+            <!-- Tires injected by JS -->
+        </div>
+        <div id="no-results" class="hidden text-center py-16">
+            <i class="fas fa-circle-dot text-6xl text-slate-200 dark:text-slate-700 mb-4 block"></i>
+            <p class="font-black text-slate-400 text-lg">No tires found for this filter.</p>
+        </div>
+    </div>
+</section>
+
+<!-- COMPARISON TOOL -->
+<section class="py-24 bg-slate-50 dark:bg-slate-950">
+    <div class="max-w-5xl mx-auto px-4">
+        <div class="text-center mb-14 reveal">
+            <div class="section-label mb-4 mx-auto" style="width:fit-content;">Smart Tool</div>
+            <h2 class="text-3xl md:text-4xl font-black dark:text-white tracking-tighter uppercase mb-2" style="font-family:'Outfit',sans-serif;">
+                Side-by-Side <span class="text-[#CC1F1F]">Comparison</span>
+            </h2>
+            <p class="text-slate-500 dark:text-slate-400">Compare two tires across key safety and performance metrics.</p>
+        </div>
+        <div class="bg-white dark:bg-slate-800 rounded-[2.5rem] shadow-2xl border border-slate-100 dark:border-slate-700 p-8 md:p-12 reveal">
+            <div class="grid md:grid-cols-2 gap-6 mb-8">
+                <div>
+                    <label class="block text-xs font-black uppercase tracking-widest text-slate-400 mb-2">Tire A</label>
+                    <div class="relative"><select id="cmpA" onchange="runComparison()" class="form-input appearance-none cursor-pointer dark:bg-slate-900 dark:border-slate-700 dark:text-white font-bold pr-10">
+                        <option value="0">Michelin Pilot Sport 4S — A+ Wet Grip</option>
+                        <option value="1">Bridgestone Potenza S007 — A Wet Grip</option>
+                        <option value="2">Continental ExtremeContact — A- Wet Grip</option>
+                        <option value="3">Pirelli P Zero — A Wet Grip</option>
+                        <option value="4">Goodyear Eagle F1 — A Wet Grip</option>
+                        <option value="5">Continental ContiSportContact 5 — A Wet Grip</option>
+                        <option value="6">Goodyear Assurance WeatherReady — A Wet Grip</option>
+                    </select><div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-[#CC1F1F]"><i class="fas fa-chevron-down text-xs"></i></div></div>
+                </div>
+                <div>
+                    <label class="block text-xs font-black uppercase tracking-widest text-slate-400 mb-2">Tire B</label>
+                    <div class="relative"><select id="cmpB" onchange="runComparison()" class="form-input appearance-none cursor-pointer dark:bg-slate-900 dark:border-slate-700 dark:text-white font-bold pr-10">
+                        <option value="1">Bridgestone Potenza S007 — A Wet Grip</option>
+                        <option value="0">Michelin Pilot Sport 4S — A+ Wet Grip</option>
+                        <option value="2">Continental ExtremeContact — A- Wet Grip</option>
+                        <option value="3">Pirelli P Zero — A Wet Grip</option>
+                        <option value="4">Goodyear Eagle F1 — A Wet Grip</option>
+                        <option value="5">Continental ContiSportContact 5 — A Wet Grip</option>
+                        <option value="6">Goodyear Assurance WeatherReady — A Wet Grip</option>
+                    </select><div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-[#CC1F1F]"><i class="fas fa-chevron-down text-xs"></i></div></div>
+                </div>
+            </div>
+            <div class="overflow-x-auto"><table class="w-full text-sm" id="cmp-table"></table></div>
+        </div>
+    </div>
+</section>
+
+<!-- SAFETY RATINGS INFO -->
+<section class="py-20 bg-white dark:bg-slate-900">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="text-center mb-12 reveal">
+            <div class="section-label mb-4 mx-auto" style="width:fit-content;">EU Labels Explained</div>
+            <h2 class="text-2xl md:text-3xl font-black dark:text-white tracking-tighter uppercase" style="font-family:'Outfit',sans-serif;">Understanding <span class="text-[#CC1F1F]">Safety Ratings</span></h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 reveal">
+            <div class="bg-slate-50 dark:bg-slate-800 rounded-2xl p-7 border border-slate-100 dark:border-slate-700">
+                <div class="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-2xl flex items-center justify-center mb-5"><i class="fas fa-droplet text-green-500 text-xl"></i></div>
+                <h3 class="font-black dark:text-white mb-3" style="font-family:'Outfit',sans-serif;">Wet Grip (A–G)</h3>
+                <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">Measures braking distance on wet roads. A is the best — means shorter stopping distances in rain.</p>
+                <div class="flex gap-1 mt-4">
+                    <span class="bg-green-500 text-white text-[9px] font-black px-2 py-0.5 rounded">A</span>
+                    <span class="bg-lime-400 text-white text-[9px] font-black px-2 py-0.5 rounded">B</span>
+                    <span class="bg-yellow-400 text-white text-[9px] font-black px-2 py-0.5 rounded">C</span>
+                    <span class="bg-red-400 text-white text-[9px] font-black px-2 py-0.5 rounded">D</span>
+                    <span class="bg-red-400 text-white text-[9px] font-black px-2 py-0.5 rounded">E</span>
+                </div>
+            </div>
+            <div class="bg-slate-50 dark:bg-slate-800 rounded-2xl p-7 border border-slate-100 dark:border-slate-700">
+                <div class="w-12 h-12 bg-[#CC1F1F]/10 rounded-2xl flex items-center justify-center mb-5"><i class="fas fa-leaf text-[#CC1F1F] text-xl"></i></div>
+                <h3 class="font-black dark:text-white mb-3" style="font-family:'Outfit',sans-serif;">Fuel Efficiency (A–G)</h3>
+                <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">Rolling resistance rating. A-rated tires save fuel — up to 0.5L/100km difference between grades.</p>
+                <div class="flex gap-1 mt-4">
+                    <span class="bg-green-500 text-white text-[9px] font-black px-2 py-0.5 rounded">A</span>
+                    <span class="bg-lime-400 text-white text-[9px] font-black px-2 py-0.5 rounded">B</span>
+                    <span class="bg-yellow-400 text-white text-[9px] font-black px-2 py-0.5 rounded">C</span>
+                    <span class="bg-red-400 text-white text-[9px] font-black px-2 py-0.5 rounded">D</span>
+                    <span class="bg-red-400 text-white text-[9px] font-black px-2 py-0.5 rounded">E</span>
+                </div>
+            </div>
+            <div class="bg-slate-50 dark:bg-slate-800 rounded-2xl p-7 border border-slate-100 dark:border-slate-700">
+                <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-2xl flex items-center justify-center mb-5"><i class="fas fa-volume-xmark text-blue-500 text-xl"></i></div>
+                <h3 class="font-black dark:text-white mb-3" style="font-family:'Outfit',sans-serif;">Noise (dB)</h3>
+                <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">Measured in decibels. Lower dB = quieter ride. 1 sound wave (black bar) = very quiet. 3 bars = louder.</p>
+                <div class="flex gap-1 mt-4">
+                    <span class="bg-green-500 text-white text-[9px] font-black px-2 py-0.5 rounded">68 dB ✦</span>
+                    <span class="bg-yellow-400 text-white text-[9px] font-black px-2 py-0.5 rounded">72 dB ✦✦</span>
+                    <span class="bg-red-400 text-white text-[9px] font-black px-2 py-0.5 rounded">76 dB ✦✦✦</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- CUSTOM CTA: TIRE CONSULTATION -->
+<section class="py-20 bg-slate-950 border-t border-slate-900 relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-[#CC1F1F]/10 via-transparent to-transparent pointer-events-none"></div>
+    <div class="max-w-4xl mx-auto px-4 text-center relative z-10 reveal">
+        <div class="section-label mb-4 mx-auto" style="width:fit-content; background:rgba(204, 31, 31, 0.15);">Expert Advice</div>
+        <h2 class="text-3xl md:text-5xl font-black text-white tracking-tighter uppercase mb-6" style="font-family:'Outfit',sans-serif;">Unsure About Your Tire Specs?</h2>
+        <p class="text-slate-400 text-lg mb-10 max-w-xl mx-auto">Get connected with a certified TireXpress technician. We'll analyze your vehicle model, driving style, and local weather to recommend the perfect fit.</p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4">
+            <a href="contact.html" class="w-full sm:w-auto">
+                <button class="btn-primary w-full sm:w-auto px-10 py-4 rounded-xl text-sm flex items-center justify-center gap-2">
+                    <i class="fas fa-comments"></i> Chat with a Specialist
+                </button>
+            </a>
+            <button onclick="resetWizard(); window.scrollTo({ top: document.getElementById('wizard-step-label').offsetTop - 120, behavior: 'smooth' });" class="w-full sm:w-auto glass border-white/15 text-white px-10 py-4 rounded-xl font-black text-xs uppercase tracking-widest transition-all hover:bg-white/10 flex items-center justify-center gap-2">
+                <i class="fas fa-wand-magic-sparkles"></i> Open Finder Wizard
+            </button>
+        </div>
+    </div>
+</section>
+
+<div id="footer-container"></div>
+
+<script>
+const TIRES = [
+    { id:0, brand:'michelin', name:'Pilot Sport 4S', type:'Performance', size:'225/45 R18', wetGrip:'A+', fuel:'B', noise:'70 dB', rating:4.9, price:189, badge:'Best Seller', badgeColor:'bg-[#CC1F1F]', image:'assets/tire_performance.png' },
+    { id:1, brand:'michelin', name:'CrossClimate 2', type:'All-Season', size:'215/60 R17', wetGrip:'A', fuel:'A', noise:'68 dB', rating:4.8, price:159, badge:'All-Season', badgeColor:'bg-green-500', image:'assets/tire_allseason.png' },
+    { id:2, brand:'bridgestone', name:'Potenza S007', type:'Performance', size:'245/40 R19', wetGrip:'A', fuel:'C', noise:'72 dB', rating:4.7, price:175, badge:'Sport', badgeColor:'bg-blue-500', image:'assets/tire_performance.png' },
+    { id:3, brand:'bridgestone', name:'Blizzak WS90', type:'Winter', size:'205/55 R16', wetGrip:'A', fuel:'B', noise:'71 dB', rating:4.8, price:145, badge:'Winter', badgeColor:'bg-slate-500', image:'assets/tire_winter.png' },
+    { id:4, brand:'continental', name:'ExtremeContact Sport', type:'Performance', size:'235/45 R18', wetGrip:'A-', fuel:'B', noise:'69 dB', rating:4.6, price:155, badge:null, badgeColor:'', image:'assets/tire_performance.png' },
+    { id:5, brand:'continental', name:'CrossContact ATR', type:'SUV', size:'265/60 R18', wetGrip:'A', fuel:'C', noise:'73 dB', rating:4.5, price:168, badge:'SUV/4x4', badgeColor:'bg-amber-600', image:'assets/tire_suv.png' },
+    { id:6, brand:'pirelli', name:'P Zero', type:'Performance', size:'255/35 R20', wetGrip:'A', fuel:'B+', noise:'71 dB', rating:4.9, price:199, badge:'Premium', badgeColor:'bg-slate-800', image:'assets/tire_performance.png' },
+    { id:7, brand:'pirelli', name:'Scorpion ATR', type:'SUV', size:'275/55 R19', wetGrip:'A-', fuel:'C', noise:'74 dB', rating:4.6, price:178, badge:'SUV/4x4', badgeColor:'bg-amber-600', image:'assets/tire_suv.png' },
+    { id:8, brand:'goodyear', name:'Eagle F1 Asymmetric 6', type:'Performance', size:'225/50 R17', wetGrip:'A', fuel:'A', noise:'69 dB', rating:4.7, price:162, badge:'New', badgeColor:'bg-[#CC1F1F]', image:'assets/tire_performance.png' },
+    { id:9, brand:'goodyear', name:'Vector 4Seasons Gen-3', type:'All-Season', size:'195/65 R15', wetGrip:'A', fuel:'B', noise:'70 dB', rating:4.8, price:139, badge:'All-Season', badgeColor:'bg-green-500', image:'assets/tire_allseason.png' },
+    { id:10, brand:'continental', name:'ContiSportContact 5', type:'Performance', size:'245/35 R19', wetGrip:'A', fuel:'C', noise:'71 dB', rating:4.7, price:169, badge:'Premium', badgeColor:'bg-slate-800', image:'assets/tire_performance.png' },
+    { id:11, brand:'goodyear', name:'Assurance WeatherReady', type:'All-Season', size:'205/60 R16', wetGrip:'A', fuel:'B', noise:'69 dB', rating:4.8, price:135, badge:'All-Weather', badgeColor:'bg-green-500', image:'assets/tire_allseason.png' },
+];
+
+function starHtml(rating) {
+    const full = Math.floor(rating);
+    const half = rating % 1 >= 0.5;
+    let h = '';
+    for (let i = 0; i < full; i++) h += '<i class="fas fa-star text-[10px] text-[#f59e0b]"></i>';
+    if (half) h += '<i class="fas fa-star-half-alt text-[10px] text-[#f59e0b]"></i>';
+    return h;
+}
+
+function renderTires(tires) {
+    const grid = document.getElementById('tire-grid');
+    const noRes = document.getElementById('no-results');
+    if (tires.length === 0) { grid.innerHTML = ''; noRes.classList.remove('hidden'); return; }
+    noRes.classList.add('hidden');
+    grid.innerHTML = tires.map(t => `
+        <div class="tire-card group spotlight-card tilt-card" data-brand="${t.brand}" data-type="${t.type}">
+            <div class="relative h-44 bg-gradient-to-br from-slate-100 to-slate-50 dark:from-slate-800 dark:to-slate-700 flex items-center justify-center overflow-hidden p-4">
+                ${t.badge ? `<div class="absolute top-3 left-3 ${t.badgeColor} text-white text-[9px] font-black px-2.5 py-1 rounded-full uppercase z-10">${t.badge}</div>` : ''}
+                <img src="${t.image}" alt="${t.name}" class="w-32 h-32 object-contain transition-transform duration-500 group-hover:scale-110">
+                <div class="absolute bottom-3 right-3 bg-white/90 dark:bg-slate-900/90 text-[9px] font-black text-slate-600 dark:text-slate-300 px-2.5 py-1 rounded-lg">${t.size}</div>
+            </div>
+            <div class="p-5">
+                <div class="text-[10px] font-black uppercase tracking-widest text-[#CC1F1F] mb-1">${t.brand.toUpperCase()}</div>
+                <h3 class="font-black text-base dark:text-white mb-1" style="font-family:'Outfit',sans-serif;">${t.name}</h3>
+                <div class="flex items-center gap-2 mb-3">
+                    <div class="flex gap-0.5">${starHtml(t.rating)}</div>
+                    <span class="text-[10px] font-bold text-slate-500">${t.rating}/5.0</span>
+                </div>
+                <div class="flex flex-wrap gap-1.5 mb-4">
+                    <span class="badge badge-primary">Wet: ${t.wetGrip}</span>
+                    <span class="badge" style="background:rgba(16,185,129,0.1);color:#10b981;border:1px solid rgba(16,185,129,0.25);">Fuel: ${t.fuel}</span>
+                    <span class="badge" style="background:rgba(59,130,246,0.1);color:#3b82f6;border:1px solid rgba(59,130,246,0.25);">${t.noise}</span>
+                </div>
+                <div class="flex items-center justify-between">
+                    <span class="text-2xl font-black text-[#CC1F1F]" style="font-family:'Outfit',sans-serif;">$${t.price}<span class="text-sm text-slate-400 font-normal">/ea</span></span>
+                    <a href="services.html" class="btn-primary px-4 py-2 rounded-xl text-xs">Book Install</a>
+                </div>
+            </div>
+        </div>
+    `).join('');
+}
+
+let currentBrand = 'all';
+let currentType = 'all';
+
+function filterTires(brand) {
+    currentBrand = brand;
+    document.querySelectorAll('.filter-btn').forEach(b => {
+        b.classList.toggle('active-filter', b.dataset.filter === brand);
+        b.classList.toggle('bg-[#CC1F1F]', b.dataset.filter === brand);
+        b.classList.toggle('text-white', b.dataset.filter === brand);
+        b.classList.toggle('bg-white', b.dataset.filter !== brand);
+        b.classList.toggle('dark:bg-slate-800', b.dataset.filter !== brand);
+        b.classList.toggle('border', b.dataset.filter !== brand);
+        b.classList.toggle('border-slate-200', b.dataset.filter !== brand);
+        b.classList.toggle('dark:border-slate-700', b.dataset.filter !== brand);
+    });
+    applyFilters();
+}
+
+function applyTypeFilter() {
+    currentType = document.getElementById('type-filter').value;
+    applyFilters();
+}
+
+function applyFilters() {
+    const filtered = TIRES.filter(t =>
+        (currentBrand === 'all' || t.brand === currentBrand) &&
+        (currentType === 'all' || t.type === currentType)
+    );
+    renderTires(filtered);
+}
+
+// Comparison Table
+const CMP_DATA = [
+    { name:'Michelin Pilot Sport 4S', wetGrip:'A+', dryBraking:'A+', noise:'70 dB', fuel:'B', type:'Performance', mileage:'30,000 mi', price:'$189' },
+    { name:'Bridgestone Potenza S007', wetGrip:'A', dryBraking:'A', noise:'72 dB', fuel:'C', type:'Performance', mileage:'25,000 mi', price:'$175' },
+    { name:'Continental ExtremeContact', wetGrip:'A-', dryBraking:'A', noise:'69 dB', fuel:'B', type:'Performance', mileage:'35,000 mi', price:'$155' },
+    { name:'Pirelli P Zero', wetGrip:'A', dryBraking:'A+', noise:'71 dB', fuel:'B+', type:'Performance', mileage:'28,000 mi', price:'$199' },
+    { name:'Goodyear Eagle F1', wetGrip:'A', dryBraking:'A', noise:'69 dB', fuel:'A', type:'Performance', mileage:'32,000 mi', price:'$162' },
+    { name:'ContiSportContact 5', wetGrip:'A', dryBraking:'A', noise:'71 dB', fuel:'C', type:'Performance', mileage:'28,000 mi', price:'$169' },
+    { name:'Assurance WeatherReady', wetGrip:'A', dryBraking:'A-', noise:'69 dB', fuel:'B', type:'All-Season', mileage:'50,000 mi', price:'$135' },
+];
+const CMP_SPECS = [['Tire Name','name'],['Type','type'],['Wet Grip','wetGrip'],['Dry Braking','dryBraking'],['Noise','noise'],['Fuel Efficiency','fuel'],['Mileage Est.','mileage'],['Price','price']];
+
+function runComparison() {
+    const a = CMP_DATA[+document.getElementById('cmpA').value];
+    const b = CMP_DATA[+document.getElementById('cmpB').value];
+    document.getElementById('cmp-table').innerHTML = `
+        <thead><tr class="border-b border-slate-200 dark:border-slate-700">
+            <th class="py-3 pe-6 text-start text-xs font-black uppercase tracking-widest text-slate-400">Spec</th>
+            <th class="py-3 px-6 text-center"><span class="inline-block bg-[#CC1F1F]/10 text-[#CC1F1F] text-xs font-black px-3 py-1 rounded-lg">Tire A</span></th>
+            <th class="py-3 ps-6 text-center"><span class="inline-block bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-xs font-black px-3 py-1 rounded-lg">Tire B</span></th>
+        </tr></thead>
+        <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+            ${CMP_SPECS.map(([label,key]) => `
+                <tr class="hover:bg-red-50/50 dark:hover:bg-slate-700/20 transition-colors">
+                    <td class="py-3 pe-6 text-xs font-black uppercase tracking-widest text-slate-400">${label}</td>
+                    <td class="py-3 px-6 text-center font-bold text-sm text-slate-900 dark:text-white">${a[key]}</td>
+                    <td class="py-3 ps-6 text-center font-bold text-sm text-slate-900 dark:text-white">${b[key]}</td>
+                </tr>
+            `).join('')}
+        </tbody>`;
+}
+
+document.addEventListener('DOMContentLoaded', () => { renderTires(TIRES); runComparison(); });
+
+// Wizard Controller Logic
+let wizardData = { vehicle: '', season: '', priority: '' };
+
+function nextStep(step, val) {
+    if (step === 1) {
+        wizardData.vehicle = val;
+        document.getElementById('wizard-step-1').classList.add('hidden');
+        document.getElementById('wizard-step-2').classList.remove('hidden');
+        document.getElementById('wizard-step-label').textContent = 'Step 2 of 3';
+    } else if (step === 2) {
+        wizardData.season = val;
+        document.getElementById('wizard-step-2').classList.add('hidden');
+        document.getElementById('wizard-step-3').classList.remove('hidden');
+        document.getElementById('wizard-step-label').textContent = 'Step 3 of 3';
+    }
+}
+
+function finishWizard(val) {
+    wizardData.priority = val;
+    document.getElementById('wizard-step-3').classList.add('hidden');
+    document.getElementById('wizard-result').classList.remove('hidden');
+    document.getElementById('wizard-step-label').textContent = 'Completed';
+    
+    // Apply automatic filter parameters to grid
+    let matchedTires = TIRES.filter(t => {
+        let matchesType = (t.type === wizardData.vehicle || t.type === 'All-Season' || t.type === 'Performance');
+        if (wizardData.season === 'Winter') {
+            matchesType = t.type === 'Winter';
+        } else if (wizardData.season === 'All-Season') {
+            matchesType = t.type === 'All-Season';
+        }
+        return matchesType;
+    });
+
+    // Sort by priority selection
+    if (wizardData.priority === 'price') {
+        matchedTires.sort((x, y) => x.price - y.price);
+    } else if (wizardData.priority === 'grip') {
+        matchedTires = matchedTires.filter(t => t.wetGrip.includes('A'));
+    } else if (wizardData.priority === 'fuel') {
+        matchedTires = matchedTires.filter(t => t.fuel.includes('A'));
+    }
+
+    renderTires(matchedTires);
+}
+
+function resetWizard() {
+    wizardData = { vehicle: '', season: '', priority: '' };
+    document.getElementById('wizard-result').classList.add('hidden');
+    document.getElementById('wizard-step-1').classList.remove('hidden');
+    document.getElementById('wizard-step-label').textContent = 'Step 1 of 3';
+    renderTires(TIRES);
+}
+</script>
+<script src="components.js"></script>
+</body>
+</html>
+
+

@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en" id="root-html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="TireXpress Pricing — Simple, transparent pricing plans. Basic, Pro, and Elite tiers for individual drivers and fleets.">
+    <title>Pricing | TireXpress Mobile Tire Service</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' stroke='%23CC1F1F' stroke-width='8' fill='none'/><circle cx='50' cy='50' r='18' stroke='%23CC1F1F' stroke-width='8' fill='none'/></svg>">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script>tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#CC1F1F', secondary: '#111827' } } } }</script>
+</head>
+<body class="bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 transition-colors duration-300">
+<div id="page-loader"><div class="flex flex-col items-center gap-4"><div class="loader-spinner"></div><span class="text-xs font-black uppercase tracking-widest text-[#CC1F1F]">Loading...</span></div></div>
+<div id="navbar-container"></div>
+
+<!-- HERO -->
+<section class="relative py-24 bg-slate-950 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-[#CC1F1F]/10 via-transparent to-transparent"></div>
+    <div class="relative z-10 max-w-4xl mx-auto px-4 text-center">
+        <div class="section-label mb-6 mx-auto" style="width:fit-content; background:rgba(204, 31, 31, 0.15);">Pricing</div>
+        <h1 class="text-4xl md:text-6xl font-black text-white tracking-tighter uppercase mb-6" style="font-family:'Outfit',sans-serif;">
+            Simple, <span class="text-[#CC1F1F]">Honest</span> Pricing
+        </h1>
+        <p class="text-slate-300 text-lg max-w-xl mx-auto">Choose the plan that fits your needs. No hidden fees, no surprises.</p>
+    </div>
+</section>
+
+<!-- PRICING CARDS -->
+<section class="py-24 bg-white dark:bg-slate-900">
+    <div class="max-w-7xl mx-auto px-4">
+        
+        <!-- Monthly/Annual Toggle -->
+        <div class="flex items-center justify-center gap-4 mb-14">
+            <span class="text-sm font-black uppercase tracking-wider text-slate-500">Monthly</span>
+            <button id="billing-toggle" class="relative inline-flex h-7 w-14 shrink-0 cursor-pointer rounded-full border-2 border-transparent bg-slate-200 dark:bg-slate-700 transition-colors duration-200 ease-in-out focus:outline-none" role="switch" aria-checked="false">
+                <span id="billing-toggle-thumb" class="pointer-events-none inline-block h-6 w-6 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out translate-x-0"></span>
+            </button>
+            <span class="text-sm font-black uppercase tracking-wider text-slate-500">Annual</span>
+            <span class="badge badge-success text-[10px] px-2.5 py-1">Save 20%</span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 reveal">
+
+            <!-- Basic -->
+            <div class="bg-white dark:bg-slate-800 rounded-3xl p-8 border border-slate-100 dark:border-slate-700 flex flex-col shadow-lg">
+                <div class="mb-7">
+                    <div class="w-12 h-12 bg-slate-100 dark:bg-slate-700 rounded-2xl flex items-center justify-center mb-4">
+                        <i class="fas fa-circle-dot text-[#CC1F1F] text-xl"></i>
+                    </div>
+                    <h3 class="font-black text-2xl dark:text-white mb-1" style="font-family:'Outfit',sans-serif;">Basic</h3>
+                    <p class="text-slate-500 text-sm">For occasional tire service needs</p>
+                </div>
+                <div class="flex items-end gap-1 mb-8 border-b border-slate-100 dark:border-slate-700 pb-8">
+                    <span class="text-5xl font-black text-slate-900 dark:text-white" style="font-family:'Outfit',sans-serif;">$49</span>
+                    <span class="text-slate-400 mb-2">/service</span>
+                </div>
+                <ul class="space-y-3.5 mb-8 flex-grow">
+                    <li class="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-400"><i class="fas fa-check w-5 text-green-500 shrink-0"></i> Single flat repair service</li>
+                    <li class="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-400"><i class="fas fa-check w-5 text-green-500 shrink-0"></i> 60-minute response guarantee</li>
+                    <li class="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-400"><i class="fas fa-check w-5 text-green-500 shrink-0"></i> Post-service safety check</li>
+                    <li class="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-400"><i class="fas fa-check w-5 text-green-500 shrink-0"></i> Digital invoice</li>
+                    <li class="flex items-center gap-3 text-sm text-slate-500 dark:text-slate-500"><i class="fas fa-times w-5 text-slate-300 shrink-0"></i> No rotation discount</li>
+                    <li class="flex items-center gap-3 text-sm text-slate-500 dark:text-slate-500"><i class="fas fa-times w-5 text-slate-300 shrink-0"></i> No priority dispatch</li>
+                    <li class="flex items-center gap-3 text-sm text-slate-500 dark:text-slate-500"><i class="fas fa-times w-5 text-slate-300 shrink-0"></i> No dashboard history</li>
+                </ul>
+                <a href="signup.html" class="btn-secondary w-full py-4 rounded-xl text-sm text-center">Get Started</a>
+            </div>
+
+            <!-- Pro (Popular) -->
+            <div class="bg-white dark:bg-slate-800 rounded-3xl p-8 border-2 border-[#CC1F1F] pricing-popular flex flex-col shadow-2xl shadow-[#CC1F1F]/15 relative">
+                <div class="absolute -top-5 left-1/2 -translate-x-1/2 whitespace-nowrap">
+                    <span class="bg-[#CC1F1F] text-white text-xs font-black px-6 py-2 rounded-full uppercase tracking-wider shadow-lg whitespace-nowrap">⭐ Most Popular</span>
+                </div>
+                <div class="mb-7 mt-3">
+                    <div class="w-12 h-12 bg-[#CC1F1F]/10 rounded-2xl flex items-center justify-center mb-4">
+                        <i class="fas fa-bolt text-[#CC1F1F] text-xl"></i>
+                    </div>
+                    <h3 class="font-black text-2xl dark:text-white mb-1" style="font-family:'Outfit',sans-serif;">Pro</h3>
+                    <p class="text-slate-500 text-sm">For regular drivers who want peace of mind</p>
+                </div>
+                <div class="flex items-end gap-1 mb-8 border-b border-slate-100 dark:border-slate-700 pb-8">
+                    <span class="text-5xl font-black text-[#CC1F1F] pricing-val-pro" data-monthly="129" data-annual="99" style="font-family:'Outfit',sans-serif;">$129</span>
+                    <span class="text-slate-400 mb-2 billing-period">/month</span>
+                </div>
+                <ul class="space-y-3.5 mb-8 flex-grow">
+                    <li class="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-400"><i class="fas fa-check w-5 text-green-500 shrink-0"></i> Unlimited flat repairs</li>
+                    <li class="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-400"><i class="fas fa-check w-5 text-green-500 shrink-0"></i> 2 tire installations/month</li>
+                    <li class="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-400"><i class="fas fa-check w-5 text-green-500 shrink-0"></i> Free tire rotation (quarterly)</li>
+                    <li class="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-400"><i class="fas fa-check w-5 text-green-500 shrink-0"></i> Priority 30-min response</li>
+                    <li class="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-400"><i class="fas fa-check w-5 text-green-500 shrink-0"></i> Full dashboard access</li>
+                    <li class="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-400"><i class="fas fa-check w-5 text-green-500 shrink-0"></i> Service history & invoices</li>
+                    <li class="flex items-center gap-3 text-sm text-slate-500 dark:text-slate-500"><i class="fas fa-times w-5 text-slate-300 shrink-0"></i> No fleet management</li>
+                </ul>
+                <a href="signup.html" class="btn-primary w-full py-4 rounded-xl text-sm text-center">Choose Pro</a>
+            </div>
+
+            <!-- Elite -->
+            <div class="bg-white dark:bg-slate-800 rounded-3xl p-8 border border-slate-100 dark:border-slate-700 flex flex-col shadow-lg">
+                <div class="mb-7">
+                    <div class="w-12 h-12 bg-slate-900/10 dark:bg-white/10 rounded-2xl flex items-center justify-center mb-4">
+                        <i class="fas fa-crown text-slate-900 dark:text-white text-xl"></i>
+                    </div>
+                    <h3 class="font-black text-2xl dark:text-white mb-1" style="font-family:'Outfit',sans-serif;">Elite</h3>
+                    <p class="text-slate-500 text-sm">For fleets and high-volume users</p>
+                </div>
+                <div class="flex items-end gap-1 mb-8 border-b border-slate-100 dark:border-slate-700 pb-8">
+                    <span class="text-5xl font-black text-slate-900 dark:text-white pricing-val-elite" data-monthly="299" data-annual="239" style="font-family:'Outfit',sans-serif;">$299</span>
+                    <span class="text-slate-400 mb-2 billing-period">/month</span>
+                </div>
+                <ul class="space-y-3.5 mb-8 flex-grow">
+                    <li class="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-400"><i class="fas fa-check w-5 text-green-500 shrink-0"></i> Unlimited all services</li>
+                    <li class="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-400"><i class="fas fa-check w-5 text-green-500 shrink-0"></i> Dedicated account manager</li>
+                    <li class="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-400"><i class="fas fa-check w-5 text-green-500 shrink-0"></i> 15-min priority response</li>
+                    <li class="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-400"><i class="fas fa-check w-5 text-green-500 shrink-0"></i> Multi-vehicle fleet support</li>
+                    <li class="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-400"><i class="fas fa-check w-5 text-green-500 shrink-0"></i> Monthly fleet health reports</li>
+                    <li class="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-400"><i class="fas fa-check w-5 text-green-500 shrink-0"></i> Custom billing & invoicing</li>
+                    <li class="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-400"><i class="fas fa-check w-5 text-green-500 shrink-0"></i> API integration for dispatch</li>
+                </ul>
+                <a href="contact.html" class="btn-secondary w-full py-4 rounded-xl text-sm text-center">Contact Sales</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- COMPARISON TABLE -->
+<section class="py-12 bg-slate-50 dark:bg-slate-950 pb-24">
+    <div class="max-w-4xl mx-auto px-4">
+        <div class="text-center mb-12 reveal">
+            <h2 class="text-2xl md:text-3xl font-black dark:text-white tracking-tighter uppercase" style="font-family:'Outfit',sans-serif;">
+                Full <span class="text-[#CC1F1F]">Feature Comparison</span>
+            </h2>
+        </div>
+        <div class="bg-white dark:bg-slate-800 rounded-3xl border border-slate-100 dark:border-slate-700 overflow-hidden shadow-lg reveal">
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm">
+                    <thead>
+                        <tr class="bg-slate-50 dark:bg-slate-900/50 border-b border-slate-100 dark:border-slate-700">
+                            <th class="py-4 px-6 text-start text-xs font-black uppercase tracking-widest text-slate-400">Feature</th>
+                            <th class="py-4 px-6 text-center text-xs font-black uppercase tracking-widest text-slate-600 dark:text-slate-300">Basic</th>
+                            <th class="py-4 px-6 text-center">
+                                <span class="inline-block bg-[#CC1F1F]/10 text-[#CC1F1F] text-xs font-black px-3 py-1 rounded-lg">Pro</span>
+                            </th>
+                            <th class="py-4 px-6 text-center text-xs font-black uppercase tracking-widest text-slate-600 dark:text-slate-300">Elite</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100 dark:divide-slate-700/50">
+                        <tr class="hover:bg-red-50/30 dark:hover:bg-slate-700/20 transition-colors"><td class="py-4 px-6 font-medium text-slate-700 dark:text-slate-300">Flat Repair</td><td class="py-4 px-6 text-center"><span class="text-green-500 font-black">Per call</span></td><td class="py-4 px-6 text-center"><span class="text-green-500 font-black">Unlimited</span></td><td class="py-4 px-6 text-center"><span class="text-green-500 font-black">Unlimited</span></td></tr>
+                        <tr class="hover:bg-red-50/30 dark:hover:bg-slate-700/20 transition-colors"><td class="py-4 px-6 font-medium text-slate-700 dark:text-slate-300">Tire Installation</td><td class="py-4 px-6 text-center"><span class="text-slate-400">$89/tire</span></td><td class="py-4 px-6 text-center"><span class="text-green-500 font-black">2/month</span></td><td class="py-4 px-6 text-center"><span class="text-green-500 font-black">Unlimited</span></td></tr>
+                        <tr class="hover:bg-red-50/30 dark:hover:bg-slate-700/20 transition-colors"><td class="py-4 px-6 font-medium text-slate-700 dark:text-slate-300">Tire Rotation</td><td class="py-4 px-6 text-center"><span class="text-slate-400">$39</span></td><td class="py-4 px-6 text-center"><span class="text-green-500 font-black">Quarterly Free</span></td><td class="py-4 px-6 text-center"><span class="text-green-500 font-black">Unlimited</span></td></tr>
+                        <tr class="hover:bg-red-50/30 dark:hover:bg-slate-700/20 transition-colors"><td class="py-4 px-6 font-medium text-slate-700 dark:text-slate-300">Response Time</td><td class="py-4 px-6 text-center font-bold text-slate-600 dark:text-slate-300">60 min</td><td class="py-4 px-6 text-center font-bold text-[#CC1F1F]">30 min</td><td class="py-4 px-6 text-center font-bold text-[#CC1F1F]">15 min</td></tr>
+                        <tr class="hover:bg-red-50/30 dark:hover:bg-slate-700/20 transition-colors"><td class="py-4 px-6 font-medium text-slate-700 dark:text-slate-300">Dashboard Access</td><td class="py-4 px-6 text-center"><i class="fas fa-times text-red-400"></i></td><td class="py-4 px-6 text-center"><i class="fas fa-check text-green-500"></i></td><td class="py-4 px-6 text-center"><i class="fas fa-check text-green-500"></i></td></tr>
+                        <tr class="hover:bg-red-50/30 dark:hover:bg-slate-700/20 transition-colors"><td class="py-4 px-6 font-medium text-slate-700 dark:text-slate-300">Fleet Management</td><td class="py-4 px-6 text-center"><i class="fas fa-times text-red-400"></i></td><td class="py-4 px-6 text-center"><i class="fas fa-times text-red-400"></i></td><td class="py-4 px-6 text-center"><i class="fas fa-check text-green-500"></i></td></tr>
+                        <tr class="hover:bg-red-50/30 dark:hover:bg-slate-700/20 transition-colors"><td class="py-4 px-6 font-medium text-slate-700 dark:text-slate-300">Account Manager</td><td class="py-4 px-6 text-center"><i class="fas fa-times text-red-400"></i></td><td class="py-4 px-6 text-center"><i class="fas fa-times text-red-400"></i></td><td class="py-4 px-6 text-center"><i class="fas fa-check text-green-500"></i></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== ADD-ON SERVICES ===== -->
+<section class="py-12 bg-white dark:bg-slate-900 transition-colors duration-300">
+    <div class="max-w-4xl mx-auto px-4">
+        <div class="text-center mb-10 reveal">
+            <h3 class="text-2xl font-black dark:text-white uppercase mb-2" style="font-family:'Outfit',sans-serif;">Add-On Services</h3>
+            <p class="text-slate-500 dark:text-slate-400 text-sm">Need a single specialized task? Add these to any service call.</p>
+        </div>
+        <div class="bg-slate-50 dark:bg-slate-800 rounded-3xl p-6 border border-slate-100 dark:border-slate-700 reveal">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="flex justify-between items-center p-3 border-b border-slate-200/50 dark:border-slate-700/50">
+                    <span class="text-sm font-bold dark:text-slate-300">Nitrogen Inflation (set of 4)</span>
+                    <span class="font-black text-[#CC1F1F] text-sm">$25</span>
+                </div>
+                <div class="flex justify-between items-center p-3 border-b border-slate-200/50 dark:border-slate-700/50">
+                    <span class="text-sm font-bold dark:text-slate-300">Emergency Fuel Delivery</span>
+                    <span class="font-black text-[#CC1F1F] text-sm">$35</span>
+                </div>
+                <div class="flex justify-between items-center p-3 border-b border-slate-200/50 dark:border-slate-700/50">
+                    <span class="text-sm font-bold dark:text-slate-300">Wheel Lock Removal</span>
+                    <span class="font-black text-[#CC1F1F] text-sm">$45</span>
+                </div>
+                <div class="flex justify-between items-center p-3 border-b border-slate-200/50 dark:border-slate-700/50">
+                    <span class="text-sm font-bold dark:text-slate-300">TPMS Sensor Replacement</span>
+                    <span class="font-black text-[#CC1F1F] text-sm">$65/ea</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== ENTERPRISE INQUIRY FORM ===== -->
+<section class="py-24 bg-slate-50 dark:bg-slate-950 transition-colors duration-300">
+    <div class="max-w-xl mx-auto px-4 reveal">
+        <div class="bg-white dark:bg-slate-900 rounded-[2.5rem] border border-slate-100 dark:border-slate-800 p-8 md:p-10 shadow-2xl relative">
+            <div class="absolute -top-12 -left-12 w-28 h-28 bg-[#CC1F1F]/5 rounded-full blur-2xl"></div>
+            <div class="text-center mb-8">
+                <h3 class="text-2xl font-black dark:text-white uppercase" style="font-family:'Outfit',sans-serif;">Fleet & Enterprise Quote</h3>
+                <p class="text-slate-500 dark:text-slate-400 text-xs mt-1">Have a fleet of 5+ vehicles? Send us an inquiry for custom discount schemes.</p>
+            </div>
+            <form id="enterprise-form" class="space-y-4" onsubmit="event.preventDefault(); alert('Enterprise request submitted! Our Fleet Director will contact you within 2 hours.'); this.reset();">
+                <div>
+                    <label class="block text-xs font-black uppercase tracking-widest text-slate-400 mb-1">Company Name</label>
+                    <input type="text" required placeholder="Fleet Logistics Inc" class="form-input dark:bg-slate-800 dark:border-slate-700">
+                </div>
+                <div>
+                    <label class="block text-xs font-black uppercase tracking-widest text-slate-400 mb-1">Fleet Size</label>
+                    <div class="relative">
+                        <select class="form-input dark:bg-slate-800 dark:border-slate-700 font-bold appearance-none cursor-pointer pr-10">
+                            <option class="dark:bg-slate-800">5 - 15 Vehicles</option>
+                            <option class="dark:bg-slate-800">16 - 50 Vehicles</option>
+                            <option class="dark:bg-slate-800">50+ Vehicles</option>
+                        </select>
+                        <i class="fas fa-chevron-down absolute right-4 top-1/2 -translate-y-1/2 text-xs text-[#CC1F1F] pointer-events-none"></i>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-black uppercase tracking-widest text-slate-400 mb-1">Contact Email</label>
+                    <input type="email" required placeholder="manager@company.com" class="form-input dark:bg-slate-800 dark:border-slate-700">
+                </div>
+                <button type="submit" class="btn-primary w-full py-3.5 rounded-xl text-sm">
+                    <span class="flex items-center justify-center gap-2">
+                        <span>Request Custom Proposal</span>
+                        <i class="fas fa-arrow-right text-xs"></i>
+                    </span>
+                </button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section class="py-24 bg-white dark:bg-slate-900">
+    <div class="max-w-3xl mx-auto px-4">
+        <div class="text-center mb-14 reveal">
+            <h2 class="text-3xl font-black dark:text-white tracking-tighter uppercase mb-2" style="font-family:'Outfit',sans-serif;">Pricing <span class="text-[#CC1F1F]">FAQs</span></h2>
+        </div>
+        <div class="space-y-3 reveal" id="pricing-faq"></div>
+    </div>
+</section>
+
+<!-- CUSTOM CTA: FLEET OPERATIONS -->
+<section class="py-24 bg-slate-900 border-t border-slate-800 text-white relative overflow-hidden transition-colors duration-300">
+    <div class="noise-overlay"></div>
+    <div class="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-[#CC1F1F]/10 rounded-full blur-[120px] pointer-events-none"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div class="space-y-6 reveal-left">
+                <div class="section-label bg-white/10 border-white/20 text-white" style="width:fit-content;">Fleet & Business</div>
+                <h2 class="text-4xl md:text-5xl font-black tracking-tighter leading-tight uppercase text-white" style="font-family:'Outfit',sans-serif;">
+                    Manage a Fleet of <span class="text-[#CC1F1F]">Vehicles?</span>
+                  </h2>
+                <p class="text-slate-400 text-lg leading-relaxed">
+                    Minimize vehicle downtime and keep your operations moving. TireXpress offers customized on-site tire servicing, scheduled inspections, and priority roadside dispatches for business fleets.
+                </p>
+                <div class="flex flex-wrap gap-4 pt-2">
+                    <a href="contact.html" class="btn-primary px-8 py-4 rounded-xl text-xs font-black uppercase tracking-wider transition-all shadow-xl">
+                        Request Custom Proposal
+                    </a>
+                    <a href="tel:+15550123456" class="inline-flex items-center gap-3 bg-slate-800 text-white border border-slate-700 px-6 py-4 rounded-xl font-black uppercase tracking-wider text-xs hover:bg-slate-700 transition-all shadow-xl">
+                        <i class="fas fa-phone text-[#CC1F1F] text-sm animate-pulse"></i> Call Fleet Director
+                    </a>
+                </div>
+            </div>
+            <div class="grid grid-cols-2 gap-4 reveal-right">
+                <div class="p-6 bg-slate-950/60 border border-slate-800 rounded-3xl text-center">
+                    <i class="fas fa-shield-halved text-2xl text-[#CC1F1F] mb-3"></i>
+                    <h4 class="font-black text-sm text-white" style="font-family:'Outfit',sans-serif;">Full SLA Coverage</h4>
+                    <p class="text-xs text-slate-500 mt-2">Guaranteed arrival in under 30 minutes</p>
+                </div>
+                <div class="p-6 bg-slate-950/60 border border-slate-800 rounded-3xl text-center">
+                    <i class="fas fa-tags text-2xl text-green-500 mb-3"></i>
+                    <h4 class="font-black text-sm text-white" style="font-family:'Outfit',sans-serif;">Volume Discounts</h4>
+                    <p class="text-xs text-slate-500 mt-2">Discounted flat rates for 5+ vehicles</p>
+                </div>
+                <div class="p-6 bg-slate-950/60 border border-slate-800 rounded-3xl text-center">
+                    <i class="fas fa-file-invoice-dollar text-2xl text-blue-500 mb-3"></i>
+                    <h4 class="font-black text-sm text-white" style="font-family:'Outfit',sans-serif;">Consolidated Invoices</h4>
+                    <p class="text-xs text-slate-500 mt-2">One billing cycle for your whole fleet</p>
+                </div>
+                <div class="p-6 bg-slate-950/60 border border-slate-800 rounded-3xl text-center">
+                    <i class="fas fa-van-shuttle text-2xl text-amber-500 mb-3"></i>
+                    <h4 class="font-black text-sm text-white" style="font-family:'Outfit',sans-serif;">On-Site Support</h4>
+                    <p class="text-xs text-slate-500 mt-2">Hydraulic mounting rigs sent to your yard</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div id="footer-container"></div>
+<script>
+const PFAQS = [
+    { q: 'Can I cancel my monthly plan?', a: 'Yes, you can cancel anytime. There are no long-term contracts. Your plan will remain active until the end of the billing period.' },
+    { q: 'Are there any sign-up fees?', a: 'No sign-up fees whatsoever. The price shown is exactly what you pay — nothing more.' },
+    { q: 'Can I upgrade or downgrade my plan?', a: 'Absolutely. You can switch plans at any time from your customer dashboard. Changes take effect on your next billing cycle.' },
+    { q: 'Do one-off services (Basic) cover labor and parts?', a: 'Labor is included in all service prices. Replacement tires are charged separately based on the brand and size selected.' },
+];
+document.getElementById('pricing-faq').innerHTML = PFAQS.map((faq, i) => `
+    <div class="bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 rounded-2xl overflow-hidden">
+        <button onclick="toggleFaq(${i})" class="w-full flex items-center justify-between p-6 text-start font-black text-sm dark:text-white hover:text-[#CC1F1F] transition-colors" style="font-family:'Outfit',sans-serif;">
+            ${faq.q} <i class="fas fa-chevron-down text-xs text-[#CC1F1F] transition-transform duration-300" id="pi-${i}"></i>
+        </button>
+        <div class="accordion-content" id="pc-${i}">
+            <div class="px-6 pb-6 text-sm text-slate-500 dark:text-slate-400 leading-relaxed">${faq.a}</div>
+        </div>
+    </div>
+`).join('');
+
+function toggleFaq(i) {
+    const c = document.getElementById(`pc-${i}`);
+    const icon = document.getElementById(`pi-${i}`);
+    c.classList.toggle('open');
+    icon.style.transform = c.classList.contains('open') ? 'rotate(180deg)' : '';
+}
+
+// Pricing Toggle Script
+const toggleBtn = document.getElementById('billing-toggle');
+const toggleThumb = document.getElementById('billing-toggle-thumb');
+const proVal = document.querySelector('.pricing-val-pro');
+const eliteVal = document.querySelector('.pricing-val-elite');
+const periods = document.querySelectorAll('.billing-period');
+
+if (toggleBtn) {
+    toggleBtn.addEventListener('click', () => {
+        const isAnnual = toggleBtn.getAttribute('aria-checked') === 'true';
+        toggleBtn.setAttribute('aria-checked', !isAnnual);
+        
+        if (!isAnnual) {
+            // Switch to annual
+            toggleBtn.classList.remove('bg-slate-200', 'dark:bg-slate-700');
+            toggleBtn.classList.add('bg-[#CC1F1F]');
+            toggleThumb.style.transform = 'translateX(28px)';
+            
+            proVal.textContent = `$${proVal.getAttribute('data-annual')}`;
+            eliteVal.textContent = `$${eliteVal.getAttribute('data-annual')}`;
+            periods.forEach(p => p.textContent = '/month, billed annually');
+        } else {
+            // Switch to monthly
+            toggleBtn.classList.remove('bg-[#CC1F1F]');
+            toggleBtn.classList.add('bg-slate-200', 'dark:bg-slate-700');
+            toggleThumb.style.transform = 'translateX(0)';
+            
+            proVal.textContent = `$${proVal.getAttribute('data-monthly')}`;
+            eliteVal.textContent = `$${eliteVal.getAttribute('data-monthly')}`;
+            periods.forEach(p => p.textContent = '/month');
+        }
+    });
+}
+</script>
+<script src="components.js"></script>
+</body>
+</html>
+
+

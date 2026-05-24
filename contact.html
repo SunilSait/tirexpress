@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en" id="root-html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact TireXpress — Get in touch for emergency tire service, fleet quotes, or general inquiries. Available 24/7.">
+    <title>Contact Us | TireXpress Mobile Tire Service</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' stroke='%23CC1F1F' stroke-width='8' fill='none'/><circle cx='50' cy='50' r='18' stroke='%23CC1F1F' stroke-width='8' fill='none'/></svg>">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script>tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#CC1F1F', secondary: '#111827' } } } }</script>
+</head>
+<body class="bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 transition-colors duration-300">
+<div id="page-loader"><div class="flex flex-col items-center gap-4"><div class="loader-spinner"></div><span class="text-xs font-black uppercase tracking-widest text-[#CC1F1F]">Loading...</span></div></div>
+<div id="navbar-container"></div>
+
+<!-- HERO -->
+<section class="relative py-24 bg-slate-950 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-[#CC1F1F]/10 to-transparent"></div>
+    <div class="relative z-10 max-w-4xl mx-auto px-4 text-center">
+        <div class="section-label mb-6 mx-auto" style="width:fit-content; background:rgba(204, 31, 31, 0.15);">Contact Us</div>
+        <h1 class="text-4xl md:text-6xl font-black text-white tracking-tighter uppercase mb-6" style="font-family:'Outfit',sans-serif;">
+            We're Here <span class="text-[#CC1F1F]">24/7</span>
+        </h1>
+        <p class="text-slate-300 text-lg max-w-xl mx-auto">Emergency flat? Fleet inquiry? General question? Reach out — we'll respond within minutes.</p>
+    </div>
+</section>
+
+<!-- CONTACT SECTION -->
+<section class="py-24 bg-white dark:bg-slate-900">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="grid lg:grid-cols-2 gap-16 items-start">
+            <!-- Info Cards -->
+            <div class="space-y-6 reveal-left">
+                <div>
+                    <div class="section-label mb-4">Get in Touch</div>
+                    <h2 class="text-3xl md:text-4xl font-black dark:text-white tracking-tighter uppercase mb-4" style="font-family:'Outfit',sans-serif;">
+                        Contact <span class="text-[#CC1F1F]">Information</span>
+                    </h2>
+                    <p class="text-slate-600 dark:text-slate-300 leading-relaxed">Our team is available around the clock. Call, email, or fill out the form and we'll get back to you immediately.</p>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="flex items-start gap-5 p-5 bg-slate-50 dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 hover:border-[#CC1F1F]/30 transition-all group">
+                        <div class="w-12 h-12 bg-[#CC1F1F]/10 rounded-2xl flex items-center justify-center text-[#CC1F1F] shrink-0 group-hover:bg-[#CC1F1F] group-hover:text-white transition-colors"><i class="fas fa-phone text-lg"></i></div>
+                        <div>
+                            <p class="font-black dark:text-white mb-0.5" style="font-family:'Outfit',sans-serif;">Emergency Line (24/7)</p>
+                            <a href="tel:+15550123456" class="text-[#CC1F1F] font-bold hover:underline">(555) 012-3456</a>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-5 p-5 bg-slate-50 dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 hover:border-[#CC1F1F]/30 transition-all group">
+                        <div class="w-12 h-12 bg-[#CC1F1F]/10 rounded-2xl flex items-center justify-center text-[#CC1F1F] shrink-0 group-hover:bg-[#CC1F1F] group-hover:text-white transition-colors"><i class="fas fa-envelope text-lg"></i></div>
+                        <div>
+                            <p class="font-black dark:text-white mb-0.5" style="font-family:'Outfit',sans-serif;">Email Us</p>
+                            <a href="mailto:hello@tirexpress.com" class="text-[#CC1F1F] font-bold hover:underline">hello@tirexpress.com</a>
+                            <p class="text-xs text-slate-500 mt-0.5">We reply within 2 hours</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-5 p-5 bg-slate-50 dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 hover:border-[#CC1F1F]/30 transition-all group">
+                        <div class="w-12 h-12 bg-[#CC1F1F]/10 rounded-2xl flex items-center justify-center text-[#CC1F1F] shrink-0 group-hover:bg-[#CC1F1F] group-hover:text-white transition-colors"><i class="fas fa-location-dot text-lg"></i></div>
+                        <div>
+                            <p class="font-black dark:text-white mb-0.5" style="font-family:'Outfit',sans-serif;">Service Area</p>
+                            <p class="text-slate-600 dark:text-slate-400 text-sm">25+ cities. We come to your location — no shop visit needed.</p>
+                        </div>
+                    </div>
+
+                    <!-- Office Hours Grid -->
+                    <div class="bg-slate-50 dark:bg-slate-800 rounded-3xl p-6 border border-slate-100 dark:border-slate-700 hover:border-[#CC1F1F]/30 transition-all">
+                        <h3 class="font-black text-sm uppercase tracking-widest text-[#CC1F1F] mb-4" style="font-family:'Outfit',sans-serif;">⏰ Active Coverage Hours</h3>
+                        <div class="grid grid-cols-2 gap-3 text-xs">
+                            <div class="p-3 bg-white dark:bg-slate-900 rounded-xl border border-slate-100 dark:border-slate-700/50">
+                                <span class="block font-black text-slate-400">Emergency Dispatch</span>
+                                <span class="block font-black text-slate-700 dark:text-slate-200 mt-1 uppercase tracking-wider text-[10px]">24 Hours / 7 Days</span>
+                            </div>
+                            <div class="p-3 bg-white dark:bg-slate-900 rounded-xl border border-slate-100 dark:border-slate-700/50">
+                                <span class="block font-black text-slate-400">Scheduled Fittings</span>
+                                <span class="block font-black text-slate-700 dark:text-slate-200 mt-1 uppercase tracking-wider text-[10px]">07:00 AM - 09:00 PM</span>
+                            </div>
+                            <div class="p-3 bg-white dark:bg-slate-900 rounded-xl border border-slate-100 dark:border-slate-700/50">
+                                <span class="block font-black text-slate-400">Fleet Operations</span>
+                                <span class="block font-black text-slate-700 dark:text-slate-200 mt-1 uppercase tracking-wider text-[10px]">06:00 AM - 10:00 PM</span>
+                            </div>
+                            <div class="p-3 bg-white dark:bg-slate-900 rounded-xl border border-slate-100 dark:border-slate-700/50">
+                                <span class="block font-black text-slate-400">Customer Support</span>
+                                <span class="block font-black text-slate-700 dark:text-slate-200 mt-1 uppercase tracking-wider text-[10px]">08:00 AM - 08:00 PM</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Contact Form -->
+            <div class="bg-white dark:bg-slate-800 rounded-3xl shadow-2xl border border-slate-100 dark:border-slate-700 p-8 md:p-10 reveal-right">
+                <h3 class="text-2xl font-black dark:text-white mb-1" style="font-family:'Outfit',sans-serif;">Send Us a Message</h3>
+                <p class="text-slate-500 text-sm mb-8">Fill out the form and we'll get back to you within 2 hours.</p>
+                <form id="contact-form" class="space-y-5" onsubmit="submitContact(event)">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-black uppercase tracking-widest text-slate-400 mb-1.5">First Name</label>
+                            <input type="text" placeholder="John" class="form-input dark:bg-slate-900 dark:border-slate-700 dark:text-white" required>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-black uppercase tracking-widest text-slate-400 mb-1.5">Last Name</label>
+                            <input type="text" placeholder="Doe" class="form-input dark:bg-slate-900 dark:border-slate-700 dark:text-white" required>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-black uppercase tracking-widest text-slate-400 mb-1.5">Email Address</label>
+                        <input type="email" placeholder="john@example.com" class="form-input dark:bg-slate-900 dark:border-slate-700 dark:text-white" required>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-black uppercase tracking-widest text-slate-400 mb-1.5">Phone Number</label>
+                        <input type="tel" placeholder="+1 (555) 000-0000" class="form-input dark:bg-slate-900 dark:border-slate-700 dark:text-white">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-black uppercase tracking-widest text-slate-400 mb-1.5">Subject</label>
+                        <div class="relative">
+                            <select class="form-input appearance-none cursor-pointer dark:bg-slate-900 dark:border-slate-700 dark:text-white font-bold pr-10">
+                                <option>Emergency Flat Tire</option>
+                                <option>Tire Installation Inquiry</option>
+                                <option>Fleet Service Quote</option>
+                                <option>Pricing Question</option>
+                                <option>General Inquiry</option>
+                            </select>
+                            <div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-[#CC1F1F]"><i class="fas fa-chevron-down text-xs"></i></div>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-black uppercase tracking-widest text-slate-400 mb-1.5">Message</label>
+                        <textarea rows="4" placeholder="Describe your situation, vehicle type, or question..." class="form-input dark:bg-slate-900 dark:border-slate-700 dark:text-white resize-none" required></textarea>
+                    </div>
+                    <button type="submit" id="submit-btn" class="btn-primary w-full py-4 rounded-xl text-sm flex items-center justify-center gap-2">
+                        Send Message <i class="fas fa-paper-plane text-xs"></i>
+                    </button>
+                    <div id="contact-success" class="hidden p-4 bg-green-50 dark:bg-green-900/20 rounded-xl border border-green-200 dark:border-green-800 text-center">
+                        <i class="fas fa-circle-check text-green-500 text-xl mb-2 block"></i>
+                        <p class="font-black text-green-700 dark:text-green-400 text-sm">Message sent! We'll reply within 2 hours.</p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CENTERED COVERAGE MAP -->
+<section class="py-12 bg-white dark:bg-slate-900 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 reveal animate-fade-in">
+        <div class="bg-slate-100 dark:bg-slate-800 rounded-[2.5rem] overflow-hidden h-[450px] border border-slate-200 dark:border-slate-700 relative shadow-2xl">
+            <img src="assets/map.png" alt="Service Coverage Map" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent flex flex-col justify-end p-8 md:p-12">
+                <div class="max-w-xl">
+                    <div class="section-label mb-4" style="background:rgba(204, 31, 31, 0.15);">Active Coverage Zone</div>
+                    <h3 class="text-2xl md:text-4xl font-black text-white uppercase tracking-tight mb-2" style="font-family:'Outfit',sans-serif;">Our Service Area Map</h3>
+                    <p class="text-sm text-slate-300">We operate dynamic dispatch centers in 25+ metro cities and adjacent highway routes. Wherever you are, our nearest mobile unit will locate you within 60 minutes.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- EMERGENCY CTA -->
+<section class="py-16 bg-red-600">
+    <div class="max-w-4xl mx-auto px-4 text-center reveal">
+        <div class="flex items-center justify-center gap-3 mb-4">
+            <span class="relative flex h-3 w-3"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span><span class="relative inline-flex h-3 w-3 rounded-full bg-white"></span></span>
+            <span class="text-white/80 text-xs font-black uppercase tracking-widest">Emergency? Don't Wait</span>
+        </div>
+        <h2 class="text-2xl md:text-4xl font-black text-white uppercase mb-4" style="font-family:'Outfit',sans-serif;">Stranded? Call Now</h2>
+        <p class="text-red-100 mb-8">Our emergency line is active 24/7. Average arrival time: 48 minutes.</p>
+        <a href="tel:+15550123456"><button class="bg-white text-red-600 px-12 py-4 rounded-xl font-black uppercase tracking-widest text-sm hover:bg-red-50 transition-all shadow-xl flex items-center justify-center gap-3 mx-auto"><i class="fas fa-phone-volume"></i> (555) 012-3456</button></a>
+    </div>
+</section>
+
+<div id="footer-container"></div>
+
+<!-- Live Chat Widget -->
+<div id="live-chat-widget" class="fixed bottom-6 right-6 z-[60] flex flex-col items-end">
+    <!-- Chat box -->
+    <div id="chat-box" class="w-80 h-96 bg-white dark:bg-slate-800 rounded-3xl border border-slate-250 dark:border-slate-700 shadow-2xl flex-col justify-between overflow-hidden hidden transition-all duration-300 transform scale-95 origin-bottom-right">
+        <!-- Header -->
+        <div class="bg-[#CC1F1F] p-4 flex justify-between items-center text-white">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center"><i class="fas fa-headset text-sm"></i></div>
+                <div class="text-left">
+                    <span class="block text-xs font-black uppercase tracking-wider leading-none">Support Desk</span>
+                    <span class="block text-[8px] text-green-200 mt-1 leading-none font-bold uppercase tracking-widest animate-pulse">● online</span>
+                </div>
+            </div>
+            <button onclick="toggleChat()" class="text-white/80 hover:text-white"><i class="fas fa-times text-sm"></i></button>
+        </div>
+        <!-- Messages -->
+        <div class="flex-1 p-4 overflow-y-auto space-y-3 bg-slate-50 dark:bg-slate-900 text-xs" id="chat-messages">
+            <div class="flex gap-2">
+                <div class="w-6 h-6 rounded-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center text-[10px] text-slate-600 font-bold shrink-0">TX</div>
+                <div class="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 p-2.5 rounded-2xl rounded-tl-none border border-slate-200/50 dark:border-slate-700/50 max-w-[80%] text-left">
+                    Hello! Stuck with a tire emergency? Or looking for a fitting quote? How can we help you today?
+                </div>
+            </div>
+        </div>
+        <!-- Input -->
+        <form class="p-3 border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 flex gap-2" onsubmit="sendChat(event)">
+            <input type="text" id="chat-input" placeholder="Type a message..." required class="flex-1 px-3 py-2 text-xs bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl outline-none focus:border-[#CC1F1F]">
+            <button type="submit" class="bg-[#CC1F1F] hover:bg-[#a81818] text-white w-8 h-8 rounded-xl flex items-center justify-center shrink-0 transition-colors"><i class="fas fa-paper-plane text-xs"></i></button>
+        </form>
+    </div>
+    <!-- Toggle button -->
+    <button onclick="toggleChat()" class="w-14 h-14 bg-[#CC1F1F] hover:bg-[#a81818] text-white rounded-full flex items-center justify-center shadow-2xl transition-all hover:scale-105 active:scale-95" id="chat-toggle-btn">
+        <i class="fas fa-comments text-xl"></i>
+    </button>
+</div>
+
+<script>
+function submitContact(e) {
+    e.preventDefault();
+    const btn = document.getElementById('submit-btn');
+    btn.innerHTML = '<i class="fas fa-circle-notch animate-spin-slow"></i> Sending...';
+    btn.disabled = true;
+    setTimeout(() => {
+        document.getElementById('contact-form').classList.add('hidden');
+        document.getElementById('contact-success').classList.remove('hidden');
+    }, 1800);
+}
+
+function toggleChat() {
+    const box = document.getElementById('chat-box');
+    const toggleBtn = document.getElementById('chat-toggle-btn');
+    const isHidden = box.classList.toggle('hidden');
+    box.classList.toggle('flex', !isHidden);
+    
+    // Switch icon when open
+    toggleBtn.innerHTML = isHidden ? '<i class="fas fa-comments text-xl"></i>' : '<i class="fas fa-times text-xl"></i>';
+}
+
+function sendChat(e) {
+    e.preventDefault();
+    const input = document.getElementById('chat-input');
+    const msg = input.value.trim();
+    if (!msg) return;
+
+    const container = document.getElementById('chat-messages');
+    
+    // User message
+    container.innerHTML += `
+        <div class="flex gap-2 justify-end">
+            <div class="bg-[#CC1F1F] text-white p-2.5 rounded-2xl rounded-tr-none max-w-[80%] text-left font-semibold">
+                ${msg}
+            </div>
+        </div>
+    `;
+    input.value = '';
+    container.scrollTop = container.scrollHeight;
+
+    // Simulated auto reply
+    setTimeout(() => {
+        container.innerHTML += `
+            <div class="flex gap-2">
+                <div class="w-6 h-6 rounded-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center text-[10px] text-slate-600 font-bold shrink-0">TX</div>
+                <div class="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 p-2.5 rounded-2xl rounded-tl-none border border-slate-200/50 dark:border-slate-700/50 max-w-[80%] text-left">
+                    Connecting you with an agent...
+                </div>
+            </div>
+        `;
+        container.scrollTop = container.scrollHeight;
+    }, 1000);
+}
+</script>
+<script src="components.js"></script>
+</body>
+</html>
+
+

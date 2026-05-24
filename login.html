@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en" id="root-html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sign in to your TireXpress account to manage bookings, track services, and view your tire history.">
+    <title>Sign In | TireXpress Mobile Tire Service</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' stroke='%23CC1F1F' stroke-width='8' fill='none'/><circle cx='50' cy='50' r='18' stroke='%23CC1F1F' stroke-width='8' fill='none'/></svg>">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script>tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#CC1F1F', secondary: '#111827' } } } }</script>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 flex flex-col">
+
+<!-- Auth Top Bar (no navbar) -->
+<div class="flex items-center justify-between p-4 sm:p-6 max-w-7xl mx-auto w-full">
+    <a href="index.html" class="flex items-center gap-2 group">
+        <svg width="30" height="30" viewBox="0 0 34 34" fill="none"><circle cx="17" cy="17" r="16" stroke="#CC1F1F" stroke-width="2.5"/><circle cx="17" cy="17" r="7" stroke="#CC1F1F" stroke-width="2.5"/><line x1="17" y1="1" x2="17" y2="10" stroke="#CC1F1F" stroke-width="2" stroke-linecap="round"/><line x1="17" y1="24" x2="17" y2="33" stroke="#CC1F1F" stroke-width="2" stroke-linecap="round"/><line x1="1" y1="17" x2="10" y2="17" stroke="#CC1F1F" stroke-width="2" stroke-linecap="round"/><line x1="24" y1="17" x2="33" y2="17" stroke="#CC1F1F" stroke-width="2" stroke-linecap="round"/></svg>
+        <span class="font-black text-lg text-white group-hover:text-[#CC1F1F] transition-colors" style="font-family:'Outfit',sans-serif;">Tire<span class="text-[#CC1F1F]">Xpress</span></span>
+    </a>
+    <div class="flex items-center gap-2">
+        <button id="auth-dir-btn" onclick="toggleAuthDir()" class="w-9 h-9 flex items-center justify-center rounded-lg bg-white/10 border border-white/15 text-white/60 hover:text-white transition-all text-[10px] font-black" title="Toggle Direction">LTR</button>
+        <button id="auth-theme-btn" onclick="toggleAuthTheme()" class="w-9 h-9 flex items-center justify-center rounded-lg bg-white/10 border border-white/15 text-white/60 hover:text-white transition-all" title="Toggle Theme">
+            <i class="fas fa-moon text-sm"></i>
+        </button>
+    </div>
+</div>
+
+<!-- Card -->
+<main class="flex-grow flex items-center justify-center px-4 sm:px-6 lg:px-8 py-12 w-full">
+    <div class="w-full max-w-md mx-auto">
+        <div class="bg-white dark:bg-slate-800 rounded-3xl shadow-2xl border border-slate-100 dark:border-slate-700 p-8 sm:p-10 animate-fade-in-up relative overflow-hidden">
+            <!-- Floating background shape inside card -->
+            <div class="absolute -top-16 -right-16 w-32 h-32 bg-[#CC1F1F]/5 rounded-full blur-2xl"></div>
+
+            <!-- Logo inside card -->
+            <div class="text-center mb-8 relative">
+                <a href="index.html" class="inline-block hover:opacity-80 transition-opacity">
+                    <div class="w-16 h-16 bg-[#CC1F1F]/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <svg width="34" height="34" viewBox="0 0 34 34" fill="none"><circle cx="17" cy="17" r="16" stroke="#CC1F1F" stroke-width="2.5"/><circle cx="17" cy="17" r="7" stroke="#CC1F1F" stroke-width="2.5"/><line x1="17" y1="1" x2="17" y2="10" stroke="#CC1F1F" stroke-width="2" stroke-linecap="round"/><line x1="17" y1="24" x2="17" y2="33" stroke="#CC1F1F" stroke-width="2" stroke-linecap="round"/><line x1="1" y1="17" x2="10" y2="17" stroke="#CC1F1F" stroke-width="2" stroke-linecap="round"/><line x1="24" y1="17" x2="33" y2="17" stroke="#CC1F1F" stroke-width="2" stroke-linecap="round"/></svg>
+                    </div>
+                </a>
+                <h1 class="text-2xl font-black dark:text-white" style="font-family:'Outfit',sans-serif;">Welcome Back</h1>
+                <p class="text-slate-500 dark:text-slate-400 text-sm mt-1">Sign in to your TireXpress account</p>
+            </div>
+
+                <!-- Social Login -->
+                <div class="space-y-2 mb-7">
+                    <button class="w-full flex items-center justify-center gap-3 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all text-sm font-bold dark:text-white">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+                        Continue with Google
+                    </button>
+                    <div class="grid grid-cols-2 gap-2">
+                        <button class="flex items-center justify-center gap-2 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all text-sm font-bold dark:text-white">
+                            <i class="fab fa-apple text-lg"></i> Apple
+                        </button>
+                        <button class="flex items-center justify-center gap-2 py-3 rounded-xl bg-[#1877F2] hover:bg-[#0d66d0] transition-all text-sm font-bold text-white">
+                            <i class="fab fa-facebook-f"></i> Facebook
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Divider -->
+                <div class="flex items-center gap-4 mb-7">
+                    <div class="flex-1 h-px bg-slate-200 dark:bg-slate-700"></div>
+                    <span class="text-xs text-slate-400 font-bold uppercase tracking-widest">or email</span>
+                    <div class="flex-1 h-px bg-slate-200 dark:bg-slate-700"></div>
+                </div>
+
+                <!-- Form -->
+                <form class="space-y-4" id="login-form" onsubmit="submitLogin(event)">
+                    <div>
+                        <label class="block text-xs font-black uppercase tracking-widest text-slate-400 mb-1.5">Email Address</label>
+                        <div class="relative">
+                            <input id="email" type="email" placeholder="john@example.com" class="form-input dark:bg-slate-900 dark:border-slate-700 dark:text-white ps-11" required>
+                            <i class="fas fa-envelope absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-black uppercase tracking-widest text-slate-400 mb-1.5">Password</label>
+                        <div class="relative">
+                            <input id="password" type="password" placeholder="••••••••" class="form-input dark:bg-slate-900 dark:border-slate-700 dark:text-white ps-11 pe-11" required>
+                            <i class="fas fa-lock absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+                            <button type="button" onclick="togglePwd('password','eye-icon')" class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-[#CC1F1F] transition-colors">
+                                <i class="fas fa-eye text-sm" id="eye-icon"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center justify-between text-sm">
+                        <label class="flex items-center gap-2 cursor-pointer">
+                            <input type="checkbox" class="w-4 h-4 accent-[#CC1F1F] rounded">
+                            <span class="text-slate-600 dark:text-slate-400 font-medium text-xs">Remember Me</span>
+                        </label>
+                        <a href="#" class="text-[#CC1F1F] font-black text-xs hover:underline">Forgot Password?</a>
+                    </div>
+
+                    <div id="login-error" class="hidden p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-xl text-red-600 dark:text-red-400 text-xs font-bold text-center">
+                        Invalid email or password. Please try again.
+                    </div>
+
+                    <button type="submit" id="login-btn" class="btn-primary w-full py-4 rounded-xl text-sm flex items-center justify-center gap-2">
+                        Sign In <i class="fas fa-arrow-right text-xs"></i>
+                    </button>
+                </form>
+
+                <p class="text-center text-sm text-slate-500 dark:text-slate-400 mt-7">
+                    Don't have an account? <a href="signup.html" class="text-[#CC1F1F] font-black hover:underline">Sign Up Free</a>
+                </p>
+            </div>
+
+            <p class="text-center text-xs text-white/30 mt-6">
+                &copy; 2025 TireXpress · <a href="#" class="hover:text-white/50 transition-colors">Privacy Policy</a> · <a href="#" class="hover:text-white/50 transition-colors">Terms</a>
+            </p>
+        </div>
+    </div>
+</main>
+
+<script>
+function togglePwd(id, iconId) {
+    const inp = document.getElementById(id);
+    const icon = document.getElementById(iconId);
+    if (inp.type === 'password') {
+        inp.type = 'text';
+        icon.className = 'fas fa-eye-slash text-sm';
+    } else {
+        inp.type = 'password';
+        icon.className = 'fas fa-eye text-sm';
+    }
+}
+
+function submitLogin(e) {
+    e.preventDefault();
+    const btn = document.getElementById('login-btn');
+    btn.innerHTML = '<i class="fas fa-circle-notch animate-spin-slow"></i> Signing in...';
+    btn.disabled = true;
+    setTimeout(() => { window.location.href = 'dashboard.html'; }, 1500);
+}
+
+function toggleAuthTheme() {
+    const html = document.documentElement;
+    const btn = document.getElementById('auth-theme-btn');
+    html.classList.toggle('dark');
+    const icon = btn.querySelector('i');
+    icon.className = html.classList.contains('dark') ? 'fas fa-sun text-sm text-yellow-400' : 'fas fa-moon text-sm';
+    localStorage.theme = html.classList.contains('dark') ? 'dark' : 'light';
+}
+function toggleAuthDir() {
+    const html = document.documentElement;
+    const btn = document.getElementById('auth-dir-btn');
+    const isRTL = html.getAttribute('dir') === 'rtl';
+    html.setAttribute('dir', isRTL ? 'ltr' : 'rtl');
+    btn.textContent = isRTL ? 'LTR' : 'RTL';
+    localStorage.dir = isRTL ? 'ltr' : 'rtl';
+}
+
+// Init theme + dir
+(function() {
+    const html = document.documentElement;
+    if (localStorage.theme === 'dark' || (!localStorage.theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        html.classList.add('dark');
+        const icon = document.getElementById('auth-theme-btn').querySelector('i');
+        if (icon) icon.className = 'fas fa-sun text-sm text-yellow-400';
+    }
+    if (localStorage.dir === 'rtl') {
+        html.setAttribute('dir', 'rtl');
+        document.getElementById('auth-dir-btn').textContent = 'RTL';
+    }
+})();
+</script>
+</body>
+</html>
+
+

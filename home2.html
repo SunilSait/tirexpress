@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en" id="root-html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="TireXpress Pro — Discover our next-gen mobile tire experience. Real-time van tracking, smart side-by-side tire comparisons, and instant pricing.">
+    <title>TireXpress | Home 2 — Next-Gen Mobile Tire Station</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' stroke='%23CC1F1F' stroke-width='8' fill='none'/><circle cx='50' cy='50' r='18' stroke='%23CC1F1F' stroke-width='8' fill='none'/></svg>">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: { extend: { colors: { primary: '#CC1F1F', secondary: '#111827' } } }
+        }
+    </script>
+    <style>
+        .glow-border {
+            box-shadow: 0 0 15px rgba(204, 31, 31, 0.15);
+            border-color: rgba(204, 31, 31, 0.25);
+        }
+        .glow-border:hover {
+            box-shadow: 0 0 25px rgba(204, 31, 31, 0.35);
+            border-color: rgba(204, 31, 31, 0.6);
+        }
+        .text-glow {
+            text-shadow: 0 0 10px rgba(204, 31, 31, 0.4);
+        }
+        .glass-dark {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            color: #0f172a;
+        }
+        .dark .glass-dark {
+            background: rgba(15, 23, 42, 0.75);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: #f1f5f9;
+        }
+    </style>
+</head>
+<body class="bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-300">
+
+<div id="page-loader">
+    <div class="flex flex-col items-center gap-4">
+        <div class="loader-spinner"></div>
+        <span class="text-xs font-black uppercase tracking-widest text-[#CC1F1F]">Loading Next-Gen...</span>
+    </div>
+</div>
+
+<div id="navbar-container"></div>
+
+<!-- ===== HERO — MODERN HUB LAYOUT ===== -->
+<section class="relative min-h-screen flex items-center justify-center pt-24 pb-16 overflow-hidden bg-slate-50 dark:bg-slate-950">
+    <div class="absolute inset-0 z-0 pointer-events-none">
+        <div class="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-[#CC1F1F]/10 rounded-full blur-[120px] animate-pulse"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-slate-300/20 dark:bg-slate-800/20 rounded-full blur-[100px]" style="animation-delay: -3s;"></div>
+        <div class="absolute inset-0 bg-[radial-gradient(#94a3b8_1px,transparent_1px)] dark:bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:24px_24px] opacity-25"></div>
+    </div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center space-y-8">
+        <div class="opacity-0 animate-fade-in-down inline-flex items-center gap-2 bg-[#CC1F1F]/15 border border-[#CC1F1F]/30 px-4 py-2 rounded-full backdrop-blur-md">
+            <span class="relative flex h-2 w-2">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#CC1F1F] opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-[#CC1F1F]"></span>
+            </span>
+            <span class="text-[#e84040] text-[10px] sm:text-xs font-black uppercase tracking-[0.25em]">⚡ Fleet Dispatch Active</span>
+        </div>
+
+        <h1 class="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black leading-none tracking-tighter uppercase max-w-4xl" style="font-family:'Outfit',sans-serif;">
+            The Next-Gen<br>
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#CC1F1F] to-[#e84040] text-glow">Mobile Tire Station</span>
+        </h1>
+
+        <p class="text-slate-600 dark:text-slate-400 text-lg md:text-xl max-w-2xl leading-relaxed">
+            Stranded with a flat? Or due for new tires? Skip the workshop. Certified technicians bring state-of-the-art mobile installation rigs directly to your driveway.
+        </p>
+
+        <!-- Search Bar / Quick Action Widget -->
+        <div class="w-full max-w-3xl glass-dark rounded-[2rem] p-6 shadow-2xl border border-slate-200 dark:border-slate-800 glow-border transition-all duration-500">
+            <h3 class="text-sm font-black uppercase tracking-widest text-[#CC1F1F] mb-4 text-left flex items-center gap-2">
+                <i class="fas fa-location-dot"></i> Calculate Arrival & Price
+            </h3>
+            <form class="grid grid-cols-1 md:grid-cols-3 gap-4" onsubmit="return false;">
+                <div class="text-left">
+                    <label class="block text-[10px] font-black uppercase tracking-widest text-slate-500 mb-1.5">Zip Code / Location</label>
+                    <input type="text" placeholder="e.g. 90210" class="w-full px-4 py-3 bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl outline-none focus:border-[#CC1F1F] text-sm text-slate-900 dark:text-white font-bold transition-all">
+                </div>
+                <div class="text-left">
+                    <label class="block text-[10px] font-black uppercase tracking-widest text-slate-500 mb-1.5">Service Type</label>
+                    <div class="relative">
+                        <select class="w-full pl-4 pr-10 py-3 bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl outline-none focus:border-[#CC1F1F] text-sm text-slate-900 dark:text-white font-bold appearance-none cursor-pointer">
+                            <option>Flat Tire Repair ($49)</option>
+                            <option>Single Tire Fitting ($89)</option>
+                            <option>Set of 4 Installations ($159)</option>
+                            <option>Tire Rotation & Balance ($69)</option>
+                        </select>
+                        <i class="fas fa-chevron-down absolute right-4 top-1/2 -translate-y-1/2 text-xs text-[#CC1F1F]"></i>
+                    </div>
+                </div>
+                <div class="flex items-end">
+                    <a href="services.html" class="w-full">
+                        <button type="submit" class="btn-primary w-full py-3.5 rounded-xl text-xs font-black uppercase tracking-widest flex items-center justify-center gap-2">
+                            Check Availability <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </a>
+                </div>
+            </form>
+        </div>
+
+        <div class="flex flex-wrap justify-center gap-10 text-xs font-bold text-slate-500 pt-6 uppercase tracking-wider">
+            <div class="flex items-center gap-2"><i class="fas fa-shield-halved text-[#CC1F1F]"></i> ASE-Certified Techs</div>
+            <div class="flex items-center gap-2"><i class="fas fa-clock text-[#CC1F1F]"></i> 24/7 Roadside Rescue</div>
+            <div class="flex items-center gap-2"><i class="fas fa-circle-check text-[#CC1F1F]"></i> Transparent Pricing</div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== BENTO GRID SECTION ===== -->
+<section class="py-24 bg-white dark:bg-slate-950 border-t border-slate-200 dark:border-slate-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <div class="section-label mb-4 mx-auto" style="width:fit-content; background:rgba(204, 31, 31, 0.15);">Bento Hub</div>
+            <h2 class="text-3xl md:text-5xl font-black uppercase tracking-tight" style="font-family:'Outfit',sans-serif;">
+                Fleet Status & <span class="text-[#CC1F1F]">Operations</span>
+            </h2>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <!-- Bento Item 1: Live Status -->
+            <div class="lg:col-span-2 glass-dark rounded-3xl p-8 relative overflow-hidden flex flex-col justify-between min-h-[350px]">
+                <div class="absolute top-0 right-0 -mt-12 -mr-12 w-48 h-48 bg-[#CC1F1F]/10 rounded-full blur-3xl"></div>
+                <div>
+                    <div class="flex items-center gap-2 mb-4">
+                        <span class="relative flex h-2.5 w-2.5">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-red-500"></span>
+                        </span>
+                        <span class="text-slate-400 text-xs font-black uppercase tracking-widest">Active Dispatch Center</span>
+                    </div>
+                    <h3 class="text-2xl md:text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tight" style="font-family:'Outfit',sans-serif;">Vanguard Fleet Status</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm mt-3 max-w-lg leading-relaxed">
+                        Our real-time routing engines coordinate 15 mobile service rigs across active coverage zones. Rigs are pre-loaded with major tire brands, commercial compressed air, and hydraulic mounts.
+                    </p>
+                </div>
+                <div class="grid grid-cols-3 gap-4 mt-8">
+                    <div class="bg-slate-100/60 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-2xl p-4 text-center">
+                        <span class="block text-2xl font-black text-[#CC1F1F]" style="font-family:'Outfit',sans-serif;">15</span>
+                        <span class="block text-[9px] text-slate-500 font-bold uppercase tracking-wider mt-1">Active Vans</span>
+                    </div>
+                    <div class="bg-slate-100/60 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-2xl p-4 text-center">
+                        <span class="block text-2xl font-black text-slate-900 dark:text-white" style="font-family:'Outfit',sans-serif;">24 Mins</span>
+                        <span class="block text-[9px] text-slate-500 font-bold uppercase tracking-wider mt-1">Avg Arrival</span>
+                    </div>
+                    <div class="bg-slate-100/60 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-2xl p-4 text-center">
+                        <span class="block text-2xl font-black text-slate-900 dark:text-white" style="font-family:'Outfit',sans-serif;">99.8%</span>
+                        <span class="block text-[9px] text-slate-500 font-bold uppercase tracking-wider mt-1">Satisfaction</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bento Item 2: Live Map View -->
+            <div class="glass-dark rounded-3xl p-8 relative overflow-hidden min-h-[350px] flex flex-col justify-between">
+                <div class="absolute inset-0 z-0">
+                    <img src="assets/map.png" alt="Service Map" class="w-full h-full object-cover opacity-20">
+                    <div class="absolute inset-0 bg-gradient-to-t from-white dark:from-slate-950 via-transparent to-transparent"></div>
+                </div>
+                <div class="relative z-10">
+                    <span class="text-[9px] font-black text-[#CC1F1F] bg-[#CC1F1F]/15 border border-[#CC1F1F]/30 px-2.5 py-1 rounded uppercase tracking-wider">Live Coverage Map</span>
+                </div>
+                <div class="relative z-10 mt-16">
+                    <h4 class="text-xl font-black text-slate-900 dark:text-white uppercase" style="font-family:'Outfit',sans-serif;">We Come to You</h4>
+                    <p class="text-xs text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">
+                        Currently covering 25+ cities and neighboring highway routes. Check live GPS dispatches on your dashboard tab.
+                    </p>
+                    <a href="contact.html" class="inline-flex items-center gap-1.5 text-xs text-[#CC1F1F] font-black uppercase tracking-wider mt-5 hover:underline">
+                        View Coverage Area <i class="fas fa-arrow-right text-[10px]"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== INTERACTIVE CONFIGURATOR ===== -->
+<section class="py-24 bg-slate-50 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-12 gap-12 items-center">
+            
+            <!-- Left Info -->
+            <div class="lg:col-span-5 space-y-6">
+                <div class="section-label" style="background:rgba(204, 31, 31, 0.15);">Configurator</div>
+                <h2 class="text-3xl md:text-5xl font-black uppercase tracking-tight" style="font-family:'Outfit',sans-serif;">
+                    Select Your <span class="text-[#CC1F1F]">Tire Type</span>
+                </h2>
+                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                    Compare grip levels, noise output, and mileage tread life across four core categories. Select a category below to see details and real tire specs.
+                </p>
+                <div class="flex flex-col gap-3 pt-2" id="config-tabs">
+                    <button onclick="selectConfigType('performance')" data-type="performance" class="config-tab-btn flex items-center justify-between p-4 bg-[#CC1F1F] text-white rounded-2xl font-black text-xs uppercase tracking-wider transition-all text-left">
+                        <span>🏎️ Ultra Performance</span> <i class="fas fa-chevron-right text-[10px]"></i>
+                    </button>
+                    <button onclick="selectConfigType('allseason')" data-type="allseason" class="config-tab-btn flex items-center justify-between p-4 bg-slate-200 dark:bg-slate-900 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white rounded-2xl font-black text-xs uppercase tracking-wider transition-all text-left">
+                        <span>⛅ All-Season Comfort</span> <i class="fas fa-chevron-right text-[10px]"></i>
+                    </button>
+                    <button onclick="selectConfigType('winter')" data-type="winter" class="config-tab-btn flex items-center justify-between p-4 bg-slate-200 dark:bg-slate-900 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white rounded-2xl font-black text-xs uppercase tracking-wider transition-all text-left">
+                        <span>❄️ Winter Ice & Snow</span> <i class="fas fa-chevron-right text-[10px]"></i>
+                    </button>
+                    <button onclick="selectConfigType('suv')" data-type="suv" class="config-tab-btn flex items-center justify-between p-4 bg-slate-200 dark:bg-slate-900 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white rounded-2xl font-black text-xs uppercase tracking-wider transition-all text-left">
+                        <span>⛰️ Rugged SUV / 4x4</span> <i class="fas fa-chevron-right text-[10px]"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Right Interactive Display Card -->
+            <div class="lg:col-span-7">
+                <div class="glass-dark rounded-3xl p-8 border border-slate-200 dark:border-slate-800 glow-border transition-all duration-500 relative flex flex-col md:flex-row gap-8 items-center">
+                    <div class="absolute top-0 right-0 -mt-10 -mr-10 w-40 h-40 bg-[#CC1F1F]/5 rounded-full blur-3xl"></div>
+                    
+                    <!-- Image -->
+                    <div class="w-48 h-48 flex items-center justify-center shrink-0">
+                        <img id="config-tire-image" src="assets/tire_performance.png" alt="Tire Configurator" class="w-full h-full object-contain transform hover:scale-105 transition-transform duration-500">
+                    </div>
+
+                    <!-- Details -->
+                    <div class="flex-grow space-y-5 text-left w-full">
+                        <div>
+                            <span class="text-[9px] font-black text-[#CC1F1F] uppercase tracking-widest" id="config-tire-size">225/45 R18</span>
+                            <h3 class="text-2xl font-black text-slate-900 dark:text-white mt-1 uppercase" style="font-family:'Outfit',sans-serif;" id="config-tire-name">Michelin Pilot Sport 4S</h3>
+                        </div>
+
+                        <!-- Config progress specs -->
+                        <div class="space-y-3.5">
+                            <div>
+                                <div class="flex justify-between text-xs font-bold text-slate-500 dark:text-slate-400 mb-1.5">
+                                    <span>Wet Grip Performance</span>
+                                    <span class="text-[#CC1F1F]" id="config-spec-grip-label">A+ Rating</span>
+                                </div>
+                                <div class="w-full bg-slate-200 dark:bg-slate-800 rounded-full h-2">
+                                    <div id="config-spec-grip" class="bg-gradient-to-r from-[#CC1F1F] to-red-500 h-full rounded-full transition-all duration-500" style="width: 98%"></div>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-2 gap-4 pt-2">
+                                <div class="p-3 bg-slate-100/60 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl">
+                                    <span class="block text-[9px] text-slate-500 font-bold uppercase tracking-wider">Noise Rating</span>
+                                    <span class="text-sm font-black text-slate-900 dark:text-white mt-1 block" id="config-spec-noise">70 dB</span>
+                                </div>
+                                <div class="p-3 bg-slate-100/60 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl">
+                                    <span class="block text-[9px] text-slate-500 font-bold uppercase tracking-wider">Est. Tread Life</span>
+                                    <span class="text-sm font-black text-slate-900 dark:text-white mt-1 block" id="config-spec-life">30,000 mi</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-slate-200 dark:border-slate-800/80">
+                            <span class="text-2xl font-black text-[#CC1F1F]" id="config-tire-price">$189<span class="text-xs font-normal text-slate-400">/ea</span></span>
+                            <a href="services.html" class="w-full sm:w-auto">
+                                <button class="btn-primary w-full sm:w-auto px-6 py-2.5 rounded-xl text-xs">Book Installation</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ===== SMART COMPARISON TOOL ===== -->
+<section class="py-24 bg-white dark:bg-slate-950 border-t border-slate-200 dark:border-slate-900">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <div class="section-label mb-4 mx-auto" style="width:fit-content; background:rgba(204, 31, 31, 0.15);">Comparison Matrix</div>
+            <h2 class="text-3xl md:text-5xl font-black uppercase tracking-tight" style="font-family:'Outfit',sans-serif;">
+                Smart <span class="text-[#CC1F1F]">Side-by-Side</span> Compare
+            </h2>
+            <p class="text-slate-600 dark:text-slate-400 text-sm mt-3">Select two premium models and evaluate safety profiles, tread metrics, and warranties instantly.</p>
+        </div>
+
+        <div class="glass-dark rounded-[2.5rem] p-8 md:p-12 border border-slate-200 dark:border-slate-800 glow-border transition-all duration-500">
+            <!-- Selectors -->
+            <div class="grid md:grid-cols-2 gap-6 mb-10">
+                <div>
+                    <label class="block text-xs font-black uppercase tracking-widest text-slate-500 mb-2">Tire Model A</label>
+                    <div class="relative">
+                        <select id="tireA" onchange="updateComparison()" class="w-full pl-4 pr-10 py-3.5 bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl outline-none focus:border-[#CC1F1F] text-sm text-slate-900 dark:text-white font-bold appearance-none cursor-pointer">
+                            <option value="michelin">Michelin Pilot Sport 4S</option>
+                            <option value="bridgestone">Bridgestone Potenza S007</option>
+                            <option value="continental">Continental ExtremeContact</option>
+                            <option value="pirelli">Pirelli P Zero</option>
+                        </select>
+                        <i class="fas fa-chevron-down absolute right-4 top-1/2 -translate-y-1/2 text-xs text-[#CC1F1F] pointer-events-none"></i>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-black uppercase tracking-widest text-slate-500 mb-2">Tire Model B</label>
+                    <div class="relative">
+                        <select id="tireB" onchange="updateComparison()" class="w-full pl-4 pr-10 py-3.5 bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl outline-none focus:border-[#CC1F1F] text-sm text-slate-900 dark:text-white font-bold appearance-none cursor-pointer">
+                            <option value="bridgestone">Bridgestone Potenza S007</option>
+                            <option value="michelin">Michelin Pilot Sport 4S</option>
+                            <option value="continental">Continental ExtremeContact</option>
+                            <option value="pirelli">Pirelli P Zero</option>
+                        </select>
+                        <i class="fas fa-chevron-down absolute right-4 top-1/2 -translate-y-1/2 text-xs text-[#CC1F1F] pointer-events-none"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Redesigned Grid comparison -->
+            <div id="comparison-cards" class="grid md:grid-cols-2 gap-8">
+                <!-- Injected dynamically by JS -->
+            </div>
+
+            <div class="text-center mt-10">
+                <a href="tires.html" class="btn-primary inline-flex items-center gap-2 px-8 py-3 rounded-xl text-sm">
+                    Open Full Tire Inventory <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== PRICING SCHEMES ===== -->
+<section class="py-24 bg-slate-50 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <div class="section-label mb-4 mx-auto" style="width:fit-content; background:rgba(204, 31, 31, 0.15);">Memberships</div>
+            <h2 class="text-3xl md:text-5xl font-black uppercase tracking-tight" style="font-family:'Outfit',sans-serif;">
+                Subscription <span class="text-[#CC1F1F]">Coverage</span> Plans
+            </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Card 1 -->
+            <div class="glass-dark rounded-3xl p-8 flex flex-col justify-between hover:-translate-y-2 hover:shadow-xl transition-all duration-300">
+                <div class="space-y-6">
+                    <div>
+                        <h4 class="text-xl font-black text-slate-900 dark:text-white uppercase" style="font-family:'Outfit',sans-serif;">Basic Package</h4>
+                        <p class="text-xs text-slate-500 mt-1">For basic roadside safety</p>
+                    </div>
+                    <div class="flex items-end gap-1">
+                        <span class="text-4xl font-black text-slate-900 dark:text-white" style="font-family:'Outfit',sans-serif;">$49</span>
+                        <span class="text-xs text-slate-500 mb-1">/service call</span>
+                    </div>
+                    <ul class="space-y-3 text-xs text-slate-500 dark:text-slate-400">
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Puncture sealing included</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> 60-minute dispatch response</li>
+                        <li class="flex items-center gap-2 text-slate-400 dark:text-slate-600"><i class="fas fa-times"></i> Priority queue priority</li>
+                        <li class="flex items-center gap-2 text-slate-400 dark:text-slate-600"><i class="fas fa-times"></i> Free rotation service</li>
+                    </ul>
+                </div>
+                <a href="pricing.html" class="btn-secondary w-full py-3 rounded-xl text-xs font-black uppercase tracking-widest mt-8 text-center">Select Basic</a>
+            </div>
+
+            <!-- Card 2: Featured -->
+            <div class="glass-dark rounded-3xl p-8 flex flex-col justify-between hover:-translate-y-2 hover:shadow-2xl border-2 border-[#CC1F1F] relative transition-all duration-300">
+                <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#CC1F1F] text-white text-[9px] font-black uppercase tracking-wider px-4 py-1.5 rounded-full shadow-md">Most Popular</div>
+                <div class="space-y-6 mt-2">
+                    <div>
+                        <h4 class="text-xl font-black text-slate-900 dark:text-white uppercase" style="font-family:'Outfit',sans-serif;">Pro Member</h4>
+                        <p class="text-xs text-slate-500 mt-1">For regular commuter vehicle care</p>
+                    </div>
+                    <div class="flex items-end gap-1">
+                        <span class="text-4xl font-black text-[#CC1F1F]" style="font-family:'Outfit',sans-serif;">$129</span>
+                        <span class="text-xs text-slate-500 mb-1">/month</span>
+                    </div>
+                    <ul class="space-y-3 text-xs text-slate-500 dark:text-slate-400">
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Unlimited emergency patches</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> 2 free on-site fittings/month</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Free annual rotation & balancing</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Priority 30-min dispatcher response</li>
+                    </ul>
+                </div>
+                <a href="pricing.html" class="btn-primary w-full py-3 rounded-xl text-xs font-black uppercase tracking-widest mt-8 text-center">Join Pro Club</a>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="glass-dark rounded-3xl p-8 flex flex-col justify-between hover:-translate-y-2 hover:shadow-xl transition-all duration-300">
+                <div class="space-y-6">
+                    <div>
+                        <h4 class="text-xl font-black text-slate-900 dark:text-white uppercase" style="font-family:'Outfit',sans-serif;">Elite Fleet</h4>
+                        <p class="text-xs text-slate-500 mt-1">For heavy commuters & businesses</p>
+                    </div>
+                    <div class="flex items-end gap-1">
+                        <span class="text-4xl font-black text-slate-900 dark:text-white" style="font-family:'Outfit',sans-serif;">$299</span>
+                        <span class="text-xs text-slate-500 mb-1">/month</span>
+                    </div>
+                    <ul class="space-y-3 text-xs text-slate-500 dark:text-slate-400">
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Unlimited on-site fittings</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Multi-car vehicle support</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Dedicated dispatch dispatcher</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> 15-minute priority arrival</li>
+                    </ul>
+                </div>
+                <a href="pricing.html" class="btn-secondary w-full py-3 rounded-xl text-xs font-black uppercase tracking-widest mt-8 text-center">Contact Sales</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== PREMIUM TESTIMONIALS ===== -->
+<section class="py-24 bg-white dark:bg-slate-950 border-t border-slate-200 dark:border-slate-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <div class="section-label mb-4 mx-auto" style="width:fit-content; background:rgba(204, 31, 31, 0.15);">Reviews</div>
+            <h2 class="text-3xl md:text-5xl font-black uppercase tracking-tight" style="font-family:'Outfit',sans-serif;">
+                Verified <span class="text-[#CC1F1F]">Reviews</span>
+            </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Review 1 -->
+            <div class="glass-dark rounded-3xl p-8 flex flex-col justify-between hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                <i class="fas fa-quote-left text-4xl text-[#CC1F1F] opacity-20 block mb-4"></i>
+                <p class="text-sm italic text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
+                    "I run a local plumbing agency with 6 vans. TireXpress handles all our scheduled and emergency tire maintenance on-site. We've never had a van down for more than 40 minutes. Absolutely exceptional."
+                </p>
+                <div class="flex items-center gap-4">
+                    <div class="w-10 h-10 bg-[#CC1F1F]/15 rounded-full flex items-center justify-center text-[#CC1F1F] shrink-0">
+                        <svg class="w-5 h-5" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="17" cy="17" r="16"/><circle cx="17" cy="17" r="7"/><line x1="17" y1="1" x2="17" y2="10"/><line x1="17" y1="24" x2="17" y2="33"/><line x1="1" y1="17" x2="10" y2="17"/><line x1="24" y1="17" x2="33" y2="17"/></svg>
+                    </div>
+                    <div>
+                        <h5 class="font-black text-sm text-slate-900 dark:text-white">David Chen</h5>
+                        <p class="text-[10px] text-slate-500 uppercase tracking-wider font-bold">Fleet Manager, 6 Vehicles</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Review 2 -->
+            <div class="glass-dark rounded-3xl p-8 flex flex-col justify-between hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                <i class="fas fa-quote-left text-4xl text-[#CC1F1F] opacity-20 block mb-4"></i>
+                <p class="text-sm italic text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
+                    "Excellent convenience. I booked my Michelin set installation for my Tesla Model Y right on the office parking lot. The technician arrived on-time, did the balancing in the van, and finished in 45 minutes."
+                </p>
+                <div class="flex items-center gap-4">
+                    <div class="w-10 h-10 bg-[#CC1F1F]/15 rounded-full flex items-center justify-center text-[#CC1F1F] shrink-0">
+                        <svg class="w-5 h-5" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="17" cy="17" r="16"/><circle cx="17" cy="17" r="7"/><line x1="17" y1="1" x2="17" y2="10"/><line x1="17" y1="24" x2="17" y2="33"/><line x1="1" y1="17" x2="10" y2="17"/><line x1="24" y1="17" x2="33" y2="17"/></svg>
+                    </div>
+                    <div>
+                        <h5 class="font-black text-sm text-slate-900 dark:text-white">Layla Hosseini</h5>
+                        <p class="text-[10px] text-slate-500 uppercase tracking-wider font-bold">Tesla Pro Club Member</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CUSTOM CTA: INTERACTIVE COVERAGE CHECKER -->
+<section class="py-24 bg-slate-50 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-900 relative overflow-hidden">
+    <!-- Glowing background elements -->
+    <div class="absolute inset-0 bg-[radial-gradient(#CC1F1F_1px,transparent_1px)] [background-size:24px_24px] opacity-15 pointer-events-none"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-[#CC1F1F]/5 rounded-full blur-[120px] pointer-events-none"></div>
+
+    <div class="max-w-4xl mx-auto px-4 relative z-10 text-center reveal">
+        <div class="section-label mb-4 mx-auto" style="width:fit-content; background:rgba(204, 31, 31, 0.15);">Coverage Status</div>
+        <h2 class="text-3xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tighter uppercase mb-6 leading-tight" style="font-family:'Outfit',sans-serif;">
+            Ready for Effortless<br><span class="gradient-text">Tire Service?</span>
+        </h2>
+        <p class="text-slate-600 dark:text-slate-400 text-base md:text-lg mb-10 max-w-2xl mx-auto leading-relaxed">
+            We bring the tire shop to your location. Enter your ZIP code below to check real-time coverage and see our active dispatch availability.
+        </p>
+
+        <!-- Interactive Zip Code Widget -->
+        <div class="max-w-md mx-auto bg-white/80 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 p-6 rounded-3xl shadow-2xl mb-8 relative">
+            <form onsubmit="checkCTACoverage(event)" class="space-y-4">
+                <div class="flex flex-col sm:flex-row gap-3">
+                    <div class="relative flex-1">
+                        <input type="text" id="cta-zip" placeholder="Enter ZIP Code (e.g. 90210)" class="w-full px-5 py-4 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl outline-none focus:border-[#CC1F1F] text-sm text-slate-900 dark:text-white font-bold placeholder-slate-500" required>
+                    </div>
+                    <button type="submit" class="btn-primary px-8 py-4 rounded-xl text-xs uppercase tracking-widest shrink-0">
+                        Check Area
+                    </button>
+                </div>
+            </form>
+            <!-- Results -->
+            <div id="cta-coverage-result" class="hidden mt-4 p-4 rounded-2xl text-xs font-bold text-center border transition-all duration-300"></div>
+        </div>
+
+        <div class="flex flex-wrap justify-center gap-6 opacity-60">
+            <span class="text-slate-600 dark:text-slate-400 text-[10px] font-black uppercase tracking-widest"><i class="fas fa-truck-fast text-[#CC1F1F] mr-1.5"></i> On-Demand Fleet</span>
+            <span class="text-slate-600 dark:text-slate-400 text-[10px] font-black uppercase tracking-widest"><i class="fas fa-screwdriver-wrench text-[#CC1F1F] mr-1.5"></i> ASE Certified</span>
+            <span class="text-slate-600 dark:text-slate-400 text-[10px] font-black uppercase tracking-widest"><i class="fas fa-clock text-[#CC1F1F] mr-1.5"></i> 60-Min Arrival</span>
+        </div>
+    </div>
+</section>
+
+<div id="footer-container"></div>
+
+<script>
+// --- Configuration data ---
+const TIRE_DATA = {
+    michelin: { 
+        name: 'Michelin Pilot Sport 4S', 
+        type: 'Ultra High Performance', 
+        wetGrip: 'A+', 
+        dryBraking: 'A+', 
+        noise: '70 dB', 
+        fuel: 'B', 
+        load: '91W', 
+        price: '$189', 
+        mileage: '30,000 mi', 
+        warranty: '3 Years', 
+        image: 'assets/tire_performance.png',
+        gripPercent: 98
+    },
+    bridgestone: { 
+        name: 'Bridgestone Potenza S007', 
+        type: 'Performance Summer', 
+        wetGrip: 'A', 
+        dryBraking: 'A', 
+        noise: '72 dB', 
+        fuel: 'C', 
+        load: '92Y', 
+        price: '$175', 
+        mileage: '25,000 mi', 
+        warranty: '2 Years', 
+        image: 'assets/tire_performance.png',
+        gripPercent: 88
+    },
+    continental: { 
+        name: 'Continental ExtremeContact', 
+        type: 'Sport Summer', 
+        wetGrip: 'A-', 
+        dryBraking: 'A', 
+        noise: '69 dB', 
+        fuel: 'B', 
+        load: '89W', 
+        price: '$155', 
+        mileage: '35,000 mi', 
+        warranty: '2 Years', 
+        image: 'assets/tire_performance.png',
+        gripPercent: 85
+    },
+    pirelli: { 
+        name: 'Pirelli P Zero', 
+        type: 'Ultra High Performance', 
+        wetGrip: 'A', 
+        dryBraking: 'A+', 
+        noise: '71 dB', 
+        fuel: 'B+', 
+        load: '93Y', 
+        price: '$199', 
+        mileage: '28,000 mi', 
+        warranty: '3 Years', 
+        image: 'assets/tire_performance.png',
+        gripPercent: 92
+    }
+};
+
+const SPECS = [
+    ['Type', 'type'], ['Wet Grip', 'wetGrip'], ['Dry Braking', 'dryBraking'],
+    ['Noise Level', 'noise'], ['Fuel Efficiency', 'fuel'], ['Load Index', 'load'],
+    ['Price / ea', 'price'], ['Mileage Est.', 'mileage'], ['Warranty', 'warranty']
+];
+
+// --- Configurator Tab handler ---
+const configuratorData = {
+    performance: { name: 'Michelin Pilot Sport 4S', size: '225/45 R18', price: '$189/ea', image: 'assets/tire_performance.png', grip: '98%', noise: '70 dB', life: '30,000 mi' },
+    allseason: { name: 'Michelin CrossClimate 2', size: '215/60 R17', price: '$159/ea', image: 'assets/tire_allseason.png', grip: '92%', noise: '68 dB', life: '60,000 mi' },
+    winter: { name: 'Bridgestone Blizzak WS90', size: '205/55 R16', price: '$145/ea', image: 'assets/tire_winter.png', grip: '95%', noise: '71 dB', life: '40,000 mi' },
+    suv: { name: 'Continental CrossContact ATR', size: '265/60 R18', price: '$168/ea', image: 'assets/tire_suv.png', grip: '88%', noise: '73 dB', life: '50,000 mi' }
+};
+
+function selectConfigType(type) {
+    const data = configuratorData[type];
+    if (!data) return;
+    document.getElementById('config-tire-image').src = data.image;
+    document.getElementById('config-tire-name').textContent = data.name;
+    document.getElementById('config-tire-size').textContent = data.size;
+    document.getElementById('config-tire-price').innerHTML = `${data.price.split('/')[0]}<span class="text-xs font-normal text-slate-400">/ea</span>`;
+    document.getElementById('config-spec-grip').style.width = data.grip;
+    document.getElementById('config-spec-grip-label').textContent = `${data.grip} Rating`;
+    document.getElementById('config-spec-noise').textContent = data.noise;
+    document.getElementById('config-spec-life').textContent = data.life;
+    
+    // Update active tab buttons styling
+    document.querySelectorAll('.config-tab-btn').forEach(btn => {
+        const isMatched = btn.dataset.type === type;
+        btn.classList.toggle('bg-[#CC1F1F]', isMatched);
+        btn.classList.toggle('text-white', isMatched);
+        
+        btn.classList.toggle('bg-slate-200', !isMatched);
+        btn.classList.toggle('dark:bg-slate-900', !isMatched);
+        btn.classList.toggle('text-slate-600', !isMatched);
+        btn.classList.toggle('dark:text-slate-400', !isMatched);
+    });
+}
+
+// --- Side-by-side comparison renderer ---
+function updateComparison() {
+    const a = TIRE_DATA[document.getElementById('tireA').value];
+    const b = TIRE_DATA[document.getElementById('tireB').value];
+    
+    document.getElementById('comparison-cards').innerHTML = `
+        <!-- Card A -->
+        <div class="bg-slate-100/60 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 relative overflow-hidden flex flex-col justify-between text-left">
+            <div class="flex items-center gap-4 border-b border-slate-200 dark:border-slate-800 pb-4 mb-6">
+                <img src="${a.image}" alt="${a.name}" class="w-16 h-16 object-contain">
+                <div>
+                    <span class="text-[9px] font-black text-slate-500 uppercase tracking-widest">${a.type}</span>
+                    <h4 class="text-lg font-black text-slate-900 dark:text-white mt-0.5" style="font-family:'Outfit',sans-serif;">${a.name}</h4>
+                </div>
+            </div>
+            <div class="space-y-4">
+                ${SPECS.map(([label, key]) => `
+                    <div class="flex justify-between items-center text-xs">
+                        <span class="text-slate-500 font-bold uppercase tracking-wider text-[9px]">${label}</span>
+                        <span class="font-black text-slate-900 dark:text-white">${a[key]}</span>
+                    </div>
+                `).join('')}
+            </div>
+            <div class="mt-8 pt-4 border-t border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row justify-between items-center gap-4">
+                <span class="text-2xl font-black text-[#CC1F1F]">${a.price}/ea</span>
+                <a href="services.html" class="w-full sm:w-auto btn-primary px-5 py-2 rounded-xl text-xs text-center">Install Now</a>
+            </div>
+        </div>
+        <!-- Card B -->
+        <div class="bg-slate-100/60 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 relative overflow-hidden flex flex-col justify-between text-left">
+            <div class="flex items-center gap-4 border-b border-slate-200 dark:border-slate-800 pb-4 mb-6">
+                <img src="${b.image}" alt="${b.name}" class="w-16 h-16 object-contain">
+                <div>
+                    <span class="text-[9px] font-black text-slate-500 uppercase tracking-widest">${b.type}</span>
+                    <h4 class="text-lg font-black text-slate-900 dark:text-white mt-0.5" style="font-family:'Outfit',sans-serif;">${b.name}</h4>
+                </div>
+            </div>
+            <div class="space-y-4">
+                ${SPECS.map(([label, key]) => `
+                    <div class="flex justify-between items-center text-xs">
+                        <span class="text-slate-500 font-bold uppercase tracking-wider text-[9px]">${label}</span>
+                        <span class="font-black text-slate-900 dark:text-white">${b[key]}</span>
+                    </div>
+                `).join('')}
+            </div>
+            <div class="mt-8 pt-4 border-t border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row justify-between items-center gap-4">
+                <span class="text-2xl font-black text-[#CC1F1F]">${b.price}/ea</span>
+                <a href="services.html" class="w-full sm:w-auto btn-primary px-5 py-2 rounded-xl text-xs text-center">Install Now</a>
+            </div>
+        </div>
+    `;
+}
+
+function checkCTACoverage(e) {
+    e.preventDefault();
+    const zip = document.getElementById('cta-zip').value.trim();
+    const result = document.getElementById('cta-coverage-result');
+    result.className = 'mt-4 p-4 rounded-2xl text-xs font-bold text-center border transition-all duration-300';
+    
+    if (/^\d{5}$/.test(zip)) {
+        result.innerHTML = `<i class="fas fa-check-circle mr-1.5"></i> Active Coverage Zone! 3 mobile rigs are nearby. <a href="services.html" class="underline hover:text-white ms-1 font-black">Book Mobile Installation →</a>`;
+        result.classList.add('bg-green-900/20', 'border-green-800/80', 'text-green-400');
+    } else {
+        result.innerHTML = `<i class="fas fa-circle-xmark mr-1.5"></i> Please enter a valid 5-digit ZIP code.`;
+        result.classList.add('bg-red-900/20', 'border-red-800/80', 'text-red-400');
+    }
+    result.classList.remove('hidden');
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    selectConfigType('performance');
+    updateComparison();
+});
+</script>
+<script src="components.js"></script>
+</body>
+</html>

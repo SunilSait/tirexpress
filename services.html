@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en" id="root-html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="TireXpress Services — Flat tire repair, mobile tire installation, tire rotation, balancing, and TPMS. Full mobile tire service at your location.">
+    <title>Services | TireXpress Mobile Tire Service</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' stroke='%23CC1F1F' stroke-width='8' fill='none'/><circle cx='50' cy='50' r='18' stroke='%23CC1F1F' stroke-width='8' fill='none'/></svg>">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script>tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#CC1F1F', secondary: '#111827' } } } }</script>
+</head>
+<body class="bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 transition-colors duration-300">
+<div id="page-loader"><div class="flex flex-col items-center gap-4"><div class="loader-spinner"></div><span class="text-xs font-black uppercase tracking-widest text-[#CC1F1F]">Loading...</span></div></div>
+<div id="navbar-container"></div>
+
+<!-- HERO -->
+<section class="relative py-28 bg-slate-950 overflow-hidden">
+    <div class="absolute inset-0 opacity-25"><img src="assets/technician.jpg" alt="" class="w-full h-full object-cover animate-slow-zoom"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-slate-950/80 via-slate-950/60 to-slate-950"></div>
+    <div class="relative z-10 max-w-4xl mx-auto px-4 text-center">
+        <div class="section-label mb-6 mx-auto" style="width:fit-content; background:rgba(204, 31, 31, 0.15);">Our Services</div>
+        <h1 class="text-4xl md:text-6xl font-black text-white tracking-tighter uppercase mb-6" style="font-family:'Outfit',sans-serif;">
+            Full Mobile <span class="text-[#CC1F1F]">Tire Care</span>
+        </h1>
+        <p class="text-slate-300 text-lg max-w-2xl mx-auto">Complete tire services delivered to your home, office, or roadside location. No shop visit required.</p>
+    </div>
+</section>
+
+<!-- SERVICES GRID -->
+<section class="py-24 bg-white dark:bg-slate-900">
+    <div class="max-w-7xl mx-auto px-4">
+        <!-- Tab Filters -->
+        <div class="flex flex-wrap justify-center gap-3 mb-12">
+            <button class="py-2.5 px-6 font-bold uppercase tracking-wider text-xs rounded-xl bg-[#CC1F1F] text-white border-2 border-transparent transition-all hover:scale-105 filter-tab-btn" data-filter="all">All Services</button>
+            <button class="py-2.5 px-6 font-bold uppercase tracking-wider text-xs rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-2 border-transparent transition-all hover:scale-105 filter-tab-btn" data-filter="emergency">Emergency Help</button>
+            <button class="py-2.5 px-6 font-bold uppercase tracking-wider text-xs rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-2 border-transparent transition-all hover:scale-105 filter-tab-btn" data-filter="installation">Installation</button>
+            <button class="py-2.5 px-6 font-bold uppercase tracking-wider text-xs rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-2 border-transparent transition-all hover:scale-105 filter-tab-btn" data-filter="maintenance">Maintenance</button>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 reveal">
+            <!-- Service 1 -->
+            <div class="service-card group bg-white dark:bg-slate-800 rounded-3xl border border-slate-100 dark:border-slate-700 overflow-hidden hover:shadow-2xl hover:shadow-[#CC1F1F]/5 transition-all duration-500 hover:-translate-y-2 flex flex-col justify-between" data-category="emergency">
+                <div class="relative h-48 bg-gradient-to-br from-red-100 to-red-50 dark:from-orange-900/30 dark:to-slate-800 flex items-center justify-center overflow-hidden">
+                    <i class="fas fa-circle-dot text-8xl text-[#CC1F1F]/20 group-hover:scale-110 transition-transform duration-500"></i>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                        <span class="text-white text-xs font-black uppercase tracking-widest">Available 24/7</span>
+                    </div>
+                </div>
+                <div class="p-7">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 bg-red-50 dark:bg-red-900/20 rounded-xl flex items-center justify-center text-[#CC1F1F]"><i class="fas fa-circle-dot"></i></div>
+                        <h3 class="font-black text-xl dark:text-white" style="font-family:'Outfit',sans-serif;">Flat Tire Repair</h3>
+                    </div>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-5">Fast on-site puncture repair using professional-grade patch kits. We assess, patch, or replace and get you moving in under 30 minutes.</p>
+                    <div class="flex items-center justify-between">
+                        <span class="badge badge-primary">From $49</span>
+                        <a href="pricing.html" class="text-[#CC1F1F] font-black text-xs uppercase tracking-wider inline-flex items-center gap-1.5 hover:gap-3 transition-all">Book <i class="fas fa-arrow-right text-xs"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service 2 -->
+            <div class="service-card group bg-white dark:bg-slate-800 rounded-3xl border border-slate-100 dark:border-slate-700 overflow-hidden hover:shadow-2xl hover:shadow-[#CC1F1F]/5 transition-all duration-500 hover:-translate-y-2 flex flex-col justify-between" data-category="installation">
+                <div class="relative h-48 bg-gradient-to-br from-blue-50 to-slate-50 dark:from-blue-900/20 dark:to-slate-800 flex items-center justify-center overflow-hidden">
+                    <i class="fas fa-screwdriver-wrench text-8xl text-blue-200 dark:text-blue-900/50 group-hover:scale-110 transition-transform duration-500"></i>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                        <span class="text-white text-xs font-black uppercase tracking-widest">All Brands & Sizes</span>
+                    </div>
+                </div>
+                <div class="p-7">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 bg-red-50 dark:bg-red-900/20 rounded-xl flex items-center justify-center text-[#CC1F1F]"><i class="fas fa-screwdriver-wrench"></i></div>
+                        <h3 class="font-black text-xl dark:text-white" style="font-family:'Outfit',sans-serif;">Tire Installation</h3>
+                    </div>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-5">New tire mounting and balancing at your location. We handle all vehicle types — cars, SUVs, trucks, and vans — any brand, any size.</p>
+                    <div class="flex items-center justify-between">
+                        <span class="badge badge-primary">From $89/tire</span>
+                        <a href="pricing.html" class="text-[#CC1F1F] font-black text-xs uppercase tracking-wider inline-flex items-center gap-1.5 hover:gap-3 transition-all">Book <i class="fas fa-arrow-right text-xs"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service 3 -->
+            <div class="service-card group bg-white dark:bg-slate-800 rounded-3xl border border-slate-100 dark:border-slate-700 overflow-hidden hover:shadow-2xl hover:shadow-[#CC1F1F]/5 transition-all duration-500 hover:-translate-y-2 flex flex-col justify-between" data-category="maintenance">
+                <div class="relative h-48 bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-slate-800 flex items-center justify-center overflow-hidden">
+                    <i class="fas fa-rotate text-8xl text-green-200 dark:text-green-900/50 group-hover:scale-110 transition-transform duration-500"></i>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                        <span class="text-white text-xs font-black uppercase tracking-widest">Extends Tire Life</span>
+                    </div>
+                </div>
+                <div class="p-7">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 bg-red-50 dark:bg-red-900/20 rounded-xl flex items-center justify-center text-[#CC1F1F]"><i class="fas fa-rotate"></i></div>
+                        <h3 class="font-black text-xl dark:text-white" style="font-family:'Outfit',sans-serif;">Tire Rotation</h3>
+                    </div>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-5">Extend tire life by up to 30% with regular rotation. We track your schedule and send smart reminders when it's time.</p>
+                    <div class="flex items-center justify-between">
+                        <span class="badge badge-primary">From $39</span>
+                        <a href="pricing.html" class="text-[#CC1F1F] font-black text-xs uppercase tracking-wider inline-flex items-center gap-1.5 hover:gap-3 transition-all">Book <i class="fas fa-arrow-right text-xs"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service 4 -->
+            <div class="service-card group bg-white dark:bg-slate-800 rounded-3xl border border-slate-100 dark:border-slate-700 overflow-hidden hover:shadow-2xl hover:shadow-[#CC1F1F]/5 transition-all duration-500 hover:-translate-y-2 flex flex-col justify-between" data-category="maintenance">
+                <div class="relative h-48 bg-gradient-to-br from-purple-50 to-indigo-50 dark:from-purple-900/20 dark:to-slate-800 flex items-center justify-center overflow-hidden">
+                    <i class="fas fa-scale-balanced text-8xl text-purple-200 dark:text-purple-900/50 group-hover:scale-110 transition-transform duration-500"></i>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                        <span class="text-white text-xs font-black uppercase tracking-widest">Smooth Ride Guaranteed</span>
+                    </div>
+                </div>
+                <div class="p-7">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 bg-red-50 dark:bg-red-900/20 rounded-xl flex items-center justify-center text-[#CC1F1F]"><i class="fas fa-scale-balanced"></i></div>
+                        <h3 class="font-black text-xl dark:text-white" style="font-family:'Outfit',sans-serif;">Tire Balancing</h3>
+                    </div>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-5">Eliminate vibrations and uneven wear with precision balancing. Performed on-site using professional spin balancing equipment.</p>
+                    <div class="flex items-center justify-between">
+                        <span class="badge badge-primary">From $69/axle</span>
+                        <a href="pricing.html" class="text-[#CC1F1F] font-black text-xs uppercase tracking-wider inline-flex items-center gap-1.5 hover:gap-3 transition-all">Book <i class="fas fa-arrow-right text-xs"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service 5 -->
+            <div class="service-card group bg-white dark:bg-slate-800 rounded-3xl border border-slate-100 dark:border-slate-700 overflow-hidden hover:shadow-2xl hover:shadow-[#CC1F1F]/5 transition-all duration-500 hover:-translate-y-2 flex flex-col justify-between" data-category="emergency">
+                <div class="relative h-48 bg-gradient-to-br from-red-50 to-pink-50 dark:from-red-900/20 dark:to-slate-800 flex items-center justify-center overflow-hidden">
+                    <i class="fas fa-gauge text-8xl text-red-200 dark:text-red-900/50 group-hover:scale-110 transition-transform duration-500"></i>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                        <span class="text-white text-xs font-black uppercase tracking-widest">Safety Critical</span>
+                    </div>
+                </div>
+                <div class="p-7">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 bg-red-50 dark:bg-red-900/20 rounded-xl flex items-center justify-center text-[#CC1F1F]"><i class="fas fa-gauge"></i></div>
+                        <h3 class="font-black text-xl dark:text-white" style="font-family:'Outfit',sans-serif;">TPMS Service</h3>
+                    </div>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-5">Tire Pressure Monitoring System reset, sensor replacement, and calibration after every tire service for accurate readings.</p>
+                    <div class="flex items-center justify-between">
+                        <span class="badge badge-primary">From $25</span>
+                        <a href="pricing.html" class="text-[#CC1F1F] font-black text-xs uppercase tracking-wider inline-flex items-center gap-1.5 hover:gap-3 transition-all">Book <i class="fas fa-arrow-right text-xs"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service 6 -->
+            <div class="service-card group bg-white dark:bg-slate-800 rounded-3xl border border-slate-100 dark:border-slate-700 overflow-hidden hover:shadow-2xl hover:shadow-[#CC1F1F]/5 transition-all duration-500 hover:-translate-y-2 flex flex-col justify-between" data-category="installation">
+                <div class="relative h-48 bg-gradient-to-br from-amber-50 to-yellow-50 dark:from-amber-900/20 dark:to-slate-800 flex items-center justify-center overflow-hidden">
+                    <i class="fas fa-van-shuttle text-8xl text-amber-200 dark:text-amber-900/50 group-hover:scale-110 transition-transform duration-500"></i>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                        <span class="text-white text-xs font-black uppercase tracking-widest">For Businesses</span>
+                    </div>
+                </div>
+                <div class="p-7">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 bg-red-50 dark:bg-red-900/20 rounded-xl flex items-center justify-center text-[#CC1F1F]"><i class="fas fa-van-shuttle"></i></div>
+                        <h3 class="font-black text-xl dark:text-white" style="font-family:'Outfit',sans-serif;">Fleet Service</h3>
+                    </div>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-5">Dedicated mobile tire management for fleets. Scheduled maintenance, bulk tire supply, and priority response for your entire vehicle fleet.</p>
+                    <div class="flex items-center justify-between">
+                        <span class="badge badge-primary">Custom Pricing</span>
+                        <a href="contact.html" class="text-[#CC1F1F] font-black text-xs uppercase tracking-wider inline-flex items-center gap-1.5 hover:gap-3 transition-all">Contact <i class="fas fa-arrow-right text-xs"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== GUARANTEE & ASSURANCE ===== -->
+<section class="py-24 bg-gradient-to-r from-[#CC1F1F] to-red-600 text-white relative overflow-hidden transition-colors duration-300">
+    <div class="noise-overlay"></div>
+    <div class="max-w-7xl mx-auto px-4 relative z-10 text-center">
+        <div class="max-w-3xl mx-auto space-y-6">
+            <div class="w-20 h-20 bg-white/10 rounded-full flex items-center justify-center mx-auto border border-white/20 shadow-xl mb-4">
+                <i class="fas fa-shield-check text-4xl text-white"></i>
+            </div>
+            <h2 class="text-3xl md:text-5xl font-black uppercase tracking-tighter text-white" style="font-family:'Outfit',sans-serif;">Our 30-Day Workmanship Guarantee</h2>
+            <p class="text-red-100 text-lg leading-relaxed">
+                We stand behind our mobile technicians. If you experience any issues with tire mounting, balancing, or patch repairs within 30 days of service, we will send a technician out to resolve it at absolutely zero cost to you.
+            </p>
+            <div class="pt-4 flex flex-wrap justify-center gap-8 text-xs font-black uppercase tracking-widest text-red-100">
+                <span>🛡️ ASE Certified Standard</span>
+                <span>⏱️ 60-Minute Arrival Pledge</span>
+                <span>💳 Fixed Upfront Pricing</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PROCESS -->
+<section class="py-24 bg-slate-50 dark:bg-slate-950">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="text-center mb-16 reveal">
+            <div class="section-label mb-4 mx-auto" style="width:fit-content;">How It Works</div>
+            <h2 class="text-3xl md:text-5xl font-black dark:text-white tracking-tighter uppercase mb-4" style="font-family:'Outfit',sans-serif;">
+                3 Simple <span class="text-[#CC1F1F]">Steps</span>
+            </h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 reveal">
+            <div class="group flex flex-col items-center text-center gap-5">
+                <div class="relative">
+                    <span class="absolute -top-2 -right-2 w-9 h-9 bg-[#CC1F1F] text-white rounded-full flex items-center justify-center font-black text-sm shadow-lg border-2 border-white dark:border-slate-900 z-10">1</span>
+                    <div class="w-28 h-28 bg-white dark:bg-slate-800 rounded-[2rem] flex items-center justify-center border-2 border-slate-200 dark:border-slate-700 group-hover:border-[#CC1F1F] group-hover:bg-[#CC1F1F] transition-all duration-500 shadow-lg">
+                        <i class="fas fa-mobile-screen-button text-4xl text-[#CC1F1F] group-hover:text-white transition-colors"></i>
+                    </div>
+                </div>
+                <h3 class="text-xl font-black dark:text-white" style="font-family:'Outfit',sans-serif;">Book Online or Call</h3>
+                <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed max-w-xs">Select your service, describe the issue, and share your location. Instant confirmation — no waiting on hold.</p>
+            </div>
+            <div class="group flex flex-col items-center text-center gap-5">
+                <div class="relative">
+                    <span class="absolute -top-2 -right-2 w-9 h-9 bg-[#CC1F1F] text-white rounded-full flex items-center justify-center font-black text-sm shadow-lg border-2 border-white dark:border-slate-900 z-10">2</span>
+                    <div class="w-28 h-28 bg-white dark:bg-slate-800 rounded-[2rem] flex items-center justify-center border-2 border-slate-200 dark:border-slate-700 group-hover:border-[#CC1F1F] group-hover:bg-[#CC1F1F] transition-all duration-500 shadow-lg">
+                        <i class="fas fa-location-dot text-4xl text-[#CC1F1F] group-hover:text-white transition-colors"></i>
+                    </div>
+                </div>
+                <h3 class="text-xl font-black dark:text-white" style="font-family:'Outfit',sans-serif;">Track in Real-Time</h3>
+                <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed max-w-xs">Watch your technician's live location on the map. Know exactly when they'll arrive — no more guessing windows.</p>
+            </div>
+            <div class="group flex flex-col items-center text-center gap-5">
+                <div class="relative">
+                    <span class="absolute -top-2 -right-2 w-9 h-9 bg-[#CC1F1F] text-white rounded-full flex items-center justify-center font-black text-sm shadow-lg border-2 border-white dark:border-slate-900 z-10">3</span>
+                    <div class="w-28 h-28 bg-white dark:bg-slate-800 rounded-[2rem] flex items-center justify-center border-2 border-slate-200 dark:border-slate-700 group-hover:border-[#CC1F1F] group-hover:bg-[#CC1F1F] transition-all duration-500 shadow-lg">
+                        <i class="fas fa-circle-check text-4xl text-[#CC1F1F] group-hover:text-white transition-colors"></i>
+                    </div>
+                </div>
+                <h3 class="text-xl font-black dark:text-white" style="font-family:'Outfit',sans-serif;">Service & Go</h3>
+                <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed max-w-xs">Technician arrives, completes service with a full safety check, and sends a digital invoice. Rate your experience.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== EQUIPMENT SHOWCASE ===== -->
+<section class="py-24 bg-white dark:bg-slate-900 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="text-center mb-16 reveal">
+            <div class="section-label mb-4 mx-auto" style="width:fit-content;">State of the Art</div>
+            <h2 class="text-3xl md:text-5xl font-black dark:text-white uppercase mb-4" style="font-family:'Outfit',sans-serif;">
+                Our Mobile <span class="text-[#CC1F1F]">Technology</span>
+            </h2>
+            <p class="text-slate-500 dark:text-slate-400 max-w-xl mx-auto">We carry professional garage-grade equipment inside every single mobile service vehicle.</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 reveal stagger-container">
+            <div class="bg-slate-50 dark:bg-slate-800 p-6 rounded-2xl border border-slate-100 dark:border-slate-700 spotlight-card tilt-card stagger-item">
+                <div class="w-12 h-12 bg-[#CC1F1F]/10 rounded-xl flex items-center justify-center mb-4 text-[#CC1F1F] text-xl"><i class="fas fa-screwdriver-wrench"></i></div>
+                <h4 class="font-black text-lg dark:text-white mb-2" style="font-family:'Outfit',sans-serif;">Tire Mounting System</h4>
+                <p class="text-slate-500 dark:text-slate-400 text-xs leading-relaxed">Corghi touchless tire changer on-board prevents any scratches to your precious alloy rims.</p>
+            </div>
+            <div class="bg-slate-50 dark:bg-slate-800 p-6 rounded-2xl border border-slate-100 dark:border-slate-700 spotlight-card tilt-card stagger-item">
+                <div class="w-12 h-12 bg-[#CC1F1F]/10 rounded-xl flex items-center justify-center mb-4 text-[#CC1F1F] text-xl"><i class="fas fa-scale-balanced"></i></div>
+                <h4 class="font-black text-lg dark:text-white mb-2" style="font-family:'Outfit',sans-serif;">Spin Balancer</h4>
+                <p class="text-slate-500 dark:text-slate-400 text-xs leading-relaxed">Computerized road-force simulation balancer balances tires to within 1/10th of an ounce accuracy.</p>
+            </div>
+            <div class="bg-slate-50 dark:bg-slate-800 p-6 rounded-2xl border border-slate-100 dark:border-slate-700 spotlight-card tilt-card stagger-item">
+                <div class="w-12 h-12 bg-[#CC1F1F]/10 rounded-xl flex items-center justify-center mb-4 text-[#CC1F1F] text-xl"><i class="fas fa-wind"></i></div>
+                <h4 class="font-black text-lg dark:text-white mb-2" style="font-family:'Outfit',sans-serif;">Quiet Compressors</h4>
+                <p class="text-slate-500 dark:text-slate-400 text-xs leading-relaxed">Ultra-quiet screw air compressors provide reliable high pressure without disturbing your neighborhood.</p>
+            </div>
+            <div class="bg-slate-50 dark:bg-slate-800 p-6 rounded-2xl border border-slate-100 dark:border-slate-700 spotlight-card tilt-card stagger-item">
+                <div class="w-12 h-12 bg-[#CC1F1F]/10 rounded-xl flex items-center justify-center mb-4 text-[#CC1F1F] text-xl"><i class="fas fa-network-wired"></i></div>
+                <h4 class="font-black text-lg dark:text-white mb-2" style="font-family:'Outfit',sans-serif;">TPMS Programmer</h4>
+                <p class="text-slate-500 dark:text-slate-400 text-xs leading-relaxed">Autel TPMS OBD-II diagnostic tool programs new sensors to your vehicle computer on the spot.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section class="py-24 bg-white dark:bg-slate-900">
+    <div class="max-w-3xl mx-auto px-4">
+        <div class="text-center mb-14 reveal">
+            <div class="section-label mb-4 mx-auto" style="width:fit-content;">FAQ</div>
+            <h2 class="text-3xl md:text-4xl font-black dark:text-white tracking-tighter uppercase" style="font-family:'Outfit',sans-serif;">
+                Common <span class="text-[#CC1F1F]">Questions</span>
+            </h2>
+        </div>
+
+        <div class="space-y-3 reveal" id="faq-container">
+            <!-- FAQs injected by JS -->
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="py-16 bg-[#CC1F1F]">
+    <div class="max-w-4xl mx-auto px-4 text-center reveal">
+        <h2 class="text-3xl md:text-4xl font-black text-white uppercase mb-4" style="font-family:'Outfit',sans-serif;">Ready to Book Your Service?</h2>
+        <p class="text-red-100 mb-8">Select a service above or call us now. We're available 24/7.</p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4">
+            <a href="pricing.html"><button class="w-full sm:w-auto bg-white text-[#CC1F1F] px-10 py-4 rounded-xl font-black uppercase tracking-widest text-sm hover:bg-red-50 transition-all shadow-lg">Book Now</button></a>
+            <a href="tel:+15550123456"><button class="w-full sm:w-auto bg-black/20 border border-white/30 text-white px-10 py-4 rounded-xl font-black uppercase tracking-widest text-sm hover:bg-black/30 transition-all flex items-center justify-center gap-2"><i class="fas fa-phone"></i> Call: (555) 012-3456</button></a>
+        </div>
+    </div>
+</section>
+
+<div id="footer-container"></div>
+<script>
+const FAQS = [
+    { q: 'How quickly can you arrive?', a: 'We guarantee a technician at your location within 60 minutes for all in-city service calls. Average response time is 48 minutes.' },
+    { q: 'Do you work 24/7 including weekends?', a: 'Yes! We operate 24 hours a day, 7 days a week, 365 days a year. No extra charge for nights, weekends, or holidays.' },
+    { q: 'What tire brands do you carry?', a: 'We stock Michelin, Bridgestone, Continental, Pirelli, Goodyear, Yokohama, Toyo, Hankook, and more. If you have a specific brand request, let us know when booking.' },
+    { q: 'Can you service any vehicle?', a: 'Yes — cars, SUVs, trucks, vans, crossovers. We service passenger vehicles and light commercial vehicles.' },
+    { q: 'Do I need to be present for the service?', a: 'We recommend you be present, but it is not always necessary. You can authorize service remotely through your dashboard.' },
+    { q: 'Is there a call-out fee?', a: 'No hidden fees. The price quoted includes everything. For out-of-zone locations a small travel fee may apply, which is disclosed upfront.' },
+];
+
+document.getElementById('faq-container').innerHTML = FAQS.map((faq, i) => `
+    <div class="bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 rounded-2xl overflow-hidden">
+        <button onclick="toggleFaq(${i})" class="w-full flex items-center justify-between p-6 text-start font-black text-sm dark:text-white hover:text-[#CC1F1F] transition-colors" style="font-family:'Outfit',sans-serif;">
+            ${faq.q}
+            <i class="fas fa-chevron-down text-xs text-[#CC1F1F] transition-transform duration-300" id="faq-icon-${i}"></i>
+        </button>
+        <div class="accordion-content" id="faq-content-${i}">
+            <div class="px-6 pb-6 text-sm text-slate-500 dark:text-slate-400 leading-relaxed">${faq.a}</div>
+        </div>
+    </div>
+`).join('');
+
+function toggleFaq(i) {
+    const content = document.getElementById(`faq-content-${i}`);
+    const icon = document.getElementById(`faq-icon-${i}`);
+    const isOpen = content.classList.toggle('open');
+    icon.style.transform = isOpen ? 'rotate(180deg)' : 'rotate(0)';
+}
+
+// Filter Services tabs
+const tabBtns = document.querySelectorAll('.filter-tab-btn');
+const cards = document.querySelectorAll('.service-card');
+
+tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        // Toggle active button class
+        tabBtns.forEach(b => {
+            b.classList.remove('bg-[#CC1F1F]', 'text-white');
+            b.classList.add('bg-slate-100', 'dark:bg-slate-800', 'text-slate-700', 'dark:text-slate-300');
+        });
+        btn.classList.add('bg-[#CC1F1F]', 'text-white');
+        btn.classList.remove('bg-slate-100', 'dark:bg-slate-800', 'text-slate-700', 'dark:text-slate-300');
+
+        const filter = btn.getAttribute('data-filter');
+
+        cards.forEach(card => {
+            const cat = card.getAttribute('data-category');
+            if (filter === 'all' || cat === filter) {
+                card.style.display = 'flex';
+                setTimeout(() => card.style.opacity = '1', 50);
+            } else {
+                card.style.opacity = '0';
+                setTimeout(() => card.style.display = 'none', 300);
+            }
+        });
+    });
+});
+</script>
+<script src="components.js"></script>
+</body>
+</html>
+
+

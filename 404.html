@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" id="root-html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Page not found — TireXpress Mobile Tire Service.">
+    <title>404 — Page Not Found | TireXpress</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' stroke='%23CC1F1F' stroke-width='8' fill='none'/><circle cx='50' cy='50' r='18' stroke='%23CC1F1F' stroke-width='8' fill='none'/></svg>">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script>tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#CC1F1F', secondary: '#111827' } } } }</script>
+    <style>
+        @keyframes tire-bounce-roll {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-28px) rotate(180deg); }
+        }
+        .tire-bounce-roll {
+            animation: tire-bounce-roll 2.4s ease-in-out infinite;
+        }
+        @keyframes shadow-shrink {
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(0.6); opacity: 0.1; }
+        }
+        .shadow-shrink {
+            animation: shadow-shrink 2.4s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-slate-950 flex items-center justify-center overflow-hidden relative">
+    <!-- Background -->
+    <div class="absolute inset-0 flex items-center justify-center opacity-5 pointer-events-none">
+        <div class="text-[30rem] font-black text-white leading-none select-none" style="font-family:'Outfit',sans-serif;">404</div>
+    </div>
+    <div class="absolute top-24 left-12 animate-spin-wheel opacity-10 hidden md:block">
+        <svg width="100" height="100" viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="47" stroke="#CC1F1F" stroke-width="4"/><circle cx="50" cy="50" r="20" stroke="#CC1F1F" stroke-width="4"/><line x1="50" y1="3" x2="50" y2="30" stroke="#CC1F1F" stroke-width="3" stroke-linecap="round"/><line x1="50" y1="70" x2="50" y2="97" stroke="#CC1F1F" stroke-width="3" stroke-linecap="round"/><line x1="3" y1="50" x2="30" y2="50" stroke="#CC1F1F" stroke-width="3" stroke-linecap="round"/><line x1="70" y1="50" x2="97" y2="50" stroke="#CC1F1F" stroke-width="3" stroke-linecap="round"/></svg>
+    </div>
+    <div class="absolute bottom-24 right-16 animate-float opacity-10 hidden md:block">
+        <svg width="70" height="70" viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="47" stroke="#CC1F1F" stroke-width="4"/><circle cx="50" cy="50" r="20" stroke="#CC1F1F" stroke-width="4"/></svg>
+    </div>
+
+    <div class="relative z-10 text-center px-4 max-w-xl mx-auto">
+        <!-- Logo -->
+        <a href="index.html" class="inline-flex items-center gap-2 mb-8 group">
+            <svg width="30" height="30" viewBox="0 0 34 34" fill="none"><circle cx="17" cy="17" r="16" stroke="#CC1F1F" stroke-width="2.5"/><circle cx="17" cy="17" r="7" stroke="#CC1F1F" stroke-width="2.5"/><line x1="17" y1="1" x2="17" y2="10" stroke="#CC1F1F" stroke-width="2" stroke-linecap="round"/><line x1="17" y1="24" x2="17" y2="33" stroke="#CC1F1F" stroke-width="2" stroke-linecap="round"/><line x1="1" y1="17" x2="10" y2="17" stroke="#CC1F1F" stroke-width="2" stroke-linecap="round"/><line x1="24" y1="17" x2="33" y2="17" stroke="#CC1F1F" stroke-width="2" stroke-linecap="round"/></svg>
+            <span class="font-black text-lg text-white group-hover:text-[#CC1F1F] transition-colors" style="font-family:'Outfit',sans-serif;">Tire<span class="text-[#CC1F1F]">Xpress</span></span>
+        </a>
+
+        <!-- Bouncing Tire Visual -->
+        <div class="relative w-36 h-36 mx-auto mb-6 flex items-center justify-center">
+            <!-- Tire SVG -->
+            <div class="tire-bounce-roll z-10">
+                <svg width="96" height="96" viewBox="0 0 100 100" fill="none" class="text-[#CC1F1F]">
+                    <circle cx="50" cy="50" r="45" stroke="currentColor" stroke-width="8" fill="#111827"/>
+                    <circle cx="50" cy="50" r="28" stroke="currentColor" stroke-width="4" stroke-dasharray="8 4" fill="none"/>
+                    <circle cx="50" cy="50" r="16" stroke="currentColor" stroke-width="6" fill="#1f2937"/>
+                    <line x1="50" y1="34" x2="50" y2="16" stroke="currentColor" stroke-width="4"/>
+                    <line x1="50" y1="66" x2="50" y2="84" stroke="currentColor" stroke-width="4"/>
+                    <line x1="34" y1="50" x2="16" y2="50" stroke="currentColor" stroke-width="4"/>
+                    <line x1="66" y1="50" x2="84" y2="50" stroke="currentColor" stroke-width="4"/>
+                    <line x1="39" y1="39" x2="26" y2="26" stroke="currentColor" stroke-width="4"/>
+                    <line x1="61" y1="61" x2="74" y2="74" stroke="currentColor" stroke-width="4"/>
+                    <line x1="61" y1="39" x2="74" y2="26" stroke="currentColor" stroke-width="4"/>
+                    <line x1="39" y1="61" x2="26" y2="74" stroke="currentColor" stroke-width="4"/>
+                </svg>
+            </div>
+            <!-- Bouncing shadow -->
+            <div class="absolute bottom-2 left-1/2 -translate-x-1/2 w-20 h-2 bg-black rounded-full shadow-shrink blur-sm z-0"></div>
+        </div>
+
+        <div class="text-[#CC1F1F] text-sm font-black uppercase tracking-[0.3em] mb-4">404 Error</div>
+        <h1 class="text-5xl md:text-7xl font-black text-white tracking-tighter mb-6 uppercase" style="font-family:'Outfit',sans-serif;">
+            Road<br>Ends <span class="text-[#CC1F1F]">Here</span>
+        </h1>
+        <p class="text-slate-400 text-lg mb-12 leading-relaxed">
+            Looks like this page had a flat tire. The page you're looking for doesn't exist or has been moved.
+        </p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a href="index.html" class="w-full sm:w-auto">
+                <button class="btn-primary w-full sm:w-auto px-8 py-4 rounded-xl text-sm flex items-center justify-center gap-2">
+                    <i class="fas fa-home"></i> Back to Home
+                </button>
+            </a>
+            <a href="contact.html" class="w-full sm:w-auto">
+                <button class="w-full sm:w-auto glass border border-white/15 text-white px-8 py-4 rounded-xl text-sm font-black uppercase tracking-widest hover:bg-white/10 transition-all flex items-center justify-center gap-2">
+                    <i class="fas fa-headset"></i> Get Help
+                </button>
+            </a>
+        </div>
+
+        <!-- Quick Links Grid -->
+        <div class="mt-12 pt-8 border-t border-white/10 max-w-md mx-auto">
+            <p class="text-xs font-black uppercase tracking-widest text-slate-500 mb-4">Quick Navigation</p>
+            <div class="grid grid-cols-2 gap-3">
+                <a href="tires.html" class="p-3 bg-white/5 border border-white/10 rounded-xl hover:border-[#CC1F1F]/30 hover:bg-white/10 transition-all text-xs font-bold text-slate-300 hover:text-white flex items-center justify-center gap-2">
+                    <i class="fas fa-circle-dot text-[#CC1F1F]"></i> Browse Tires
+                </a>
+                <a href="pricing.html" class="p-3 bg-white/5 border border-white/10 rounded-xl hover:border-[#CC1F1F]/30 hover:bg-white/10 transition-all text-xs font-bold text-slate-300 hover:text-white flex items-center justify-center gap-2">
+                    <i class="fas fa-tags text-[#CC1F1F]"></i> Our Pricing
+                </a>
+                <a href="about.html" class="p-3 bg-white/5 border border-white/10 rounded-xl hover:border-[#CC1F1F]/30 hover:bg-white/10 transition-all text-xs font-bold text-slate-300 hover:text-white flex items-center justify-center gap-2">
+                    <i class="fas fa-info-circle text-[#CC1F1F]"></i> About Us
+                </a>
+                <a href="home2.html" class="p-3 bg-white/5 border border-white/10 rounded-xl hover:border-[#CC1F1F]/30 hover:bg-white/10 transition-all text-xs font-bold text-slate-300 hover:text-white flex items-center justify-center gap-2">
+                    <i class="fas fa-calendar-alt text-[#CC1F1F]"></i> Book Install
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        if (localStorage.theme === 'dark' || (!localStorage.theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+</body>
+</html>
+
+
