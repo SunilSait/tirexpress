@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="style.css">
     <script>tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#CC1F1F', secondary: '#111827' } } } }</script>
 </head>
-<body class="min-h-screen bg-slate-950 flex items-center justify-center overflow-hidden relative">
+<body class="min-h-screen bg-slate-950 flex items-start justify-center overflow-x-hidden overflow-y-auto relative">
     <!-- Background counter-rotating spinning wheels -->
     <div class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-5">
         <svg class="w-[600px] h-[600px] animate-spin-wheel" viewBox="0 0 200 200" fill="none" style="animation-duration: 25s;">
@@ -35,15 +35,21 @@
     </div>
     <div class="absolute inset-0 bg-gradient-to-b from-slate-950/50 via-transparent to-slate-950/80 pointer-events-none"></div>
 
-    <div class="relative z-10 text-center px-4 max-w-2xl mx-auto">
-        <a href="index.html" class="inline-flex items-center gap-2 mb-12 group">
-            <svg width="30" height="30" viewBox="0 0 34 34" fill="none"><circle cx="17" cy="17" r="16" stroke="#CC1F1F" stroke-width="2.5"/><circle cx="17" cy="17" r="7" stroke="#CC1F1F" stroke-width="2.5"/><line x1="17" y1="1" x2="17" y2="10" stroke="#CC1F1F" stroke-width="2" stroke-linecap="round"/><line x1="17" y1="24" x2="17" y2="33" stroke="#CC1F1F" stroke-width="2" stroke-linecap="round"/><line x1="1" y1="17" x2="10" y2="17" stroke="#CC1F1F" stroke-width="2" stroke-linecap="round"/><line x1="24" y1="17" x2="33" y2="17" stroke="#CC1F1F" stroke-width="2" stroke-linecap="round"/></svg>
-            <span class="font-black text-lg text-white" style="font-family:'Outfit',sans-serif;">Tire<span class="text-[#CC1F1F]">Xpress</span></span>
-        </a>
+    <div class="relative z-10 text-center px-4 max-w-2xl mx-auto py-16">
+        <!-- Logo — full block row -->
+        <div class="block mb-5">
+            <a href="index.html" class="inline-flex items-center gap-2 group">
+                <svg width="30" height="30" viewBox="0 0 34 34" fill="none"><circle cx="17" cy="17" r="16" stroke="#CC1F1F" stroke-width="2.5"/><circle cx="17" cy="17" r="7" stroke="#CC1F1F" stroke-width="2.5"/><line x1="17" y1="1" x2="17" y2="10" stroke="#CC1F1F" stroke-width="2" stroke-linecap="round"/><line x1="17" y1="24" x2="17" y2="33" stroke="#CC1F1F" stroke-width="2" stroke-linecap="round"/><line x1="1" y1="17" x2="10" y2="17" stroke="#CC1F1F" stroke-width="2" stroke-linecap="round"/><line x1="24" y1="17" x2="33" y2="17" stroke="#CC1F1F" stroke-width="2" stroke-linecap="round"/></svg>
+                <span class="font-black text-lg text-white" style="font-family:'Outfit',sans-serif;">Tire<span class="text-[#CC1F1F]">Xpress</span></span>
+            </a>
+        </div>
 
-        <div class="inline-flex items-center gap-2 bg-[#CC1F1F]/15 border border-[#CC1F1F]/30 px-4 py-2 rounded-full mb-6">
-            <span class="flex h-2 w-2 rounded-full bg-[#CC1F1F] animate-pulse shrink-0"></span>
-            <span class="text-[#e84040] text-xs font-black uppercase tracking-[0.2em]">Launching Soon</span>
+        <!-- Launching Soon badge — below logo -->
+        <div class="block mb-8">
+            <div class="inline-flex items-center gap-2 bg-[#CC1F1F]/15 border border-[#CC1F1F]/30 px-4 py-2 rounded-full">
+                <span class="flex h-2 w-2 rounded-full bg-[#CC1F1F] animate-pulse shrink-0"></span>
+                <span class="text-[#e84040] text-xs font-black uppercase tracking-[0.2em]">Launching Soon</span>
+            </div>
         </div>
 
         <h1 class="text-4xl md:text-7xl font-black text-white tracking-tighter mb-6 uppercase leading-none" style="font-family:'Outfit',sans-serif;">

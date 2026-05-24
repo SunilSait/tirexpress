@@ -12,7 +12,7 @@
     <script>tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#CC1F1F', secondary: '#111827' } } } }</script>
     <style>
         .dash-layout { display: grid; grid-template-columns: 280px 1fr; min-height: 100vh; }
-        @media (max-width: 1024px) { .dash-layout { grid-template-columns: 1fr; } }
+        @media (max-width: 1023px) { .dash-layout { grid-template-columns: 1fr; } }
         .sidebar { height: 100vh; position: sticky; top: 0; overflow-y: auto; }
         .sidebar::-webkit-scrollbar { width: 4px; }
         .main-content { overflow-y: auto; }
@@ -28,7 +28,7 @@
 <div id="drawer-overlay" class="fixed inset-0 bg-black/50 z-40 hidden lg:hidden" onclick="closeMobileDrawer()"></div>
 
 <!-- Mobile Drawer Sidebar -->
-<div id="mobile-drawer-dash" class="fixed inset-y-0 right-0 w-72 bg-white dark:bg-slate-900 z-50 shadow-2xl overflow-y-auto lg:hidden" style="transform:translateX(100%);">
+<div id="mobile-drawer-dash" class="fixed inset-y-0 left-0 rtl:left-auto rtl:right-0 w-72 bg-white dark:bg-slate-900 z-50 shadow-2xl overflow-y-auto lg:hidden transition-transform duration-300 ease-in-out" style="transform:translateX(-100%);">
     <div class="p-5">
         <div class="flex items-center justify-between mb-6">
             <a href="index.html" class="flex items-center gap-2 group">
@@ -484,11 +484,8 @@
                             <div class="flex items-center justify-between"><span class="text-sm text-slate-500">Next Rotation At</span><span class="font-bold text-sm text-[#CC1F1F]">5,000 mi</span></div>
                             <div class="progress-bar"><div class="progress-fill" style="width:64%"></div></div>
                             <p class="text-xs text-slate-400">64% to next rotation — 1,800 miles away</p>
-                            <button onclick="showTab('schedule')" class="btn-primary w-full py-3 rounded-xl text-sm transition-all">
-                                <span class="flex items-center justify-center gap-2">
-                                    <i class="fas fa-rotate"></i>
-                                    <span>Schedule Rotation</span>
-                                </span>
+                            <button onclick="showTab('schedule')" class="btn-primary w-full py-3 rounded-xl text-sm transition-all text-center">
+                                <i class="fas fa-rotate align-middle me-2"></i><span class="align-middle">Schedule Rotation</span>
                             </button>
                         </div>
                     </div>
@@ -500,11 +497,8 @@
                             <div class="flex items-center justify-between"><span class="text-sm text-slate-500">Next Rotation At</span><span class="font-bold text-sm text-red-500">5,000 mi ⚠️</span></div>
                             <div class="progress-bar"><div class="progress-fill" style="width:96%; background:linear-gradient(90deg,#ef4444,#f97316)"></div></div>
                             <p class="text-xs text-red-500 font-bold">Due soon! Only 200 miles to next rotation.</p>
-                            <button onclick="showTab('schedule')" class="w-full py-3 rounded-xl text-sm font-black uppercase tracking-widest border-2 border-red-500 text-red-500 hover:bg-red-500 hover:text-white transition-all">
-                                <span class="flex items-center justify-center gap-2">
-                                    <i class="fas fa-triangle-exclamation"></i>
-                                    <span>Schedule Now — Overdue Soon</span>
-                                </span>
+                            <button onclick="showTab('schedule')" class="w-full py-3 rounded-xl text-sm font-black uppercase tracking-widest border-2 border-red-500 text-red-500 hover:bg-red-500 hover:text-white transition-all text-center">
+                                <i class="fas fa-triangle-exclamation align-middle me-2"></i><span class="align-middle">Schedule Now — Overdue Soon</span>
                             </button>
                         </div>
                     </div>
@@ -606,7 +600,8 @@ function openMobileDrawer() {
     document.getElementById('drawer-overlay').classList.remove('hidden');
 }
 function closeMobileDrawer() {
-    document.getElementById('mobile-drawer-dash').style.transform = 'translateX(100%)';
+    const isRTL = document.documentElement.getAttribute('dir') === 'rtl';
+    document.getElementById('mobile-drawer-dash').style.transform = isRTL ? 'translateX(100%)' : 'translateX(-100%)';
     document.getElementById('drawer-overlay').classList.add('hidden');
 }
 
@@ -659,7 +654,9 @@ function toggleDashDir() {
     localStorage.dir = isRTL ? 'ltr' : 'rtl';
     // Flip mobile drawer direction
     const drawer = document.getElementById('mobile-drawer-dash');
-    drawer.style.transform = 'translateX(100%)';
+    if (drawer) {
+        drawer.style.transform = isRTL ? 'translateX(-100%)' : 'translateX(100%)';
+    }
 }
 
 // Close notif panel on outside click
@@ -682,6 +679,11 @@ document.addEventListener('click', (e) => {
         html.setAttribute('dir', 'rtl');
         const btn = document.getElementById('dash-dir');
         if (btn) btn.textContent = 'RTL';
+    }
+    const drawer = document.getElementById('mobile-drawer-dash');
+    if (drawer) {
+        const isRTL = html.getAttribute('dir') === 'rtl';
+        drawer.style.transform = isRTL ? 'translateX(100%)' : 'translateX(-100%)';
     }
     renderSidebar();
     renderNotifPanel();
