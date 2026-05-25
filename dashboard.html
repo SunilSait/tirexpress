@@ -20,6 +20,12 @@
         @media (min-width: 365px) { .notif-panel { width: 340px; } }
         @media (min-width: 640px) { .notif-panel { right: 0; inset-inline-end: 0; } }
         .notif-panel.open { display: block; }
+        
+        /* Logout Button Custom Styling to prevent theme overrides */
+        .sidebar-link-logout { color: #ef4444 !important; }
+        .sidebar-link-logout:hover { color: #dc2626 !important; background: rgba(239, 68, 68, 0.08) !important; }
+        .dark .sidebar-link-logout { color: #f87171 !important; }
+        .dark .sidebar-link-logout:hover { color: #fca5a5 !important; background: rgba(239, 68, 68, 0.15) !important; }
     </style>
 </head>
 <body class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-300">
@@ -55,16 +61,8 @@
         <nav class="flex-1 p-4 space-y-1 overflow-y-auto" id="sidebar-nav"></nav>
 
         <!-- User at bottom -->
-        <div class="p-4 border-t border-slate-100 dark:border-slate-800 shrink-0 space-y-2">
-            <div class="flex items-center gap-3 px-3 py-2">
-                <div class="w-9 h-9 bg-[#FF5500]/10 rounded-full flex items-center justify-center text-[#FF5500] font-black shrink-0">J</div>
-                <div class="flex-1 min-w-0">
-                    <p class="font-black text-sm dark:text-white truncate">John Doe</p>
-                    <p class="text-[10px] text-slate-400 uppercase font-bold tracking-widest">Pro Member</p>
-                </div>
-            </div>
-            <button onclick="showTab('profile')" class="sidebar-link w-full"><i class="fas fa-gear w-5 shrink-0 text-sm"></i> Settings</button>
-            <a href="index.html" class="sidebar-link text-red-500 hover:bg-red-50 dark:hover:bg-red-900/10 hover:text-red-600 w-full flex items-center gap-3 px-4 py-3 rounded-xl font-bold text-sm">
+        <div class="p-4 border-t border-slate-100 dark:border-slate-800 shrink-0">
+            <a href="index.html" class="sidebar-link sidebar-link-logout w-full flex items-center gap-3 px-4 py-3 rounded-xl font-bold text-sm">
                 <i class="fas fa-right-from-bracket w-5 shrink-0 text-sm"></i> Logout
             </a>
         </div>
@@ -562,7 +560,6 @@ const SIDEBAR_ITEMS = [
     { id: 'history',        icon: 'fa-clock-rotate-left',   label: 'Service History' },
     { id: 'rotations',      icon: 'fa-rotate',              label: 'Tire Rotations' },
     { id: 'notifications',  icon: 'fa-bell',                label: 'Notifications' },
-    { id: 'profile',        icon: 'fa-user-gear',           label: 'Profile / Settings' },
 ];
 
 const NOTIFICATIONS = [
@@ -574,15 +571,26 @@ const NOTIFICATIONS = [
 function renderSidebar() {
     const nav = document.getElementById('sidebar-nav');
     const mobileNav = document.getElementById('mobile-sidebar-nav');
-    const html = SIDEBAR_ITEMS.map(item => `
-        <button onclick="showTab('${item.id}')" id="nav-${item.id}" class="sidebar-link ${item.id === 'overview' ? 'active' : ''}">
-            <i class="fas ${item.icon} w-5 shrink-0 text-sm"></i>
-            ${item.label}
-            ${item.id === 'notifications' ? '<span class="ms-auto bg-red-500 text-white text-[9px] font-black w-5 h-5 rounded-full flex items-center justify-center">3</span>' : ''}
-        </button>
-    `).join('');
-    if (nav) nav.innerHTML = html;
-    if (mobileNav) mobileNav.innerHTML = html;
+    
+    if (nav) {
+        nav.innerHTML = SIDEBAR_ITEMS.map(item => `
+            <button onclick="showTab('${item.id}')" id="nav-${item.id}" class="sidebar-link ${item.id === 'overview' ? 'active' : ''}">
+                <i class="fas ${item.icon} w-5 shrink-0 text-sm"></i>
+                ${item.label}
+                ${item.id === 'notifications' ? '<span class="ms-auto bg-red-500 text-white text-[9px] font-black w-5 h-5 rounded-full flex items-center justify-center">3</span>' : ''}
+            </button>
+        `).join('');
+    }
+    
+    if (mobileNav) {
+        mobileNav.innerHTML = SIDEBAR_ITEMS.map(item => `
+            <button onclick="showTab('${item.id}')" id="nav-mobile-${item.id}" class="sidebar-link ${item.id === 'overview' ? 'active' : ''}">
+                <i class="fas ${item.icon} w-5 shrink-0 text-sm"></i>
+                ${item.label}
+                ${item.id === 'notifications' ? '<span class="ms-auto bg-red-500 text-white text-[9px] font-black w-5 h-5 rounded-full flex items-center justify-center">3</span>' : ''}
+            </button>
+        `).join('');
+    }
 }
 
 function showTab(id) {
@@ -590,8 +598,13 @@ function showTab(id) {
     document.querySelectorAll('.sidebar-link').forEach(el => el.classList.remove('active'));
     const tab = document.getElementById('tab-' + id);
     if (tab) tab.classList.add('active');
+    
     const navBtn = document.getElementById('nav-' + id);
     if (navBtn) navBtn.classList.add('active');
+    
+    const mobileNavBtn = document.getElementById('nav-mobile-' + id);
+    if (mobileNavBtn) mobileNavBtn.classList.add('active');
+    
     closeMobileDrawer();
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
