@@ -321,41 +321,12 @@ body {
     transform: translateY(0);
 }
 
-/* --- Scroll Progress Bar --- */
-#scroll-progress {
-    position: fixed; top: 0; left: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--primary), #FF7A00);
-    z-index: 9999;
-    transition: width 0.1s ease;
-}
-
 /* --- Custom Scrollbar --- */
 ::-webkit-scrollbar { width: 7px; }
 ::-webkit-scrollbar-track { background: #f1f5f9; }
 .dark ::-webkit-scrollbar-track { background: #1e293b; }
 ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 4px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--primary-hover); }
-
-/* --- Page Loader --- */
-#page-loader {
-    position: fixed; inset: 0;
-    background: white;
-    display: flex; align-items: center; justify-content: center;
-    z-index: 99999;
-    transition: opacity 0.5s ease;
-}
-.dark #page-loader { background: #0f172a; }
-#page-loader.loaded { opacity: 0; pointer-events: none; }
-
-.loader-spinner {
-    width: 44px; height: 44px;
-    border: 3px solid #e2e8f0;
-    border-top-color: var(--primary);
-    border-radius: 50%;
-    animation: spin-slow 0.8s linear infinite;
-}
-.dark .loader-spinner { border-color: #334155; border-top-color: var(--primary); }
 
 /* --- Tire Wheel SVG spin overlay --- */
 .tire-spin {
@@ -501,7 +472,6 @@ body {
     padding-right: 1.5rem !important;
 }
 
-[dir="rtl"] #scroll-progress { left: auto; right: 0; }
 [dir="rtl"] #back-to-top { right: auto; left: 2rem; }
 [dir="rtl"] .marquee-content { animation-direction: reverse; }
 [dir="rtl"] .btn-primary::after { left: auto; right: -100%; }

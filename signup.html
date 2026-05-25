@@ -36,19 +36,16 @@
 
             <!-- Logo inside card -->
             <div class="text-center mb-8 relative">
-                <a href="index.html" class="inline-block hover:opacity-80 transition-opacity">
-                    <div class="w-16 h-16 bg-[#FF5500]/10 rounded-2xl flex items-center justify-center mx-auto mb-4 logo-spin">
-                        <svg width="34" height="34" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="50" cy="50" r="44" stroke="#FF5500" stroke-width="8" stroke-dasharray="14 6"/><circle cx="50" cy="50" r="44" stroke="#FF5500" stroke-width="2" opacity="0.4"/><circle cx="50" cy="50" r="26" stroke="#475569" stroke-width="4"/><circle cx="50" cy="50" r="10" fill="#FF5500"/><path d="M50 12 L50 88 M12 50 L88 50 M23 23 L77 77 M23 77 L77 23" stroke="#475569" stroke-width="4.5" stroke-linecap="round"/></svg>
-                    </div>
-                </a>
                 <h1 class="text-2xl font-black dark:text-white" style="font-family:'Space Grotesk',sans-serif;">Create Account</h1>
                 <p class="text-slate-500 dark:text-slate-400 text-sm mt-1">Get started in 3 easy steps</p>
             </div>
 
                 <!-- Step Progress Indicator -->
-                <div class="flex items-center justify-between mb-8 relative">
-                    <div class="absolute left-0 right-0 top-1/2 h-0.5 bg-slate-200 dark:bg-slate-700 -translate-y-1/2 z-0"></div>
-                    <div id="step-progress-line" class="absolute left-0 top-1/2 h-0.5 bg-[#FF5500] -translate-y-1/2 z-0 transition-all duration-300" style="width: 0%;"></div>
+                <div class="grid grid-cols-3 mb-8 relative w-full">
+                    <!-- Progress Track -->
+                    <div class="absolute left-[16.67%] right-[16.67%] top-4 h-0.5 bg-slate-200 dark:bg-slate-700 -translate-y-1/2 z-0">
+                        <div id="step-progress-line" class="h-full bg-[#FF5500] transition-all duration-300" style="width: 0%;"></div>
+                    </div>
                     
                     <div class="relative z-10 flex flex-col items-center">
                         <div id="step-dot-1" class="w-8 h-8 rounded-full bg-[#FF5500] text-white flex items-center justify-center text-xs font-black transition-all">1</div>
@@ -215,7 +212,6 @@
                 &copy; 2025 TireXpress · <a href="#" class="hover:text-white/50">Privacy</a> · <a href="#" class="hover:text-white/50">Terms</a>
             </p>
         </div>
-    </div>
 </main>
 
 <script>

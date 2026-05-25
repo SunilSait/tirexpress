@@ -59,7 +59,6 @@
         }).join('');
 
         return `
-        <div id="scroll-progress" style="width:0%"></div>
         <nav id="main-nav" class="sticky top-0 z-50 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 transition-all duration-300">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 xl:px-8">
                 <div class="flex justify-between items-center h-20">
@@ -107,7 +106,7 @@
             </div>
 
             <!-- Mobile Menu -->
-            <div id="mobile-menu" class="hidden xl:hidden bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800">
+            <div id="mobile-menu" class="hidden xl:hidden absolute top-20 left-0 w-full bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 shadow-2xl z-50">
                 <div class="max-w-7xl mx-auto px-4 pt-2 pb-6">
                     <div class="grid grid-cols-1 gap-0 mb-4">
                         ${navLinksMobile}
@@ -252,7 +251,6 @@
         initSpotlight();
         initTypingText();
         initMagneticButtons();
-        removePageLoader();
     }
 
     // --- Theme ---
@@ -334,16 +332,11 @@
 
     // --- Scroll Effects ---
     function initScrollEffects() {
-        const scrollProgress = document.getElementById('scroll-progress');
         const backToTop = document.getElementById('back-to-top');
         const nav = document.getElementById('main-nav');
 
         window.addEventListener('scroll', () => {
             const scrollTop = window.scrollY;
-            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-            const scrollPercent = (scrollTop / docHeight) * 100;
-
-            if (scrollProgress) scrollProgress.style.width = scrollPercent + '%';
 
             if (backToTop) {
                 backToTop.classList.toggle('visible', scrollTop > 400);
@@ -390,15 +383,7 @@
     }
 
     // --- Page Loader ---
-    function removePageLoader() {
-        const loader = document.getElementById('page-loader');
-        if (loader) {
-            setTimeout(() => {
-                loader.classList.add('loaded');
-                setTimeout(() => loader.remove(), 500);
-            }, 300);
-        }
-    }
+    // Page loader removed
 
     // --- Spotlight Effect ---
     function initSpotlight() {
