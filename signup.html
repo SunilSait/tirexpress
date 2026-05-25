@@ -5,19 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Create your free TireXpress account and get access to instant booking, service tracking, and tire management.">
     <title>Sign Up | TireXpress Mobile Tire Service</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' stroke='%23CC1F1F' stroke-width='8' fill='none'/><circle cx='50' cy='50' r='18' stroke='%23CC1F1F' stroke-width='8' fill='none'/></svg>">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='44' stroke='%23FF5500' stroke-width='8' stroke-dasharray='14 6' fill='none'/><circle cx='50' cy='50' r='26' stroke='%23FF5500' stroke-width='4' fill='none'/><circle cx='50' cy='50' r='10' fill='%23FF5500'/><path d='M50 12 L50 88 M12 50 L88 50 M23 23 L77 77 M23 77 L77 23' stroke='%23FF5500' stroke-width='4.5' stroke-linecap='round'/></svg>">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="style.css">
-    <script>tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#CC1F1F', secondary: '#111827' } } } }</script>
+    <script>tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#FF5500', secondary: '#0D111A' } } } }</script>
 </head>
 <body class="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 flex flex-col">
 
 <!-- Auth Top Bar -->
 <div class="flex items-center justify-between p-4 sm:p-6 max-w-7xl mx-auto w-full">
-    <a href="index.html" class="flex items-center gap-2 group">
-        <svg width="30" height="30" viewBox="0 0 34 34" fill="none"><circle cx="17" cy="17" r="16" stroke="#CC1F1F" stroke-width="2.5"/><circle cx="17" cy="17" r="7" stroke="#CC1F1F" stroke-width="2.5"/><line x1="17" y1="1" x2="17" y2="10" stroke="#CC1F1F" stroke-width="2" stroke-linecap="round"/><line x1="17" y1="24" x2="17" y2="33" stroke="#CC1F1F" stroke-width="2" stroke-linecap="round"/><line x1="1" y1="17" x2="10" y2="17" stroke="#CC1F1F" stroke-width="2" stroke-linecap="round"/><line x1="24" y1="17" x2="33" y2="17" stroke="#CC1F1F" stroke-width="2" stroke-linecap="round"/></svg>
-        <span class="font-black text-lg text-white group-hover:text-[#CC1F1F] transition-colors" style="font-family:'Outfit',sans-serif;">Tire<span class="text-[#CC1F1F]">Xpress</span></span>
+    <a href="index.html" class="flex items-center gap-2.5 group logo-spin">
+        <svg width="28" height="28" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="50" cy="50" r="44" stroke="#FF5500" stroke-width="8" stroke-dasharray="14 6"/><circle cx="50" cy="50" r="44" stroke="#FF5500" stroke-width="2" opacity="0.4"/><circle cx="50" cy="50" r="26" stroke="#475569" stroke-width="4"/><circle cx="50" cy="50" r="10" fill="#FF5500"/><path d="M50 12 L50 88 M12 50 L88 50 M23 23 L77 77 M23 77 L77 23" stroke="#475569" stroke-width="4.5" stroke-linecap="round"/></svg>
+        <span class="font-black text-lg text-white group-hover:text-[#FF5500] transition-colors" style="font-family:'Space Grotesk',sans-serif;">Tire<span class="text-[#FF5500]">Xpress</span></span>
     </a>
     <div class="flex items-center gap-2">
         <button id="su-dir-btn" onclick="toggleSuDir()" class="w-9 h-9 flex items-center justify-center rounded-lg bg-white/10 border border-white/15 text-white/60 hover:text-white transition-all text-[10px] font-black">LTR</button>
@@ -32,26 +32,26 @@
     <div class="w-full max-w-md mx-auto">
         <div class="bg-white dark:bg-slate-800 rounded-3xl shadow-2xl border border-slate-100 dark:border-slate-700 p-8 sm:p-10 animate-fade-in-up relative overflow-hidden">
             <!-- Floating background shape inside card -->
-            <div class="absolute -top-16 -right-16 w-32 h-32 bg-[#CC1F1F]/5 rounded-full blur-2xl"></div>
+            <div class="absolute -top-16 -right-16 w-32 h-32 bg-[#FF5500]/5 rounded-full blur-2xl"></div>
 
             <!-- Logo inside card -->
             <div class="text-center mb-8 relative">
                 <a href="index.html" class="inline-block hover:opacity-80 transition-opacity">
-                    <div class="w-16 h-16 bg-[#CC1F1F]/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                        <svg width="34" height="34" viewBox="0 0 34 34" fill="none"><circle cx="17" cy="17" r="16" stroke="#CC1F1F" stroke-width="2.5"/><circle cx="17" cy="17" r="7" stroke="#CC1F1F" stroke-width="2.5"/><line x1="17" y1="1" x2="17" y2="10" stroke="#CC1F1F" stroke-width="2" stroke-linecap="round"/><line x1="17" y1="24" x2="17" y2="33" stroke="#CC1F1F" stroke-width="2" stroke-linecap="round"/><line x1="1" y1="17" x2="10" y2="17" stroke="#CC1F1F" stroke-width="2" stroke-linecap="round"/><line x1="24" y1="17" x2="33" y2="17" stroke="#CC1F1F" stroke-width="2" stroke-linecap="round"/></svg>
+                    <div class="w-16 h-16 bg-[#FF5500]/10 rounded-2xl flex items-center justify-center mx-auto mb-4 logo-spin">
+                        <svg width="34" height="34" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="50" cy="50" r="44" stroke="#FF5500" stroke-width="8" stroke-dasharray="14 6"/><circle cx="50" cy="50" r="44" stroke="#FF5500" stroke-width="2" opacity="0.4"/><circle cx="50" cy="50" r="26" stroke="#475569" stroke-width="4"/><circle cx="50" cy="50" r="10" fill="#FF5500"/><path d="M50 12 L50 88 M12 50 L88 50 M23 23 L77 77 M23 77 L77 23" stroke="#475569" stroke-width="4.5" stroke-linecap="round"/></svg>
                     </div>
                 </a>
-                <h1 class="text-2xl font-black dark:text-white" style="font-family:'Outfit',sans-serif;">Create Account</h1>
+                <h1 class="text-2xl font-black dark:text-white" style="font-family:'Space Grotesk',sans-serif;">Create Account</h1>
                 <p class="text-slate-500 dark:text-slate-400 text-sm mt-1">Get started in 3 easy steps</p>
             </div>
 
                 <!-- Step Progress Indicator -->
                 <div class="flex items-center justify-between mb-8 relative">
                     <div class="absolute left-0 right-0 top-1/2 h-0.5 bg-slate-200 dark:bg-slate-700 -translate-y-1/2 z-0"></div>
-                    <div id="step-progress-line" class="absolute left-0 top-1/2 h-0.5 bg-[#CC1F1F] -translate-y-1/2 z-0 transition-all duration-300" style="width: 0%;"></div>
+                    <div id="step-progress-line" class="absolute left-0 top-1/2 h-0.5 bg-[#FF5500] -translate-y-1/2 z-0 transition-all duration-300" style="width: 0%;"></div>
                     
                     <div class="relative z-10 flex flex-col items-center">
-                        <div id="step-dot-1" class="w-8 h-8 rounded-full bg-[#CC1F1F] text-white flex items-center justify-center text-xs font-black transition-all">1</div>
+                        <div id="step-dot-1" class="w-8 h-8 rounded-full bg-[#FF5500] text-white flex items-center justify-center text-xs font-black transition-all">1</div>
                         <span class="text-[10px] font-bold text-slate-500 mt-1 uppercase tracking-wider">Info</span>
                     </div>
                     <div class="relative z-10 flex flex-col items-center">
@@ -131,37 +131,37 @@
                             <!-- Basic Plan Card -->
                             <label class="block cursor-pointer">
                                 <input type="radio" name="plan" value="basic" checked class="sr-only peer">
-                                <div class="p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 peer-checked:border-[#CC1F1F] peer-checked:bg-[#CC1F1F]/5 transition-all flex items-center justify-between">
+                                <div class="p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 peer-checked:border-[#FF5500] peer-checked:bg-[#FF5500]/5 transition-all flex items-center justify-between">
                                     <div>
                                         <h4 class="font-bold text-sm dark:text-white">Basic Plan</h4>
                                         <p class="text-xs text-slate-500">Pay per service. Best for occasional drivers.</p>
                                     </div>
-                                    <span class="text-lg font-black text-[#CC1F1F]" style="font-family:'Outfit',sans-serif;">$49<span class="text-xs font-normal text-slate-400">/srv</span></span>
+                                    <span class="text-lg font-black text-[#FF5500]" style="font-family:'Space Grotesk',sans-serif;">$49<span class="text-xs font-normal text-slate-400">/srv</span></span>
                                 </div>
                             </label>
 
                             <!-- Pro Plan Card -->
                             <label class="block cursor-pointer">
                                 <input type="radio" name="plan" value="pro" class="sr-only peer">
-                                <div class="p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 peer-checked:border-[#CC1F1F] peer-checked:bg-[#CC1F1F]/5 transition-all flex items-center justify-between relative overflow-hidden">
-                                    <div class="absolute top-0 right-0 bg-[#CC1F1F] text-white text-[8px] font-black uppercase tracking-widest px-2 py-0.5 rounded-bl">Popular</div>
+                                <div class="p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 peer-checked:border-[#FF5500] peer-checked:bg-[#FF5500]/5 transition-all flex items-center justify-between relative overflow-hidden">
+                                    <div class="absolute top-0 right-0 bg-[#FF5500] text-white text-[8px] font-black uppercase tracking-widest px-2 py-0.5 rounded-bl">Popular</div>
                                     <div>
                                         <h4 class="font-bold text-sm dark:text-white">Pro Plan</h4>
                                         <p class="text-xs text-slate-500">Free rotations & punctures. Roadside priority.</p>
                                     </div>
-                                    <span class="text-lg font-black text-[#CC1F1F]" style="font-family:'Outfit',sans-serif;">$129<span class="text-xs font-normal text-slate-400">/mo</span></span>
+                                    <span class="text-lg font-black text-[#FF5500]" style="font-family:'Space Grotesk',sans-serif;">$129<span class="text-xs font-normal text-slate-400">/mo</span></span>
                                 </div>
                             </label>
 
                             <!-- Elite Plan Card -->
                             <label class="block cursor-pointer">
                                 <input type="radio" name="plan" value="elite" class="sr-only peer">
-                                <div class="p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 peer-checked:border-[#CC1F1F] peer-checked:bg-[#CC1F1F]/5 transition-all flex items-center justify-between">
+                                <div class="p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 peer-checked:border-[#FF5500] peer-checked:bg-[#FF5500]/5 transition-all flex items-center justify-between">
                                     <div>
                                         <h4 class="font-bold text-sm dark:text-white">Elite Plan</h4>
                                         <p class="text-xs text-slate-500">Full vehicle tire insurance, zero copay, multi-car.</p>
                                     </div>
-                                    <span class="text-lg font-black text-[#CC1F1F]" style="font-family:'Outfit',sans-serif;">$299<span class="text-xs font-normal text-slate-400">/mo</span></span>
+                                    <span class="text-lg font-black text-[#FF5500]" style="font-family:'Space Grotesk',sans-serif;">$299<span class="text-xs font-normal text-slate-400">/mo</span></span>
                                 </div>
                             </label>
                         </div>
@@ -179,7 +179,7 @@
                             <div class="relative">
                                 <input id="su-pwd" type="password" placeholder="Min. 8 characters" class="form-input dark:bg-slate-900 dark:border-slate-700 dark:text-white ps-11 pe-11" required minlength="8">
                                 <i class="fas fa-lock absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
-                                <button type="button" onclick="togglePwd('su-pwd','su-eye')" class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-[#CC1F1F] transition-colors">
+                                <button type="button" onclick="togglePwd('su-pwd','su-eye')" class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-[#FF5500] transition-colors">
                                     <i class="fas fa-eye text-sm" id="su-eye"></i>
                                 </button>
                             </div>
@@ -189,15 +189,15 @@
                             <div class="relative">
                                 <input id="su-pwd2" type="password" placeholder="Repeat password" class="form-input dark:bg-slate-900 dark:border-slate-700 dark:text-white ps-11 pe-11" required>
                                 <i class="fas fa-lock absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
-                                <button type="button" onclick="togglePwd('su-pwd2','su-eye2')" class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-[#CC1F1F] transition-colors">
+                                <button type="button" onclick="togglePwd('su-pwd2','su-eye2')" class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-[#FF5500] transition-colors">
                                     <i class="fas fa-eye text-sm" id="su-eye2"></i>
                                 </button>
                             </div>
                         </div>
 
                         <label class="flex items-start gap-3 cursor-pointer mt-2">
-                            <input type="checkbox" required class="w-4 h-4 accent-[#CC1F1F] mt-0.5 rounded shrink-0">
-                            <span class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">I agree to the <a href="#" class="text-[#CC1F1F] font-black hover:underline">Terms of Service</a> and <a href="#" class="text-[#CC1F1F] font-black hover:underline">Privacy Policy</a></span>
+                            <input type="checkbox" required class="w-4 h-4 accent-[#FF5500] mt-0.5 rounded shrink-0">
+                            <span class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">I agree to the <a href="#" class="text-[#FF5500] font-black hover:underline">Terms of Service</a> and <a href="#" class="text-[#FF5500] font-black hover:underline">Privacy Policy</a></span>
                         </label>
 
                         <div class="grid grid-cols-2 gap-3 pt-2">
@@ -208,7 +208,7 @@
                 </form>
 
                 <p class="text-center text-sm text-slate-500 dark:text-slate-400 mt-7">
-                    Already have an account? <a href="login.html" class="text-[#CC1F1F] font-black hover:underline">Sign In</a>
+                    Already have an account? <a href="login.html" class="text-[#FF5500] font-black hover:underline">Sign In</a>
                 </p>
             </div>
             <p class="text-center text-xs text-white/30 mt-6">
@@ -266,7 +266,7 @@ function goToStep(stepNum) {
 function updateDot(num, active) {
     const dot = document.getElementById(`step-dot-${num}`);
     if (active) {
-        dot.className = 'w-8 h-8 rounded-full bg-[#CC1F1F] text-white flex items-center justify-center text-xs font-black transition-all';
+        dot.className = 'w-8 h-8 rounded-full bg-[#FF5500] text-white flex items-center justify-center text-xs font-black transition-all';
     } else {
         dot.className = 'w-8 h-8 rounded-full bg-slate-200 dark:bg-slate-700 text-slate-500 flex items-center justify-center text-xs font-black transition-all';
     }

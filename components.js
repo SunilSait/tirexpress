@@ -28,17 +28,15 @@
         { icon: 'fab fa-youtube',    href: '#', label: 'YouTube' },
     ];
 
-    const LOGO_SVG = `<svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <circle cx="17" cy="17" r="16" stroke="#CC1F1F" stroke-width="2.5"/>
-        <circle cx="17" cy="17" r="7" stroke="#CC1F1F" stroke-width="2.5"/>
-        <line x1="17" y1="1" x2="17" y2="10" stroke="#CC1F1F" stroke-width="2" stroke-linecap="round"/>
-        <line x1="17" y1="24" x2="17" y2="33" stroke="#CC1F1F" stroke-width="2" stroke-linecap="round"/>
-        <line x1="1" y1="17" x2="10" y2="17" stroke="#CC1F1F" stroke-width="2" stroke-linecap="round"/>
-        <line x1="24" y1="17" x2="33" y2="17" stroke="#CC1F1F" stroke-width="2" stroke-linecap="round"/>
-        <line x1="4.22" y1="4.22" x2="10.27" y2="10.27" stroke="#CC1F1F" stroke-width="2" stroke-linecap="round"/>
-        <line x1="23.73" y1="23.73" x2="29.78" y2="29.78" stroke="#CC1F1F" stroke-width="2" stroke-linecap="round"/>
-        <line x1="29.78" y1="4.22" x2="23.73" y2="10.27" stroke="#CC1F1F" stroke-width="2" stroke-linecap="round"/>
-        <line x1="10.27" y1="23.73" x2="4.22" y2="29.78" stroke="#CC1F1F" stroke-width="2" stroke-linecap="round"/>
+    const LOGO_SVG = `<svg width="34" height="34" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <!-- Outer tire treads -->
+        <circle cx="50" cy="50" r="44" stroke="#FF5500" stroke-width="8" stroke-dasharray="14 6"/>
+        <circle cx="50" cy="50" r="44" stroke="#FF5500" stroke-width="2" opacity="0.4"/>
+        <!-- Inner alloy rim rim -->
+        <circle cx="50" cy="50" r="26" stroke="#475569" stroke-width="4"/>
+        <circle cx="50" cy="50" r="10" fill="#FF5500"/>
+        <!-- Alloy spokes -->
+        <path d="M50 12 L50 88 M12 50 L88 50 M23 23 L77 77 M23 77 L77 23" stroke="#475569" stroke-width="4.5" stroke-linecap="round"/>
     </svg>`;
 
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
@@ -47,29 +45,29 @@
     function renderNavbar() {
         const navLinksDesktop = NAV_LINKS.map(link => {
             const isActive = link.href === currentPage;
-            return `<a href="${link.href}" class="nav-link text-xs 2xl:text-sm font-bold uppercase tracking-wide transition-all duration-300 hover:text-[#CC1F1F] relative group ${isActive ? 'text-[#CC1F1F]' : 'text-slate-700 dark:text-slate-300'}" style="font-family:'Inter',sans-serif;">
+            return `<a href="${link.href}" class="nav-link text-xs 2xl:text-sm font-bold uppercase tracking-wide transition-all duration-300 hover:text-[#FF5500] relative group ${isActive ? 'text-[#FF5500]' : 'text-slate-700 dark:text-slate-300'}" style="font-family:'Plus Jakarta Sans',sans-serif;">
                 ${link.label}
-                <span class="absolute -bottom-1 left-0 h-0.5 bg-[#CC1F1F] transition-all duration-300 group-hover:w-full ${isActive ? 'w-full' : 'w-0'}"></span>
+                <span class="absolute -bottom-1 left-0 h-0.5 bg-[#FF5500] transition-all duration-300 group-hover:w-full ${isActive ? 'w-full' : 'w-0'}"></span>
             </a>`;
         }).join('');
 
         const navLinksMobile = NAV_LINKS.map(link => {
             const isActive = link.href === currentPage;
-            return `<a href="${link.href}" class="nav-link flex items-center gap-3 px-4 py-3.5 text-sm font-bold border-b border-slate-100 dark:border-slate-800 hover:text-[#CC1F1F] transition-all duration-300 ${isActive ? 'text-[#CC1F1F] bg-red-50 dark:bg-red-900/10' : 'text-slate-700 dark:text-slate-200'}">
+            return `<a href="${link.href}" class="nav-link flex items-center gap-3 px-4 py-3.5 text-sm font-bold border-b border-slate-100 dark:border-slate-800 hover:text-[#FF5500] transition-all duration-300 ${isActive ? 'text-[#FF5500] bg-[#FFF2EB] dark:bg-[#FF5500]/10' : 'text-slate-700 dark:text-slate-200'}">
                 <i class="fas ${link.icon} w-5 text-sm opacity-50"></i> ${link.label}
             </a>`;
         }).join('');
 
         return `
         <div id="scroll-progress" style="width:0%"></div>
-        <nav id="main-nav" class="sticky top-0 z-50 bg-white/92 dark:bg-slate-900/92 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 transition-all duration-300">
+        <nav id="main-nav" class="sticky top-0 z-50 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 transition-all duration-300">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 xl:px-8">
                 <div class="flex justify-between items-center h-20">
                     <!-- Logo -->
-                    <a href="index.html" class="flex items-center gap-2.5 group shrink-0">
+                    <a href="index.html" class="flex items-center gap-2.5 group shrink-0 logo-spin">
                         ${LOGO_SVG}
-                        <span class="font-black text-xl tracking-tight text-slate-900 dark:text-white group-hover:text-[#CC1F1F] transition-colors" style="font-family:'Outfit',sans-serif;">
-                            Tire<span class="text-[#CC1F1F]">Xpress</span>
+                        <span class="font-black text-xl tracking-tight text-slate-900 dark:text-white group-hover:text-[#FF5500] transition-colors" style="font-family:'Space Grotesk',sans-serif;">
+                            Tire<span class="text-[#FF5500]">Xpress</span>
                         </span>
                     </a>
 
@@ -81,13 +79,13 @@
                     <!-- Right Side Actions -->
                     <div class="flex items-center gap-2">
                         <!-- RTL Toggle -->
-                        <button id="dir-toggle" class="js-dir-toggle hidden xl:flex w-10 h-10 items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-[#CC1F1F]/50 transition-all group shrink-0" aria-label="Toggle text direction">
-                            <span class="text-[10px] font-black text-slate-600 dark:text-slate-400 group-hover:text-[#CC1F1F] uppercase tracking-wider">LTR</span>
+                        <button id="dir-toggle" class="js-dir-toggle hidden xl:flex w-10 h-10 items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-[#FF5500]/50 transition-all group shrink-0" aria-label="Toggle text direction">
+                            <span class="text-[10px] font-black text-slate-600 dark:text-slate-400 group-hover:text-[#FF5500] uppercase tracking-wider">LTR</span>
                         </button>
 
                         <!-- Theme Toggle -->
-                        <button id="theme-toggle-desktop" class="js-theme-toggle hidden xl:flex w-10 h-10 items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-[#CC1F1F]/50 transition-all group shrink-0" aria-label="Toggle theme">
-                            <i class="fas fa-moon text-sm text-slate-600 dark:text-slate-400 group-hover:text-[#CC1F1F] transition-colors"></i>
+                        <button id="theme-toggle-desktop" class="js-theme-toggle hidden xl:flex w-10 h-10 items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-[#FF5500]/50 transition-all group shrink-0" aria-label="Toggle theme">
+                            <i class="fas fa-moon text-sm text-slate-600 dark:text-slate-400 group-hover:text-[#FF5500] transition-colors"></i>
                         </button>
 
                         <!-- Secondary CTA: Get a Quote -->
@@ -95,9 +93,9 @@
                             Get a Quote
                         </a>
 
-                        <!-- Primary CTA: Book Now -->
-                        <a href="services.html" class="hidden xl:inline-flex items-center gap-1.5 btn-primary px-4 py-2 rounded-xl text-xs">
-                            <i class="fas fa-calendar-check text-xs"></i> Book Now
+                        <!-- Primary CTA: Sign Up -->
+                        <a href="signup.html" class="hidden xl:inline-flex items-center gap-1.5 btn-primary px-4 py-2 rounded-xl text-xs">
+                            <i class="fas fa-user-plus text-xs"></i> Sign Up
                         </a>
 
                         <!-- Mobile Menu Button -->
@@ -129,8 +127,8 @@
                             <a href="pricing.html" class="flex-1 sm:flex-none text-center border-2 border-slate-800 dark:border-slate-500 text-slate-800 dark:text-slate-200 px-5 py-3.5 rounded-xl font-black uppercase tracking-wider text-xs hover:bg-slate-800 hover:text-white transition-all">
                                 Get a Quote
                             </a>
-                            <a href="services.html" class="flex-1 sm:flex-none text-center btn-primary px-5 py-3.5 rounded-xl text-xs">
-                                Book Now
+                            <a href="signup.html" class="flex-1 sm:flex-none text-center btn-primary px-5 py-3.5 rounded-xl text-xs">
+                                Sign Up
                             </a>
                         </div>
                     </div>
@@ -142,7 +140,7 @@
     // --- Render Footer ---
     function renderFooter() {
         const socialLinksHtml = SOCIAL_LINKS.map(s =>
-            `<a href="${s.href}" aria-label="${s.label}" class="w-10 h-10 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 hover:text-white hover:bg-[#CC1F1F] hover:-translate-y-1 transition-all duration-300 border border-slate-200 dark:border-slate-700 hover:border-[#CC1F1F]">
+            `<a href="${s.href}" aria-label="${s.label}" class="w-10 h-10 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 hover:text-white hover:bg-[#FF5500] hover:-translate-y-1 transition-all duration-300 border border-slate-200 dark:border-slate-700 hover:border-[#FF5500]">
                 <i class="${s.icon} text-sm"></i>
             </a>`
         ).join('');
@@ -154,9 +152,9 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-14">
                     <!-- Brand -->
                     <div class="lg:col-span-1 space-y-5">
-                        <a href="index.html" class="flex items-center gap-2.5 group">
+                        <a href="index.html" class="flex items-center gap-2.5 group logo-spin">
                             ${LOGO_SVG}
-                            <span class="font-black text-xl text-slate-900 dark:text-white" style="font-family:'Outfit',sans-serif;">Tire<span class="text-[#CC1F1F]">Xpress</span></span>
+                            <span class="font-black text-xl text-slate-900 dark:text-white" style="font-family:'Space Grotesk',sans-serif;">Tire<span class="text-[#FF5500]">Xpress</span></span>
                         </a>
                         <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
                             ${BRAND_TAGLINE}. Professional mobile tire installation, flat repair & rotation services on demand.
@@ -166,42 +164,42 @@
 
                     <!-- Quick Links -->
                     <div>
-                        <h4 class="font-black mb-5 text-slate-900 dark:text-white uppercase text-xs tracking-widest" style="font-family:'Outfit',sans-serif;">Quick Links</h4>
+                        <h4 class="font-black mb-5 text-slate-900 dark:text-white uppercase text-xs tracking-widest" style="font-family:'Space Grotesk',sans-serif;">Quick Links</h4>
                         <ul class="text-sm space-y-3 text-slate-500 dark:text-slate-400">
-                            <li><a href="index.html"    class="hover:text-[#CC1F1F] hover:ps-2 transition-all duration-200 block">Home</a></li>
-                            <li><a href="home2.html"    class="hover:text-[#CC1F1F] hover:ps-2 transition-all duration-200 block">Home 2</a></li>
-                            <li><a href="about.html"    class="hover:text-[#CC1F1F] hover:ps-2 transition-all duration-200 block">About Us</a></li>
-                            <li><a href="services.html" class="hover:text-[#CC1F1F] hover:ps-2 transition-all duration-200 block">Services</a></li>
-                            <li><a href="pricing.html"  class="hover:text-[#CC1F1F] hover:ps-2 transition-all duration-200 block">Pricing</a></li>
-                            <li><a href="tires.html"    class="hover:text-[#CC1F1F] hover:ps-2 transition-all duration-200 block">Tire Inventory</a></li>
-                            <li><a href="contact.html"  class="hover:text-[#CC1F1F] hover:ps-2 transition-all duration-200 block">Contact</a></li>
+                            <li><a href="index.html"    class="hover:text-[#FF5500] hover:ps-2 transition-all duration-200 block">Home</a></li>
+                            <li><a href="home2.html"    class="hover:text-[#FF5500] hover:ps-2 transition-all duration-200 block">Home 2</a></li>
+                            <li><a href="about.html"    class="hover:text-[#FF5500] hover:ps-2 transition-all duration-200 block">About Us</a></li>
+                            <li><a href="services.html" class="hover:text-[#FF5500] hover:ps-2 transition-all duration-200 block">Services</a></li>
+                            <li><a href="pricing.html"  class="hover:text-[#FF5500] hover:ps-2 transition-all duration-200 block">Pricing</a></li>
+                            <li><a href="tires.html"    class="hover:text-[#FF5500] hover:ps-2 transition-all duration-200 block">Tire Inventory</a></li>
+                            <li><a href="contact.html"  class="hover:text-[#FF5500] hover:ps-2 transition-all duration-200 block">Contact</a></li>
                         </ul>
                     </div>
 
                     <!-- Support -->
                     <div>
-                        <h4 class="font-black mb-5 text-slate-900 dark:text-white uppercase text-xs tracking-widest" style="font-family:'Outfit',sans-serif;">Support</h4>
+                        <h4 class="font-black mb-5 text-slate-900 dark:text-white uppercase text-xs tracking-widest" style="font-family:'Space Grotesk',sans-serif;">Support</h4>
                         <ul class="text-sm space-y-3 text-slate-500 dark:text-slate-400">
-                            <li><a href="login.html"       class="hover:text-[#CC1F1F] hover:ps-2 transition-all duration-200 block">Sign In</a></li>
-                            <li><a href="signup.html"      class="hover:text-[#CC1F1F] hover:ps-2 transition-all duration-200 block">Register</a></li>
-                            <li><a href="dashboard.html"   class="hover:text-[#CC1F1F] hover:ps-2 transition-all duration-200 block">Dashboard</a></li>
-                            <li><a href="comingsoon.html"  class="hover:text-[#CC1F1F] hover:ps-2 transition-all duration-200 block">Coming Soon</a></li>
-                            <li><a href="404.html"         class="hover:text-[#CC1F1F] hover:ps-2 transition-all duration-200 block">404 Page</a></li>
-                            <li><a href="#"                class="hover:text-[#CC1F1F] hover:ps-2 transition-all duration-200 block">FAQ</a></li>
-                            <li><a href="#"                class="hover:text-[#CC1F1F] hover:ps-2 transition-all duration-200 block">Privacy Policy</a></li>
+                            <li><a href="login.html"       class="hover:text-[#FF5500] hover:ps-2 transition-all duration-200 block">Sign In</a></li>
+                            <li><a href="signup.html"      class="hover:text-[#FF5500] hover:ps-2 transition-all duration-200 block">Register</a></li>
+                            <li><a href="dashboard.html"   class="hover:text-[#FF5500] hover:ps-2 transition-all duration-200 block">Dashboard</a></li>
+                            <li><a href="comingsoon.html"  class="hover:text-[#FF5500] hover:ps-2 transition-all duration-200 block">Coming Soon</a></li>
+                            <li><a href="404.html"         class="hover:text-[#FF5500] hover:ps-2 transition-all duration-200 block">404 Page</a></li>
+                            <li><a href="#"                class="hover:text-[#FF5500] hover:ps-2 transition-all duration-200 block">FAQ</a></li>
+                            <li><a href="#"                class="hover:text-[#FF5500] hover:ps-2 transition-all duration-200 block">Privacy Policy</a></li>
                         </ul>
                     </div>
 
                     <!-- Newsletter -->
                     <div class="bg-red-50 dark:bg-slate-800/50 p-6 rounded-2xl border border-red-100 dark:border-slate-700 hover:shadow-lg transition-all">
                         <div class="flex items-center gap-2 mb-2">
-                            <i class="fas fa-circle-dot text-[#CC1F1F]"></i>
-                            <h4 class="font-black text-slate-900 dark:text-white" style="font-family:'Outfit',sans-serif;">Stay Updated</h4>
+                            <i class="fas fa-circle-dot text-[#FF5500]"></i>
+                            <h4 class="font-black text-slate-900 dark:text-white" style="font-family:'Space Grotesk',sans-serif;">Stay Updated</h4>
                         </div>
                         <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">Get exclusive deals, tire tips & service alerts.</p>
                         <form id="newsletter-form" class="space-y-2">
                             <input type="email" required placeholder="Your email address"
-                                class="w-full px-4 py-3 text-sm bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 focus:border-[#CC1F1F] focus:ring-2 focus:ring-[#CC1F1F]/20 rounded-xl outline-none transition-all" />
+                                class="w-full px-4 py-3 text-sm bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 focus:border-[#FF5500] focus:ring-2 focus:ring-[#FF5500]/20 rounded-xl outline-none transition-all" />
                             <button type="submit" class="btn-primary w-full py-3 rounded-xl text-sm">
                                 Subscribe
                             </button>
@@ -210,8 +208,8 @@
                             âœ“ You're subscribed! Thanks!
                         </p>
                     </div>
-                </div>
-
+                </div> <!-- Closes .grid -->
+                
                 <!-- Bottom Bar -->
                 <div class="border-t border-slate-100 dark:border-slate-800 pt-7">
                     <div class="flex flex-col md:flex-row items-center justify-between gap-4">
@@ -219,16 +217,16 @@
                             &copy; ${CURRENT_YEAR} TireXpress. <span class="mx-1">|</span> Mobile Tire Service. All rights reserved.
                         </p>
                         <div class="flex items-center gap-1 text-slate-400 text-xs">
-                            <i class="fas fa-phone text-[#CC1F1F]"></i>
+                            <i class="fas fa-phone text-[#FF5500]"></i>
                             <span class="font-bold tracking-wider">${PHONE}</span>
                             <span class="mx-3 text-slate-300 dark:text-slate-700">|</span>
-                            <a href="#" class="hover:text-[#CC1F1F] transition-colors uppercase tracking-wider">Privacy</a>
-                            <span class="mx-2">Â·</span>
-                            <a href="#" class="hover:text-[#CC1F1F] transition-colors uppercase tracking-wider">Terms</a>
+                            <a href="#" class="hover:text-[#FF5500] transition-colors uppercase tracking-wider">Privacy</a>
+                            <span class="mx-2">·</span>
+                            <a href="#" class="hover:text-[#FF5500] transition-colors uppercase tracking-wider">Terms</a>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> <!-- Closes .max-w-7xl -->
         </footer>
 
         <!-- Back to Top -->
