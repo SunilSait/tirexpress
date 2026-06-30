@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+    <!-- Outer tire treads -->
+    <circle cx="50" cy="50" r="44" stroke="#FF5500" stroke-width="8" stroke-dasharray="14 6"/>
+    <circle cx="50" cy="50" r="44" stroke="#FF5500" stroke-width="2" opacity="0.4"/>
+    <!-- Inner alloy rim -->
+    <circle cx="50" cy="50" r="26" stroke="white" stroke-width="4"/>
+    <circle cx="50" cy="50" r="10" fill="#FF5500"/>
+    <!-- Alloy spokes -->
+    <path d="M50 12 L50 88 M12 50 L88 50 M23 23 L77 77 M23 77 L77 23" stroke="white" stroke-width="4.5" stroke-linecap="round"/>
+</svg>
