@@ -28,15 +28,15 @@
         { icon: 'fab fa-youtube',    href: '#', label: 'YouTube' },
     ];
 
-    const LOGO_SVG = `<svg width="34" height="34" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    const LOGO_SVG = `<svg width="34" height="34" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="text-slate-900 dark:text-white transition-colors duration-300">
         <!-- Outer tire treads -->
         <circle cx="50" cy="50" r="44" stroke="#FF5500" stroke-width="8" stroke-dasharray="14 6"/>
         <circle cx="50" cy="50" r="44" stroke="#FF5500" stroke-width="2" opacity="0.4"/>
         <!-- Inner alloy rim rim -->
-        <circle cx="50" cy="50" r="26" stroke="#475569" stroke-width="4"/>
+        <circle cx="50" cy="50" r="26" stroke="currentColor" stroke-width="4"/>
         <circle cx="50" cy="50" r="10" fill="#FF5500"/>
         <!-- Alloy spokes -->
-        <path d="M50 12 L50 88 M12 50 L88 50 M23 23 L77 77 M23 77 L77 23" stroke="#475569" stroke-width="4.5" stroke-linecap="round"/>
+        <path d="M50 12 L50 88 M12 50 L88 50 M23 23 L77 77 M23 77 L77 23" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
     </svg>`;
 
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
@@ -88,12 +88,12 @@
                         </button>
 
                         <!-- Secondary CTA: Get a Quote -->
-                        <a href="pricing.html" class="hidden xl:inline-flex items-center gap-1.5 border-2 border-slate-800 dark:border-slate-500 text-slate-800 dark:text-slate-200 px-4 py-2 rounded-xl text-xs font-black uppercase tracking-wider hover:bg-slate-800 hover:text-white dark:hover:bg-slate-700 transition-all">
+                        <a href="pricing.html" class="hidden xl:inline-flex items-center justify-center gap-1.5 h-10 border-2 border-slate-800 dark:border-slate-500 text-slate-800 dark:text-slate-200 px-4 rounded-xl text-xs font-black uppercase tracking-wider hover:bg-slate-800 hover:text-white dark:hover:bg-slate-700 transition-all">
                             Get a Quote
                         </a>
 
                         <!-- Primary CTA: Sign Up -->
-                        <a href="signup.html" class="hidden xl:inline-flex items-center gap-1.5 btn-primary px-4 py-2 rounded-xl text-xs">
+                        <a href="signup.html" class="hidden xl:inline-flex items-center justify-center gap-1.5 h-10 btn-primary px-4 rounded-xl text-xs">
                             <i class="fas fa-user-plus text-xs"></i> Sign Up
                         </a>
 
@@ -105,8 +105,29 @@
                 </div>
             </div>
 
+            <!-- Subheader Info Bar -->
+            <div class="bg-slate-50/90 dark:bg-slate-950/40 border-t border-slate-100 dark:border-slate-800/60 py-2.5 transition-colors duration-300">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 xl:px-8">
+                    <div class="flex flex-col md:flex-row items-center justify-between gap-2.5 text-xs font-semibold text-slate-600 dark:text-slate-400">
+                        <div class="flex items-center gap-2">
+                            <span class="relative flex h-2 w-2">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-2 w-2 bg-red-600"></span>
+                            </span>
+                            <span class="font-bold text-red-600 dark:text-red-400 uppercase tracking-wider text-[10px]">Emergency Hotline (24/7 Dispatch):</span>
+                            <a href="tel:5550123456" class="hover:text-[#FF5500] font-black text-slate-900 dark:text-white transition-colors tracking-wide">${PHONE}</a>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-truck-ramp-box text-[#FF5500] text-sm"></i>
+                            <span class="font-bold text-slate-900 dark:text-white uppercase tracking-wider text-[10px]">Service Area:</span>
+                            <span class="text-slate-600 dark:text-slate-400">Metro Area, Suburbs & Major Highways (35-Mile Radius Coverage)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Mobile Menu -->
-            <div id="mobile-menu" class="hidden xl:hidden absolute top-20 left-0 w-full bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 shadow-2xl z-50">
+            <div id="mobile-menu" class="hidden xl:hidden absolute top-full left-0 w-full bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 shadow-2xl z-50">
                 <div class="max-w-7xl mx-auto px-4 pt-2 pb-6">
                     <div class="grid grid-cols-1 gap-0 mb-4">
                         ${navLinksMobile}
@@ -297,8 +318,13 @@
             localStorage.setItem('dir', dir);
             dirBtns.forEach(btn => {
                 const span = btn.querySelector('span');
-                if (span) span.textContent = dir === 'rtl' ? 'RTL Mode' : 'LTR Mode';
-                else {
+                if (span) {
+                    if (btn.id === 'dir-toggle') {
+                        span.textContent = dir.toUpperCase();
+                    } else {
+                        span.textContent = dir === 'rtl' ? 'RTL Mode' : 'LTR Mode';
+                    }
+                } else {
                     const textNode = [...btn.childNodes].find(n => n.nodeType === 3);
                     if (textNode) textNode.textContent = dir.toUpperCase();
                     // fallback for the desktop toggle showing only text

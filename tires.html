@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="TireXpress Tire Inventory — Browse performance tires from Michelin, Bridgestone, Continental, Pirelli and more. Filter by brand, size, and type. Compare safety ratings.">
+    <meta name="description" content="TireXpress Tire Inventory â€” Browse performance tires from Michelin, Bridgestone, Continental, Pirelli and more. Filter by brand, size, and type. Compare safety ratings.">
     <title>Tire Inventory | TireXpress Mobile Tire Service</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='44' stroke='%23FF5500' stroke-width='8' stroke-dasharray='14 6' fill='none'/><circle cx='50' cy='50' r='26' stroke='%23FF5500' stroke-width='4' fill='none'/><circle cx='50' cy='50' r='10' fill='%23FF5500'/><path d='M50 12 L50 88 M12 50 L88 50 M23 23 L77 77 M23 77 L77 23' stroke='%23FF5500' stroke-width='4.5' stroke-linecap='round'/></svg>">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='44' stroke='%23FF5500' stroke-width='8' stroke-dasharray='14 6' fill='none'/><circle cx='50' cy='50' r='26' stroke='%23475569' stroke-width='4' fill='none'/><circle cx='50' cy='50' r='10' fill='%23FF5500'/><path d='M50 12 L50 88 M12 50 L88 50 M23 23 L77 77 M23 77 L77 23' stroke='%23475569' stroke-width='4.5' stroke-linecap='round'/></svg>">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="style.css">
@@ -29,7 +29,7 @@
         <h1 class="text-4xl md:text-6xl font-black text-white tracking-tighter uppercase mb-6" style="font-family:'Space Grotesk',sans-serif;">
             Browse & <span class="text-[#FF5500]">Compare</span> Tires
         </h1>
-        <p class="text-slate-300 text-lg max-w-xl mx-auto font-medium">Find the perfect tire for your vehicle. Filter by brand, type, or size — then book mobile installation.</p>
+        <p class="text-slate-300 text-lg max-w-xl mx-auto font-medium">Find the perfect tire for your vehicle. Filter by brand, type, or size â€” then book mobile installation.</p>
     </div>
 </section>
 
@@ -39,7 +39,7 @@
         <div class="bg-white dark:bg-slate-900 rounded-[2.5rem] border border-slate-100 dark:border-slate-800 p-8 shadow-xl relative z-10">
             <div class="flex justify-between items-center mb-8 border-b border-slate-100 dark:border-slate-800 pb-4">
                 <div>
-                    <h3 class="text-xl font-black dark:text-white uppercase" style="font-family:'Space Grotesk',sans-serif;">🎯 Tire Finder Wizard</h3>
+                    <h3 class="text-xl font-black dark:text-white uppercase" style="font-family:'Space Grotesk',sans-serif;">ðŸŽ¯ Tire Finder Wizard</h3>
                     <p class="text-xs text-slate-400 mt-1 font-medium">Answer 3 quick questions to find the ideal tire model.</p>
                 </div>
                 <span class="text-xs font-black text-[#FF5500] bg-[#FF5500]/10 px-3 py-1 rounded-full uppercase tracking-wider animate-pulse" id="wizard-step-label">Step 1 of 3</span>
@@ -169,25 +169,25 @@
                 <div>
                     <label class="block text-xs font-black uppercase tracking-widest text-slate-400 mb-2">Tire A</label>
                     <div class="relative"><select id="cmpA" onchange="runComparison()" class="form-input appearance-none cursor-pointer dark:bg-slate-900 dark:border-slate-700 dark:text-white font-bold pr-10">
-                        <option value="0">Michelin Pilot Sport 4S — A+ Wet Grip</option>
-                        <option value="1">Bridgestone Potenza S007 — A Wet Grip</option>
-                        <option value="2">Continental ExtremeContact — A- Wet Grip</option>
-                        <option value="3">Pirelli P Zero — A Wet Grip</option>
-                        <option value="4">Goodyear Eagle F1 — A Wet Grip</option>
-                        <option value="5">Continental ContiSportContact 5 — A Wet Grip</option>
-                        <option value="6">Goodyear Assurance WeatherReady — A Wet Grip</option>
+                        <option value="0">Michelin Pilot Sport 4S â€” A+ Wet Grip</option>
+                        <option value="1">Bridgestone Potenza S007 â€” A Wet Grip</option>
+                        <option value="2">Continental ExtremeContact â€” A- Wet Grip</option>
+                        <option value="3">Pirelli P Zero â€” A Wet Grip</option>
+                        <option value="4">Goodyear Eagle F1 â€” A Wet Grip</option>
+                        <option value="5">Continental ContiSportContact 5 â€” A Wet Grip</option>
+                        <option value="6">Goodyear Assurance WeatherReady â€” A Wet Grip</option>
                     </select><div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-[#FF5500]"><i class="fas fa-chevron-down text-xs"></i></div></div>
                 </div>
                 <div>
                     <label class="block text-xs font-black uppercase tracking-widest text-slate-400 mb-2">Tire B</label>
                     <div class="relative"><select id="cmpB" onchange="runComparison()" class="form-input appearance-none cursor-pointer dark:bg-slate-900 dark:border-slate-700 dark:text-white font-bold pr-10">
-                        <option value="1">Bridgestone Potenza S007 — A Wet Grip</option>
-                        <option value="0">Michelin Pilot Sport 4S — A+ Wet Grip</option>
-                        <option value="2">Continental ExtremeContact — A- Wet Grip</option>
-                        <option value="3">Pirelli P Zero — A Wet Grip</option>
-                        <option value="4">Goodyear Eagle F1 — A Wet Grip</option>
-                        <option value="5">Continental ContiSportContact 5 — A Wet Grip</option>
-                        <option value="6">Goodyear Assurance WeatherReady — A Wet Grip</option>
+                        <option value="1">Bridgestone Potenza S007 â€” A Wet Grip</option>
+                        <option value="0">Michelin Pilot Sport 4S â€” A+ Wet Grip</option>
+                        <option value="2">Continental ExtremeContact â€” A- Wet Grip</option>
+                        <option value="3">Pirelli P Zero â€” A Wet Grip</option>
+                        <option value="4">Goodyear Eagle F1 â€” A Wet Grip</option>
+                        <option value="5">Continental ContiSportContact 5 â€” A Wet Grip</option>
+                        <option value="6">Goodyear Assurance WeatherReady â€” A Wet Grip</option>
                     </select><div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-[#FF5500]"><i class="fas fa-chevron-down text-xs"></i></div></div>
                 </div>
             </div>
@@ -204,11 +204,14 @@
             <h2 class="text-2xl md:text-3xl font-black dark:text-white tracking-tighter uppercase" style="font-family:'Space Grotesk',sans-serif;">Understanding <span class="text-[#FF5500]">Safety Ratings</span></h2>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 reveal font-medium">
-            <div class="bg-slate-50 dark:bg-slate-800 rounded-2xl p-7 border border-slate-100 dark:border-slate-700">
-                <div class="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-2xl flex items-center justify-center mb-5"><i class="fas fa-droplet text-green-500 text-xl"></i></div>
-                <h3 class="font-black dark:text-white mb-3 text-base" style="font-family:'Space Grotesk',sans-serif;">Wet Grip (A–G)</h3>
-                <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">Measures braking distance on wet roads. A is the best — means shorter stopping distances in rain.</p>
-                <div class="flex gap-1 mt-4">
+            <!-- Card 1 -->
+            <div class="bg-slate-50 dark:bg-slate-800 rounded-2xl p-7 border border-slate-100 dark:border-slate-700 flex flex-col justify-between">
+                <div>
+                    <div class="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-2xl flex items-center justify-center mb-5"><i class="fas fa-droplet text-green-500 text-xl"></i></div>
+                    <h3 class="font-black dark:text-white mb-3 text-base" style="font-family:'Space Grotesk',sans-serif;">Wet Grip (A-G)</h3>
+                    <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed mb-4">Measures braking distance on wet roads. A is the best — means shorter stopping distances in rain.</p>
+                </div>
+                <div class="flex gap-1">
                     <span class="bg-green-500 text-white text-[9px] font-black px-2 py-0.5 rounded">A</span>
                     <span class="bg-lime-400 text-white text-[9px] font-black px-2 py-0.5 rounded">B</span>
                     <span class="bg-yellow-400 text-white text-[9px] font-black px-2 py-0.5 rounded">C</span>
@@ -216,11 +219,15 @@
                     <span class="bg-red-400 text-white text-[9px] font-black px-2 py-0.5 rounded">E</span>
                 </div>
             </div>
-            <div class="bg-slate-50 dark:bg-slate-800 rounded-2xl p-7 border border-slate-100 dark:border-slate-700">
-                <div class="w-12 h-12 bg-[#FF5500]/10 rounded-2xl flex items-center justify-center mb-5"><i class="fas fa-leaf text-[#FF5500] text-xl"></i></div>
-                <h3 class="font-black dark:text-white mb-3 text-base" style="font-family:'Space Grotesk',sans-serif;">Fuel Efficiency (A–G)</h3>
-                <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">Rolling resistance rating. A-rated tires save fuel — up to 0.5L/100km difference between grades.</p>
-                <div class="flex gap-1 mt-4">
+
+            <!-- Card 2 -->
+            <div class="bg-slate-50 dark:bg-slate-800 rounded-2xl p-7 border border-slate-100 dark:border-slate-700 flex flex-col justify-between">
+                <div>
+                    <div class="w-12 h-12 bg-[#FF5500]/10 rounded-2xl flex items-center justify-center mb-5"><i class="fas fa-leaf text-[#FF5500] text-xl"></i></div>
+                    <h3 class="font-black dark:text-white mb-3 text-base" style="font-family:'Space Grotesk',sans-serif;">Fuel Efficiency (A-G)</h3>
+                    <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed mb-4">Rolling resistance rating. A-rated tires save fuel — up to 0.5L/100km difference between grades.</p>
+                </div>
+                <div class="flex gap-1">
                     <span class="bg-green-500 text-white text-[9px] font-black px-2 py-0.5 rounded">A</span>
                     <span class="bg-lime-400 text-white text-[9px] font-black px-2 py-0.5 rounded">B</span>
                     <span class="bg-yellow-400 text-white text-[9px] font-black px-2 py-0.5 rounded">C</span>
@@ -228,11 +235,15 @@
                     <span class="bg-red-400 text-white text-[9px] font-black px-2 py-0.5 rounded">E</span>
                 </div>
             </div>
-            <div class="bg-slate-50 dark:bg-slate-800 rounded-2xl p-7 border border-slate-100 dark:border-slate-700">
-                <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-2xl flex items-center justify-center mb-5"><i class="fas fa-volume-xmark text-blue-500 text-xl"></i></div>
-                <h3 class="font-black dark:text-white mb-3 text-base" style="font-family:'Space Grotesk',sans-serif;">Noise (dB)</h3>
-                <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">Measured in decibels. Lower dB = quieter ride. 1 sound wave (black bar) = very quiet. 3 bars = louder.</p>
-                <div class="flex gap-1 mt-4">
+
+            <!-- Card 3 -->
+            <div class="bg-slate-50 dark:bg-slate-800 rounded-2xl p-7 border border-slate-100 dark:border-slate-700 flex flex-col justify-between">
+                <div>
+                    <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-2xl flex items-center justify-center mb-5"><i class="fas fa-volume-xmark text-blue-500 text-xl"></i></div>
+                    <h3 class="font-black dark:text-white mb-3 text-base" style="font-family:'Space Grotesk',sans-serif;">Noise (dB)</h3>
+                    <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed mb-4">Measured in decibels. Lower dB = quieter ride. sound wave (black bar) = very quiet.</p>
+                </div>
+                <div class="flex gap-1">
                     <span class="bg-green-500 text-white text-[9px] font-black px-2 py-0.5 rounded">68 dB ✦</span>
                     <span class="bg-yellow-400 text-white text-[9px] font-black px-2 py-0.5 rounded">72 dB ✦✦</span>
                     <span class="bg-red-400 text-white text-[9px] font-black px-2 py-0.5 rounded">76 dB ✦✦✦</span>
