@@ -44,19 +44,20 @@
 
 
 
-<div id="navbar-container"></div>
-
-<!-- ===== HERO â€” MODERN HUB LAYOUT ===== -->
-<section class="relative min-h-screen flex items-center justify-center pt-24 pb-16 overflow-hidden bg-slate-50 dark:bg-slate-950">
+<div id="navbar-container"></div><!-- ===== HERO – MODERN HUB LAYOUT ===== -->
+<section class="relative min-h-screen flex items-center justify-center pt-24 pb-16 overflow-hidden bg-slate-950">
     <div class="absolute inset-0 z-0 pointer-events-none">
-        <!-- Main background image watermark -->
-        <img src="assets/fleet_service.png" alt="" class="absolute inset-0 w-full h-full object-cover opacity-35 dark:opacity-25 transition-all duration-700 animate-slow-zoom">
-        <!-- Adaptive overlay gradient -->
-        <div class="absolute inset-0 bg-gradient-to-b from-white/40 via-white/70 to-white dark:from-slate-950/50 dark:via-slate-950/75 dark:to-slate-950 transition-colors duration-300"></div>
-
-        <div class="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-[#FF5500]/10 rounded-full blur-[120px] animate-pulse"></div>
-        <div class="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-slate-300/20 dark:bg-slate-800/20 rounded-full blur-[100px]" style="animation-delay: -3s;"></div>
-        <div class="absolute inset-0 bg-[radial-gradient(#94a3b8_1px,transparent_1px)] dark:bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:24px_24px] opacity-25"></div>
+        <!-- High-impact cinematic background image -->
+        <img src="assets/hero_bg_home2.png" alt="Mobile tire service at night" class="absolute inset-0 w-full h-full object-cover opacity-60 animate-slow-zoom">
+        <!-- Deep cinematic gradient overlay for text legibility -->
+        <div class="absolute inset-0 bg-gradient-to-b from-slate-950/60 via-slate-950/40 to-slate-950/85"></div>
+        <!-- Side vignette for focus -->
+        <div class="absolute inset-0 bg-gradient-to-r from-slate-950/70 via-transparent to-slate-950/50"></div>
+        <!-- Subtle orange ambient glow -->
+        <div class="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-[#FF5500]/15 rounded-full blur-[120px] animate-pulse"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-[#FF5500]/5 rounded-full blur-[100px]" style="animation-delay: -3s;"></div>
+        <!-- Subtle dot grid overlay -->
+        <div class="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.04)_1px,transparent_1px)] [background-size:24px_24px]"></div>
     </div>
 
     <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center space-y-8">
@@ -68,17 +69,17 @@
             <span class="text-[#FF7A00] text-[10px] sm:text-xs font-black uppercase tracking-[0.25em]">⚡ Fleet Dispatch Active</span>
         </div>
 
-        <h1 class="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black leading-none tracking-tighter uppercase max-w-4xl text-slate-900 dark:text-white" style="font-family:'Space Grotesk',sans-serif;">
+        <h1 class="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black leading-none tracking-tighter uppercase max-w-4xl text-white drop-shadow-2xl" style="font-family:'Space Grotesk',sans-serif;">
             The Next-Gen<br>
             <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#FF5500] to-[#FF7A00] text-glow">Mobile Tire Station</span>
         </h1>
 
-        <p class="text-slate-600 dark:text-slate-400 text-lg md:text-xl max-w-2xl leading-relaxed">
+        <p class="text-slate-300 text-lg md:text-xl max-w-2xl leading-relaxed drop-shadow-md">
             Stranded with a flat? Or due for new tires? Skip the workshop. Certified technicians bring state-of-the-art mobile installation rigs directly to your driveway.
         </p>
 
         <!-- Search Bar / Quick Action Widget -->
-        <div class="w-full max-w-3xl glass-dark rounded-[2rem] p-6 shadow-2xl border border-slate-200 dark:border-slate-800 glow-border transition-all duration-500">
+        <div class="w-full max-w-3xl glass-dark rounded-[2rem] p-6 shadow-2xl border border-white/10 glow-border transition-all duration-500 backdrop-blur-xl">
             <h3 class="text-sm font-black uppercase tracking-widest text-[#FF5500] mb-4 text-left flex items-center gap-2">
                 <i class="fas fa-location-dot"></i> Calculate Arrival & Price
             </h3>
@@ -109,7 +110,7 @@
             </form>
         </div>
 
-        <div class="flex flex-wrap justify-center gap-10 text-xs font-bold text-slate-500 pt-6 uppercase tracking-wider">
+        <div class="flex flex-wrap justify-center gap-10 text-xs font-bold text-slate-300 pt-6 uppercase tracking-wider drop-shadow">
             <div class="flex items-center gap-2"><i class="fas fa-shield-halved text-[#FF5500]"></i> ASE-Certified Techs</div>
             <div class="flex items-center gap-2"><i class="fas fa-clock text-[#FF5500]"></i> 24/7 Roadside Rescue</div>
             <div class="flex items-center gap-2"><i class="fas fa-circle-check text-[#FF5500]"></i> Transparent Pricing</div>
@@ -410,14 +411,24 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             <!-- Review 1 -->
-            <div class="glass-dark rounded-3xl p-8 flex flex-col justify-between hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+            <div class="glass-dark rounded-3xl p-8 flex flex-col justify-between hover:shadow-xl hover:-translate-y-1 transition-all duration-300 relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-[#FF5500]/5 rounded-full blur-2xl pointer-events-none"></div>
+                <!-- Stars -->
+                <div class="flex items-center gap-1 mb-4">
+                    <i class="fas fa-star text-amber-400 text-xs"></i>
+                    <i class="fas fa-star text-amber-400 text-xs"></i>
+                    <i class="fas fa-star text-amber-400 text-xs"></i>
+                    <i class="fas fa-star text-amber-400 text-xs"></i>
+                    <i class="fas fa-star text-amber-400 text-xs"></i>
+                    <span class="text-[9px] text-slate-400 font-bold uppercase tracking-widest ml-2">Verified Review</span>
+                </div>
                 <i class="fas fa-quote-left text-4xl text-[#FF5500] opacity-20 block mb-4"></i>
                 <p class="text-sm italic text-slate-600 dark:text-slate-300 leading-relaxed mb-6 font-medium">
                     "I run a local plumbing agency with 6 vans. TireXpress handles all our scheduled and emergency tire maintenance on-site. We've never had a van down for more than 40 minutes. Absolutely exceptional."
                 </p>
                 <div class="flex items-center gap-4">
-                    <div class="w-10 h-10 bg-[#FF5500]/15 rounded-full flex items-center justify-center text-[#FF5500] shrink-0">
-                        <svg class="w-5 h-5" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="17" cy="17" r="16"/><circle cx="17" cy="17" r="7"/><line x1="17" y1="1" x2="17" y2="10"/><line x1="17" y1="24" x2="17" y2="33"/><line x1="1" y1="17" x2="10" y2="17"/><line x1="24" y1="17" x2="33" y2="17"/></svg>
+                    <div class="w-12 h-12 rounded-full overflow-hidden border-2 border-[#FF5500]/40 shrink-0 shadow-md">
+                        <img src="assets/avatar_david_chen.png" alt="David Chen" class="w-full h-full object-cover">
                     </div>
                     <div>
                         <h5 class="font-black text-sm text-slate-900 dark:text-white">David Chen</h5>
@@ -427,14 +438,24 @@
             </div>
 
             <!-- Review 2 -->
-            <div class="glass-dark rounded-3xl p-8 flex flex-col justify-between hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+            <div class="glass-dark rounded-3xl p-8 flex flex-col justify-between hover:shadow-xl hover:-translate-y-1 transition-all duration-300 relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-[#FF5500]/5 rounded-full blur-2xl pointer-events-none"></div>
+                <!-- Stars -->
+                <div class="flex items-center gap-1 mb-4">
+                    <i class="fas fa-star text-amber-400 text-xs"></i>
+                    <i class="fas fa-star text-amber-400 text-xs"></i>
+                    <i class="fas fa-star text-amber-400 text-xs"></i>
+                    <i class="fas fa-star text-amber-400 text-xs"></i>
+                    <i class="fas fa-star text-amber-400 text-xs"></i>
+                    <span class="text-[9px] text-slate-400 font-bold uppercase tracking-widest ml-2">Verified Review</span>
+                </div>
                 <i class="fas fa-quote-left text-4xl text-[#FF5500] opacity-20 block mb-4"></i>
                 <p class="text-sm italic text-slate-600 dark:text-slate-300 leading-relaxed mb-6 font-medium">
                     "Excellent convenience. I booked my Michelin set installation for my Tesla Model Y right on the office parking lot. The technician arrived on-time, did the balancing in the van, and finished in 45 minutes."
                 </p>
                 <div class="flex items-center gap-4">
-                    <div class="w-10 h-10 bg-[#FF5500]/15 rounded-full flex items-center justify-center text-[#FF5500] shrink-0">
-                        <svg class="w-5 h-5" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="17" cy="17" r="16"/><circle cx="17" cy="17" r="7"/><line x1="17" y1="1" x2="17" y2="10"/><line x1="17" y1="24" x2="17" y2="33"/><line x1="1" y1="17" x2="10" y2="17"/><line x1="24" y1="17" x2="33" y2="17"/></svg>
+                    <div class="w-12 h-12 rounded-full overflow-hidden border-2 border-[#FF5500]/40 shrink-0 shadow-md">
+                        <img src="assets/avatar_layla_hosseini.png" alt="Layla Hosseini" class="w-full h-full object-cover">
                     </div>
                     <div>
                         <h5 class="font-black text-sm text-slate-900 dark:text-white">Layla Hosseini</h5>
